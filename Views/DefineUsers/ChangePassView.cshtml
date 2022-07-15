@@ -1,0 +1,58 @@
+﻿@model KOP_Store.Models.mdlDefineUsers
+@{
+    Layout = null;
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/functions/ChangePass.js?v=1.1"></script>
+<script src="~/functions/PublicFunc.js?v=1.5"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bagaStyle.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="~/Content/jquery-confirm.css" />
+<script src="~/Scripts/jquery-confirm.js"></script>
+
+<html>
+<head>
+    <title>تغییر پسورد</title>
+</head>
+</html>
+<body>
+    <div class="row">
+     
+        <div id="frmModalGetData1" class="modalDiv">
+            <label class="lblStyle">کد کاربر:</label>
+            <label class="txtStyle" id="lblChangePassUserID">0</label>
+            <br /><br /><br />
+            <label class="lblStyle">نام کاربری:</label>
+            <label class="txtStyle" id="lblChangePassUserName" ></label>
+            <br /><br />
+            <label class="lblStyle">رمز عبور جدید خود را وارد نمایید:</label>
+            <input class="txtStyle" type="password" id="txtChangePassPassword" />
+            <br /><br />
+            <table>
+                <tr>
+                    <td>
+                        <button class="myBtn" id="cmdChangePassUpdate">تغییر</button>
+                    </td>
+                    <td>
+                        <button class="myBtn" id="cmdChangePassClose">بستن </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    
+    $(document).delegate(".myTbl > tbody > tr",
+        "click",
+        function () {
+            $('.myTbl > tbody > tr').removeClass('rowSelected');
+            $(this).addClass('rowSelected');
+        });
+
+
+</script>

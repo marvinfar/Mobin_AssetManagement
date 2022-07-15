@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="db">
+    <EntitySetMapping Name="tblProductGroups">
+      <EntityTypeMapping TypeName="Model.tblProductGroup">
+        <MappingFragment StoreEntitySet="tblProductGroup">
+          <ScalarProperty Name="productGroupId" ColumnName="productGroupId" />
+          <ScalarProperty Name="productGroupName" ColumnName="productGroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProducts">
+      <EntityTypeMapping TypeName="Model.tblProduct">
+        <MappingFragment StoreEntitySet="tblProducts">
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="productGroupId" ColumnName="productGroupId" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProductsDetails">
+      <EntityTypeMapping TypeName="Model.tblProductsDetail">
+        <MappingFragment StoreEntitySet="tblProductsDetail">
+          <ScalarProperty Name="productDetailId" ColumnName="productDetailId" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="productBrand" ColumnName="productBrand" />
+          <ScalarProperty Name="productMaterial" ColumnName="productMaterial" />
+          <ScalarProperty Name="productColor" ColumnName="productColor" />
+          <ScalarProperty Name="productSize" ColumnName="productSize" />
+          <ScalarProperty Name="productGender" ColumnName="productGender" />
+          <ScalarProperty Name="productCountry" ColumnName="productCountry" />
+          <ScalarProperty Name="productDescription" ColumnName="productDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="Model.tblUser">
+        <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vProducts">
+      <EntityTypeMapping TypeName="Model.vProduct">
+        <MappingFragment StoreEntitySet="vProducts">
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="productGroupName" ColumnName="productGroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,72 @@
+﻿
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/functions/PublicFunc.js?v=1.6"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bagaStyle.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="~/Scripts/notify.js"></script>
+<script src="~/Scripts/notify.min.js"></script>
+<link rel="stylesheet" href="~/Content/jquery-confirm.css" />
+<script src="~/Scripts/jquery-confirm.js"></script>
+<link rel="stylesheet" href="~/Content/jquery-confirm.css" />
+<script src="~/Scripts/jquery-confirm.js"></script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+
+</head>
+<body>
+@RenderBody()
+<div class="dockedDiv" style="overflow: auto">
+    @* Docked Right Menu Bar *@
+    <button id="m-1" class="myBtn" style="background-color: green" onclick="subMenuOpen();">اطلاعات پایه</button>
+
+    <div id="sm-1" class="subDiv">
+        <button class="myBtn" id="cmdDefProductGroup" onclick="RedirectToPage();">تعریف گروهبندی کالا</button>
+        <button class="myBtn" id="cmdDefProducts" onclick="RedirectToPage();">تعریف کالا</button>
+        <button class="myBtn" id="cmdDefProductDetails" onclick="RedirectToPage();">تعریف زیر مجموعه کالا</button>
+        <br/>
+        <button class="myBtn" id="cmdDefCountry" onclick="RedirectToPage();">تعریف کشور</button>
+        <button class="myBtn" id="cmdDefBrand" onclick="RedirectToPage();">تعریف برند کالا</button>
+        <button class="myBtn" id="cmdDefMaterial" onclick="RedirectToPage();">تعریف متریال(جنس) کالا</button>
+        <button class="myBtn" id="cmdDefSize" onclick="RedirectToPage();">تعریف سایز کالا</button>
+        <button class="myBtn" id="cmdDefColor" onclick="RedirectToPage();">تعریف رنگ کالا</button>
+        <br/>
+        <button class="myBtn" id="cmdDefUsers" onclick="RedirectToPage();">تعریف کاربران</button>
+        <button class="myBtn" id="cmdDefUserLevel" onclick="RedirectToPage();">تعریف سطح دسترسی کاربران</button>
+        <br/>
+        <button class="myBtn" id="cmdDefCustomer" onclick="RedirectToPage();">تعریف خریدار/فروشنده</button>
+        <button class="myBtn" id="cmdDefVendor" onclick="RedirectToPage();">تعریف پیمانکاران</button>
+        <button class="myBtn" id="cmdChangePass" onclick="RedirectToPage();">تغییر رمز عبور...</button>
+
+    </div>
+    <br/> <br/>
+    <button id="m-2" class="myBtn" onclick="subMenuOpen();" style="background-color: green">عملیات کالا و اموال(ورود/خروج و...)</button>
+    <div id="sm-2" class="subDiv">
+        <button class="myBtn" id="cmdInpFactor" onclick="RedirectToPage();">ثبت فاکتور خرید-ورود کالا</button>
+        <button id="cmdOutFactor" class="myBtn" onclick="RedirectToPage();">ثبت فاکتور فروش-خروج کالا</button>
+        <br/>
+        <button id="cmdDefAmvalProduct" class="myBtn" onclick="RedirectToPage();">تعریف و تخصیص شماره اموال برای کالا</button>
+
+        <button id="cmdTakhsisAmvalToUser" class="myBtn" onclick="RedirectToPage();">تخصیص اموال به شخص</button>
+        <button id="cmdEsghatAmval" class="myBtn" onclick="RedirectToPage();">اسقاط کالای دارای اموال</button>
+        <br/>
+        <button id="cmdService" class="myBtn" onclick="RedirectToPage();">سرویس و نگهداری</button>
+    </div>
+    <br/> <br/>
+    <button id="m-3" class="myBtn" onclick="subMenuOpen();" style="background-color: green">گزارشات</button>
+    <div id="sm-3" class="subDiv">
+        <button class="myBtn" id="cmdRepMasrafi" onclick="RedirectToPage();">گزارشات کالای غیر مصرفی</button>
+    </div>
+    <br/> <br/>
+    <button id="cmdDashboard" class="myBtn" onclick="RedirectToPage();" style="background-color: green">داشبورد</button>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,201 @@
+﻿@model KOP_Store.Models.DataBaseModels.tblAmval
+@{
+    Layout = null;
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/functions/DefAmval.js?v=2.3"></script>
+<script src="~/functions/PublicFunc.js?v=1.7"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bagaStyle.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="~/Scripts/notify.js"></script>
+<script src="~/Scripts/notify.min.js"></script>
+@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>*@
+<link rel="stylesheet" href="~/Content/jquery-confirm.css"/>
+<script src="~/Scripts/jquery-confirm.js"></script>
+<html>
+<head>
+    <title>تعریف اموال و تخصیص به کالا</title>
+</head>
+</html>
+
+<body>
+
+    <div class="row">
+        <div class="dockedDiv" style="overflow: auto">
+            @* Docked Right Menu Bar *@
+            <button id="m-1" class="myBtn" style="background-color: green" onclick="subMenuOpen();">اطلاعات پایه</button>
+
+            <div id="sm-1" class="subDiv">
+                <button class="myBtn" id="cmdDefProductGroup" onclick="RedirectToPage();">تعریف گروهبندی کالا</button>
+                <button class="myBtn" id="cmdDefProducts" onclick="RedirectToPage();">تعریف کالا</button>
+                <button class="myBtn" id="cmdDefProductDetails" onclick="RedirectToPage();">تعریف زیر مجموعه کالا</button>
+                <br />
+                <button class="myBtn" id="cmdDefCountry" onclick="RedirectToPage();">تعریف کشور</button>
+                <button class="myBtn" id="cmdDefBrand" onclick="RedirectToPage();">تعریف برند کالا</button>
+                <button class="myBtn" id="cmdDefMaterial" onclick="RedirectToPage();">تعریف متریال(جنس) کالا</button>
+                <button class="myBtn" id="cmdDefSize" onclick="RedirectToPage();">تعریف سایز کالا</button>
+                <button class="myBtn" id="cmdDefColor" onclick="RedirectToPage();">تعریف رنگ کالا</button>
+                <br />
+                <button class="myBtn" id="cmdDefUsers" onclick="RedirectToPage();">تعریف کاربران</button>
+                <button class="myBtn" id="cmdDefUserLevel" onclick="RedirectToPage();">تعریف سطح دسترسی کاربران</button>
+                <br />
+                <button class="myBtn" id="cmdDefCustomer" onclick="RedirectToPage();">تعریف خریدار/فروشنده</button>
+                <button class="myBtn" id="cmdDefVendor" onclick="RedirectToPage();">تعریف پیمانکاران</button>
+                <button class="myBtn" id="cmdChangePass" onclick="RedirectToPage();">تغییر رمز عبور...</button>
+
+            </div>
+            <br /> <br />
+            <button id="m-2" class="myBtn" onclick="subMenuOpen();" style="background-color: green">عملیات کالا و اموال(ورود/خروج و...)</button>
+            <div id="sm-2" class="subDiv">
+                <button class="myBtn" id="cmdInpFactor" onclick="RedirectToPage();">ثبت فاکتور خرید-ورود کالا</button>
+                <button id="cmdOutFactor" class="myBtn" onclick="RedirectToPage();">ثبت فاکتور فروش-خروج کالا</button>
+                <br />
+                <button id="cmdDefAmvalProduct" class="myBtn" onclick="RedirectToPage();">تعریف و تخصیص شماره اموال برای کالا</button>
+
+                <button id="cmdTakhsisAmvalToUser" class="myBtn" onclick="RedirectToPage();">تخصیص اموال به شخص</button>
+                <button id="cmdEsghatAmval" class="myBtn" onclick="RedirectToPage();">اسقاط کالای دارای اموال</button>
+                <br />
+                <button id="cmdService" class="myBtn" onclick="RedirectToPage();">سرویس و نگهداری</button>
+            </div>
+            <br /> <br />
+            <button id="m-3" class="myBtn" onclick="subMenuOpen();" style="background-color: green">گزارشات</button>
+            <div id="sm-3" class="subDiv">
+                <button class="myBtn" id="cmdRepMasrafi" onclick="RedirectToPage();">گزارشات کالای غیر مصرفی</button>
+                <button class="myBtn" id="cmdRepAmval" onclick="RedirectToPage();">گزارشات کالای دارای اموال</button>
+                <button id="cmdDashboard" class="myBtn" onclick="RedirectToPage();">داشبورد</button>
+            </div>
+            <br /> <br />
+
+
+        </div>
+
+        <div id="divFactor" class="myDiv">
+            <div class="myDiv" style="width: 99%; height: 34%; overflow: auto; color: white; padding: 5px">
+                <h2>تخصیص شماره اموال به کالا </h2> &nbsp;
+
+                <label>شماره اموال </label>
+                <input type="number" class="txtStyle" id="txtAmvalNumber" />
+                <label id="lblMessage" style="color: red">پبام</label>
+
+                <label>انتخاب کالا</label>
+                <input type="text" class="txtStyle" id="txtAmvalFindProducts" style="width: 300px" />
+                <label>کد ردیف کالای انتخابی</label>
+                <label class="txtStyle" id="lblAmvalFindpdID" style="color: black">0000</label>
+                <table style="width: 80%; visibility:collapse" id="tPDFilter" class="myTbl">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">ردیف</th>
+                            <th style="text-align: center">نام کالا</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="SetProductDetailsList">
+                        <tr id="LoadingStatusProductDetails" style="color: red"></tr>
+                    </tbody>
+                </table>
+
+                <br />
+                <label>تاریخ خرید </label>
+                <input type="text" class="txtStyle" id="txtBuyDate" />
+                <label>قیمت خرید </label>
+                <input type="text" class="txtStyle Calc" id="txtBuyPrice" />
+                <label>شماره SAP </label>
+                <input type="text" class="txtStyle" id="txtSapPR" />
+                <label>شماره سریال </label>
+                <input type="text" class="txtStyle" id="txtSerialNumber" />
+                <label> بارکد </label>
+                <input type="text" class="txtStyle" id="txtBarcode" />
+                <label>توضیحات </label>
+                <input type="text" class="txtStyle" id="txtAmvalDesc" />
+
+                <div style="padding: 5px">
+                    <br />
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="button" class="myBtn" id="cmdSaveAmval" value="ثبت اطلاعات" style="width: 150px; height: 50px">
+                            </td>
+                            <td>
+                                <input type="button" class="myBtn" id="cmdUpdateAmval" value="بروز رسانی تغییرات" style="width: 150px; height: 50px">
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="myDiv" style="width: 99%; height: 58%; overflow: auto; color: white; padding-right: 5px" id="divAmvalList">
+                <h4>مشاهده اموال ثبت شده</h4>
+                <table>
+                    <tr>
+                        <td>
+                            <label class="lblStyle">مورد جستجو</label>
+                            <select class="txtfilter" style="height: 25px" id="selAmvalFilterAny">
+                                <option value="1">شماره اموال</option>
+                                <option value="2">شماره SAP</option>
+                                <option value="3">نام کالا</option>
+                                <option value="4">سریال </option>
+                                <option value="5">بین دو تاریخ خرید </option>
+                            </select>
+                            <input class="txtfilter" id="txtFindAnything1" />
+                            <input class="txtfilter" id="txtFindAnything2" />
+                        </td>
+                        <td>
+                            <input class="myBtn" type="button" value="جستجوی اطلاعات" id="cmdFindAmval" />
+                        </td>
+                        <td>
+                            <input class="myBtn" type="button" value="پاک کردن جستجو" id="cmdClearFindAmval" />
+
+                        </td>
+                    </tr>
+                </table>
+
+                <table style="width: 80%" id="tAmvalList" class="myTbl">
+
+                    <thead id="thAmvalList">
+                        <tr>
+                            <th>ردیف</th>
+                            <th>شماره اموال</th>
+                            <th>نام کالا</th>
+                            <th>تاریخ خرید</th>
+                            <th>قیمت خرید</th>
+                            <th>شماره SAP</th>
+                            <th>سریال </th>
+                            <th>بارکد </th>
+                            <th>توضیحات</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="SetAmvalList">
+                        <tr id="LoadingStatusAmval" style="color: red"></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="myDiv" style="overflow: auto;height: 5%;width: 99%">
+                <table>
+                    <tr>
+                        <td>
+                            <input type="button" class="myBtn" id="cmdEditAmval" value="ویرایش اطلاعات انتخاب شده" />
+                        </td>
+                        <td>
+                            <input type="button" class="myBtn" id="cmdDeleteAmval" value="حذف اطلاعات انتخاب شده" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    $(document).delegate(".myTbl > tbody > tr",
+        "click",
+        function () {
+            $('.myTbl > tbody > tr').removeClass('rowSelected');
+            $(this).addClass('rowSelected');
+        });
+    
+</script>

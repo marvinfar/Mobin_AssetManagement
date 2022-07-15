@@ -1,0 +1,140 @@
+﻿@model KOP_Store.Models.mdlDefineUsers
+@{
+    Layout = null;
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/functions/Brand.js?v=1.0"></script>
+<script src="~/Scripts/notify.js"></script>
+<script src="~/Scripts/notify.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bagaStyle.css" rel="stylesheet" />
+@* Date *@
+<link href="~/Contentx/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Contentx/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="~/Contentx/MdBootstrapPersianDateTimePicker/jquery.Bootstrap-PersianDateTimePicker.css" />
+<script src="~/Scriptsx/jquery-2.1.4.js" type="text/javascript"></script>
+<script src="~/Scriptsx/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/Scriptsx/MdBootstrapPersianDateTimePicker/calendar.js" type="text/javascript"></script>
+<script src="~/Scriptsx/MdBootstrapPersianDateTimePicker/jquery.Bootstrap-PersianDateTimePicker.js" type="text/javascript"></script>
+
+<script src="~/Scriptsx/MdBootstrapPersianDateTimePicker/calendar.js" type="text/javascript"></script>
+
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>KOP Store- Login</title>
+</head>
+
+<body>
+    <div class="row">
+        <h1 dir="rtl">به فروشگاه آنلاین KOP Store خوش آمدید</h1>
+        <div id="LoginBox" class="modalDiv" style="margin-top: 10%; margin-left: 35%">
+            <label class="lblStyle">نام کاربری را وارد نمایید</label>
+            <br />
+            <input id="txtUserName" type="text" class="txtStyle" placeholder="نام کاربری">
+            <br />
+            <label class="lblStyle">کلمه ی عبور را وارد نمایید</label>
+            <br />
+            <input id="txtPassword" type="password" class="txtStyle" placeholder="کلمه عبور">
+            <br /><br />
+            <button class="myBtn" id="cmdLogin" onclick="loginTo()">Login</button>
+
+            <label id="lblIP" style="display:none"></label>
+
+            <input id="txtDate" type="text" class="txtStyle" >
+
+        </div>
+    </div>
+
+
+
+</body>
+
+
+
+<script>
+
+    function loginTo() {
+        var u = $("#txtUserName").val();
+        var p = $("#txtPassword").val();
+        if (u === '') {
+            $("#txtUserName").notify('نام کاربری خالی می باشد');
+            $("#txtUserName").focus();
+            return;
+        }
+        if (p === '') {
+            $("#txtPassword").notify('کلمه ی عبور خالی می باشد');
+            $("#txtPassword").focus();
+            return;
+        }
+
+        var JSData = { "un": u, "pw": p }
+        $.ajax({
+            type: "Post",
+            url: "/login/CheckLoginUserPass",
+            data: { 'un': u, 'pw': p },
+            dataType: "json",
+            success: function (result) {
+                if (!result.active) {
+                    $("#LoginBox").notify("کاربر مورد نظر غیر فعال می باشد", "warn");
+                    return;
+                } else {
+                    SaveLoginLog(u);
+                    sessionStorage.setItem('user_name', result.username);
+                    window.location.href = '../products/productsView';
+                }
+            },
+            error: function (result) {
+                $.notify("نام کاربری یا رمز عبور اشتباه می باشد", "error");
+            }
+        });
+
+    }
+
+    function SaveLoginLog(u) {
+        var d = [];
+        var dt = new Date();
+        var xtime = dt.toLocaleTimeString();
+        var xdate = dt.toLocaleDateString();
+
+        d[0] = u;
+        d[1] = xtime;
+        d[2] = xdate;
+        d[3] = $("#lblIP").text();
+
+        $.ajax({
+            type: "Post",
+            url: "/login/SaveLoginLog",
+            data: { 'd': d },
+            dataType: "json",
+            success: function (result) { }
+        });
+
+    }
+
+    $(document).ready(function () {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "https://api.ipify.org/?format=json", true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var ip = JSON.parse(this.responseText).ip;
+                $("#lblip").text(ip);
+            }
+        };
+
+
+        $("#txtDate").MdPersianDateTimePicker({
+            Trigger: 'focus',
+            Placement: 'top',
+            ToDate: true, // default is false,
+            FromDate: true,
+            EnableTimePicker: false
+    });
+
+    });
+
+
+</script>

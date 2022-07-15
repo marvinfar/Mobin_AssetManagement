@@ -1,0 +1,188 @@
+﻿
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/functions/ReportAmval.js?v=3.3"></script>
+<script src="~/functions/PublicFunc.js?v=3.1"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bagaStyle.css" rel="stylesheet" />
+<link href="~/Styles/DockTreeView.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="~/Scripts/notify.js"></script>
+<link rel="stylesheet" href="~/Content/jquery-confirm.css" />
+<script src="~/Scripts/jquery-confirm.js"></script>
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>گزارش اموال</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="toppane" id="divUpRepAmval">
+            <div class="myDiv fColorWhite">
+                <label for="txtRepAmvalDate1">بازه زمانی از تاریخ</label>
+                <input type="text" id="txtRepAmvalDate1" class="txtfilter" />
+                <label for="txtRepAmvalDate2">تا</label>
+                <input type="text" id="txtRepAmvalDate2" class="txtfilter" />
+            </div>
+
+            <ul id="myUL">
+                <li>
+                    <span class="caret fColorWhite">سطوح گزارشات</span>
+                    <ul class="nested">
+                        <li>
+                            <span class="caret fColorWhite">گزارشات اموال-سطح اول</span>
+                            <ul class="nested fColorOrchid ">
+                                <li>
+                                    <input type="radio" name="rnAmval" id="rdb1" value="1" />
+                                    <label for="rdb1">گزارش لیست همه ی اموال</label>
+                                    <input type="checkbox" id="chkAmvalListAll" class="RepAm1" />
+                                    <label for="chkAmvalListAll">تعیین شرایط</label>
+                                    <select class="txtfilter RepAm1" style="height: 25px" id="selRepAmvalFilterAny">
+                                        <option value="1">شماره اموال</option>
+                                        <option value="2">شماره SAP</option>
+                                        <option value="3">نام کالا</option>
+                                        <option value="4">سریال </option>
+                                        <option value="5">بازه تاریخ خرید </option>
+                                    </select>
+                                    <input type="text" class="txtfilter RepAm1" id="txtAmvalFindReport1"/>
+                                </li>
+                                <li>
+                                    <input type="radio" name="rnAmval" id="rdb2" value="2" />
+                                    <label for="rdb2">لیست اموال اسقاط شده</label>
+                                    <input type="checkbox" id="chkAmvalEsghatList" class="RepAm2"/>
+                                    <label for="chkAmvalEsghatList"> بازه ی زمانی مشخص شود</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="rnAmval" id="rdb3" value="3" />
+                                    <label for="rdb3">لیست اموال سرویس شده توسط</label>
+                                    <label>نام پیمانکار </label>
+                                    <input type="text" class="txtfilter RepAm3" id="txtServiceVendorName" placeholder="نام پیمانکار"/>
+                                    <label>کد پیمانکار </label>
+                                    <label class="txtfilter RepAm3" id="lblServiceVendorId" style="color: black">0000</label>
+                                    <input type="checkbox" id="chkAmvalServiceList" class="RepAm3" />
+                                    <label for="chkAmvalServiceList"> بازه ی زمانی مشخص شود</label>
+                                    <table style="width: 80%; visibility:collapse" id="tVendorFilter" class="myTbl">
+                                        <thead>
+                                        <tr>
+                                            <th style="text-align: center">ردیف</th>
+                                            <th style="text-align: center">نام شرکت </th>
+                                            <th style="text-align: center"> نام پیمانکار</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody id="SetVendorList">
+                                        <tr id="LoadingStatusVendor" style="color: red"></tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="caret fColorWhite">گزارشات اموال-سطح دوم</span>
+                            <ul class="nested fColorOrchid ">
+                                <li>
+                                    <input type="radio" name="rnAmval" id="rdb4" value="4" />
+                                    <label for="rdb4">اموال تخصیص یافته به شخص(کنونی)</label>
+                                    <label>نام تحویل گیرنده </label>
+                                    <input type="text" placeholder="نام شخص" class="txtfilter RepAm4" id="txtFactorCustomerName" />
+                                    <label>کد تحویل گیرنده </label>
+                                    <label class="txtfilter" id="lblCustomerId" style="color: black">0000</label>
+                                    <input type="checkbox" id="chkAmvalAllAssigned" class="RepAm4"/>
+                                    <label for="chkAmvalAllAssigned">شامل تمام اموالهای اختصاص یافته از ابتدا</label>
+
+                                    <table style="width: 80%; visibility: collapse" id="tCustomerFilter" class="myTbl">
+                                        <thead>
+                                        <tr>
+                                            <th style="text-align: center">ردیف</th>
+                                            <th style="text-align: center">نام </th>
+                                            <th style="text-align: center"> نام خانوادگی</th>
+                                            <th style="text-align: center"> موبایل</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody id="SetCustomerList">
+                                        <tr id="LoadingStatusCustomer" style="color: red"></tr>
+                                        </tbody>
+
+                                    </table>
+                                </li>
+                                <li>
+                                    <input type="radio" name="rnAmval" id="rdb5" value="5" />
+                                    <label for="rdb5">تاریخچه گردش اموال</label>
+                                    <input placeholder="شماره اموال" type="number" id="txtRepAmvalNumberHistory" class="txtfilter RepAm5" />
+                                    <input type="checkbox" id="chkAmvalNumberHistory" class="RepAm5"/>
+                                    <label for="chkAmvalNumberHistory"> بازه ی زمانی مشخص شود</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="rnAmval" id="rdb6" value="6"  />
+                                    <label for="rdb6">گزارش تفکیکی تاریخچه ی گردش اموال</label>
+                                    <input type="checkbox" id="chkRepTafkikGardeshAmval" class="RepAm6"/>
+                                    <label for="chkRepTafkikGardeshAmval"> بازه ی زمانی مشخص شود</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="rnAmval" id="rdb7" value="7" />
+                                    <label for="rdb7">تاریخچه ی عملیات اموال</label>
+                                    <select class="txtfilter RepAm7" style="height: 25px" id="selRepAmvalAction">
+                                        @*این بخض از جدول اکشن کامل می شود*@
+                                    </select>
+                                    <input type="checkbox" id="chkRepAmvalAction" class="RepAm7"/>
+                                    <label for="chkRepAmvalAction"> بازه ی زمانی مشخص </label>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <br />
+            <table>
+                <tr>
+                    <td>
+                        <input type="button" value="تایــیــد گــزارش" class="myBtn" id="cmdRepAmval" />
+                    </td>
+                    <td>
+                        <input type="button" value="پـــاک کـردن گـزارش" class="myBtn" id="cmdRepAmvalClear" />
+                    </td>
+                    <td>
+                        <input type="button" value="خروجی گـزارش به اکــسل" class="myBtn" id="cmdRepAmvalToExcel" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="toppane">
+            <table id="tblRepAmval" class="myTbl" style="width: 70%">
+                <thead id="thRepListAmval">
+                </thead>
+                <tbody id="SetRepListAmval">
+                    <tr id="LoadingStatusAmval" style="color: red"></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<script>
+    var toggler = document.getElementsByClassName("caret");
+    var i;
+
+    for (i = 0; i < toggler.length; i++) {
+        toggler[i].addEventListener("click",
+            function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+            });
+    }
+
+    $(document).delegate(".myTbl > tbody > tr",
+        "click",
+        function () {
+            $('.myTbl > tbody > tr').removeClass('rowSelected');
+            $(this).addClass('rowSelected');
+        });
+</script>
+</body>
+</html>

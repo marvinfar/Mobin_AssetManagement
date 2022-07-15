@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="825f03622cee4abaadba30e99bbbc857" Name="Diagram1" ZoomLevel="54">
+        <EntityTypeShape EntityType="KOPStoreModel.tblProductGroup" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblProduct" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOPStoreModel.vProduct" Width="1.5" PointX="14" PointY="1.125" IsExpanded="false" />
+        <AssociationConnector Association="KOPStoreModel.FK_productTable_ToTable" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblUserLevel" Width="1.5" PointX="5.75" PointY="7.25" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblUsers" Width="1.5" PointX="8" PointY="6.875" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblUsers_tblUserLevel" />
+        <EntityTypeShape EntityType="KOPStoreModel.vUsers" Width="1.5" PointX="14" PointY="0.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblLoginLog" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblBrand" Width="1.5" PointX="1.75" PointY="11.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblColor" Width="1.5" PointX="1.75" PointY="9.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblCountry" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblMaterial" Width="1.5" PointX="1.75" PointY="8.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblSize" Width="1.5" PointX="1.75" PointY="9.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblGender" Width="1.5" PointX="1.75" PointY="10.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblProductsDetail" Width="1.5" PointX="3.625" PointY="8.625" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblProductsDetail_tblBrand" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblProductsDetail_tblColor" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblProductsDetail_tblCountry" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblProductsDetail_tblGender" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblProductsDetail_tblMaterial" />
+        <AssociationConnector Association="KOPStoreModel.FK_Table_ToProduct" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblProductsDetail_tblSize" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblCustomer" Width="1.5" PointX="12.375" PointY="8.75" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblInputFactorMain" Width="1.5" PointX="10.25" PointY="9.375" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblInputFactorMain_ToCustomer" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblInputFactorMain_ToUser" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblInputFactorDetail" Width="1.5" PointX="5.75" PointY="9.25" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblInputFactorDetail_ToInputMain" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="KOPStoreModel.FK_tblInputFactorDetail_ToProductDetail" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblInpPayment" Width="1.5" PointX="8" PointY="11.5" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblInpPayment_inpFactorMain" />
+        <EntityTypeShape EntityType="KOPStoreModel.tbloutPayment" Width="1.5" PointX="17" PointY="6.875" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblOutputFactorDetail" Width="1.5" PointX="17" PointY="10.875" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblOutputFactorMain" Width="1.5" PointX="14.5" PointY="6" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblOutputFactorMain_ToCustomer" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblOutPayment_outFactorMain" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblOutputFactorDetail_ToOutputMain" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblOutputFactorDetail_ToProductDetail" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblOutputFactorMain_ToUser" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="KOPStoreModel.tblMojoodi" Width="1.5" PointX="5.875" PointY="15.25" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblMojoodi_tblProductsDetail" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblTakhsisAmval" Width="1.5" PointX="12.625" PointY="13.125" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblTakhsisAmval_tblCustomer" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblTakhsisAmval_tblProductsDetail" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblTakhsisAmval_tblUsers" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblVendor" Width="1.5" PointX="5.375" PointY="2.75" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblServiceDetail" Width="1.5" PointX="16" PointY="15" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblServiceDetail_tblCustomer" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblServiceDetail_tblProductsDetail" />
+        <EntityTypeShape EntityType="KOPStoreModel.vAmvalCustomer" Width="1.5" PointX="11.75" PointY="2.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblEsghatAmval" Width="1.5" PointX="24" PointY="12.625" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblEsghat_tblCustomer" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblEsghat_tblProductsDetail" />
+        <EntityTypeShape EntityType="KOPStoreModel.vEshghatAmval" Width="1.5" PointX="11.75" PointY="3.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblServiceMain" Width="1.5" PointX="12.375" PointY="17.875" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblServiceDetail_tblServiceMain" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="KOPStoreModel.FK_tblServiceMain_tblVendors" />
+        <EntityTypeShape EntityType="KOPStoreModel.vProductDetailFilter" Width="2.125" PointX="11.125" PointY="0.625" FillColor="Red" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.vProductDetail" Width="1.5" PointX="11.75" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.vInputFactorFull" Width="2" PointX="14" PointY="1.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.vOutputFactorFull" Width="2" PointX="14" PointY="2.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.vAmval" Width="1.5" PointX="11.75" PointY="1.75" IsExpanded="false" FillColor="0, 192, 0" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblAction" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblAmvalAction" Width="1.5" PointX="10.75" PointY="4.375" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblAmvalAction_tblActions" />
+        <EntityTypeShape EntityType="KOPStoreModel.tblAmval" Width="1.5" PointX="8.5" PointY="2.75" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblAmvalAction_tblAmval" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblEsghatAmval_tblAmval" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblServiceDetail_tblAmval" />
+        <AssociationConnector Association="KOPStoreModel.FK_tblTakhsisAmval_tblAmval" />
+        <EntityTypeShape EntityType="KOPStoreModel.vServiceFull" Width="2" PointX="14" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.vGardeshAmval" Width="1.5" PointX="11.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="KOPStoreModel.vActionAmval" Width="2" PointX="14" PointY="3.25" IsExpanded="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

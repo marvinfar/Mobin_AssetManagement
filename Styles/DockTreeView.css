@@ -1,0 +1,99 @@
+﻿body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    font-family: BYekan;
+}
+
+.leftpane {
+    width: 25%;
+    height: 90%;
+    float: left;
+    background-color: rosybrown;
+    border-collapse: collapse;
+}
+
+.middlepane {
+    width: 50%;
+    height: 90%;
+    float: left;
+    background-color: royalblue;
+    border-collapse: collapse;
+}
+
+.rightpane {
+    width: 25%;
+    height: 90%;
+    position: relative;
+    float: right;
+    background-color: yellow;
+    border-collapse: collapse;
+    direction: rtl;
+}
+
+.toppane {
+    width: 100%;
+    /*height: 25%;*/
+    border-collapse: collapse;
+    /*background-color: #4da6ff;*/
+    background-image: linear-gradient(to right, #0F2027,#203A43,#2C5364);
+    overflow:scroll  !important;
+}
+
+ul, #myUL {
+    list-style-type: none;
+}
+
+#myUL {
+    margin: 0;
+    padding: 0;
+}
+
+.caret {
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+    direction: rtl;
+}
+
+.caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+    direction: rtl;
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Safari */
+    transform: rotate(180deg);
+}
+
+.caret-down::before {
+    color: white;
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    transform: rotate(90deg);
+}
+
+.nested {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.fColorWhite{
+    color: white;
+}
+
+.fColorOrchid {
+    color: orchid;
+}
+

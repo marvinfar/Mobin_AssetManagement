@@ -1,0 +1,1284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KOPStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblProductGroup">
+    <Key>
+      <PropertyRef Name="productGroupId" />
+    </Key>
+    <Property Name="productGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblProducts" Relationship="Self.FK_productTable_ToTable" FromRole="tblProductGroup" ToRole="tblProducts" />
+  </EntityType>
+  <EntityType Name="tblProduct">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productGroupId" Type="Int32" Nullable="false" />
+    <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProductGroup" Relationship="Self.FK_productTable_ToTable" FromRole="tblProducts" ToRole="tblProductGroup" />
+    <NavigationProperty Name="tblProductsDetails" Relationship="KOPStoreModel.FK_Table_ToProduct" FromRole="tblProduct" ToRole="tblProductsDetail" />
+  </EntityType>
+  <EntityType Name="vProduct">
+    <Key>
+      <PropertyRef Name="productId" />
+      <PropertyRef Name="productGroupName" />
+      <PropertyRef Name="productGroupId" />
+    </Key>
+    <Property Name="productId" Type="Int32" Nullable="false" />
+    <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="productGroupId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_productTable_ToTable">
+    <End Role="tblProductGroup" Type="Self.tblProductGroup" Multiplicity="1" />
+    <End Role="tblProducts" Type="Self.tblProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductGroup">
+        <PropertyRef Name="productGroupId" />
+      </Principal>
+      <Dependent Role="tblProducts">
+        <PropertyRef Name="productGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KOPStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblProductGroups" EntityType="Self.tblProductGroup" />
+    <EntitySet Name="tblProducts" EntityType="Self.tblProduct" />
+    <EntitySet Name="vProducts" EntityType="Self.vProduct" />
+    <AssociationSet Name="FK_productTable_ToTable" Association="Self.FK_productTable_ToTable">
+      <End Role="tblProductGroup" EntitySet="tblProductGroups" />
+      <End Role="tblProducts" EntitySet="tblProducts" />
+    </AssociationSet>
+    <EntitySet Name="tblUserLevels" EntityType="KOPStoreModel.tblUserLevel" />
+    <EntitySet Name="tblUsers" EntityType="KOPStoreModel.tblUsers" />
+    <AssociationSet Name="FK_tblUsers_tblUserLevel" Association="KOPStoreModel.FK_tblUsers_tblUserLevel">
+      <End Role="tblUserLevel" EntitySet="tblUserLevels" />
+      <End Role="tblUser" EntitySet="tblUsers" />
+    </AssociationSet>
+    <EntitySet Name="vUsers1" EntityType="KOPStoreModel.vUsers" />
+    <EntitySet Name="tblLoginLogs" EntityType="KOPStoreModel.tblLoginLog" />
+    <EntitySet Name="tblBrands" EntityType="KOPStoreModel.tblBrand" />
+    <EntitySet Name="tblColors" EntityType="KOPStoreModel.tblColor" />
+    <EntitySet Name="tblCountries" EntityType="KOPStoreModel.tblCountry" />
+    <EntitySet Name="tblMaterials" EntityType="KOPStoreModel.tblMaterial" />
+    <EntitySet Name="tblSizes" EntityType="KOPStoreModel.tblSize" />
+    <EntitySet Name="tblGenders" EntityType="KOPStoreModel.tblGender" />
+    <EntitySet Name="tblProductsDetails" EntityType="KOPStoreModel.tblProductsDetail" />
+    <AssociationSet Name="FK_tblProductsDetail_tblBrand" Association="KOPStoreModel.FK_tblProductsDetail_tblBrand">
+      <End Role="tblBrand" EntitySet="tblBrands" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProductsDetail_tblColor" Association="KOPStoreModel.FK_tblProductsDetail_tblColor">
+      <End Role="tblColor" EntitySet="tblColors" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProductsDetail_tblCountry" Association="KOPStoreModel.FK_tblProductsDetail_tblCountry">
+      <End Role="tblCountry" EntitySet="tblCountries" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProductsDetail_tblGender" Association="KOPStoreModel.FK_tblProductsDetail_tblGender">
+      <End Role="tblGender" EntitySet="tblGenders" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProductsDetail_tblMaterial" Association="KOPStoreModel.FK_tblProductsDetail_tblMaterial">
+      <End Role="tblMaterial" EntitySet="tblMaterials" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_ToProduct" Association="KOPStoreModel.FK_Table_ToProduct">
+      <End Role="tblProduct" EntitySet="tblProducts" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProductsDetail_tblSize" Association="KOPStoreModel.FK_tblProductsDetail_tblSize">
+      <End Role="tblSize" EntitySet="tblSizes" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+    </AssociationSet>
+    <EntitySet Name="tblCustomers" EntityType="KOPStoreModel.tblCustomer" />
+    <EntitySet Name="tblInputFactorMains" EntityType="KOPStoreModel.tblInputFactorMain" />
+    <AssociationSet Name="FK_tblInputFactorMain_ToCustomer" Association="KOPStoreModel.FK_tblInputFactorMain_ToCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblInputFactorMain" EntitySet="tblInputFactorMains" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblInputFactorMain_ToUser" Association="KOPStoreModel.FK_tblInputFactorMain_ToUser">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblInputFactorMain" EntitySet="tblInputFactorMains" />
+    </AssociationSet>
+    <EntitySet Name="tblInputFactorDetails" EntityType="KOPStoreModel.tblInputFactorDetail" />
+    <AssociationSet Name="FK_tblInputFactorDetail_ToInputMain" Association="KOPStoreModel.FK_tblInputFactorDetail_ToInputMain">
+      <End Role="tblInputFactorMain" EntitySet="tblInputFactorMains" />
+      <End Role="tblInputFactorDetail" EntitySet="tblInputFactorDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblInputFactorDetail_ToProductDetail" Association="KOPStoreModel.FK_tblInputFactorDetail_ToProductDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+      <End Role="tblInputFactorDetail" EntitySet="tblInputFactorDetails" />
+    </AssociationSet>
+    <EntitySet Name="tblInpPayments" EntityType="KOPStoreModel.tblInpPayment" />
+    <AssociationSet Name="FK_tblInpPayment_inpFactorMain" Association="KOPStoreModel.FK_tblInpPayment_inpFactorMain">
+      <End Role="tblInputFactorMain" EntitySet="tblInputFactorMains" />
+      <End Role="tblInpPayment" EntitySet="tblInpPayments" />
+    </AssociationSet>
+    <EntitySet Name="tbloutPayments" EntityType="KOPStoreModel.tbloutPayment" />
+    <EntitySet Name="tblOutputFactorDetails" EntityType="KOPStoreModel.tblOutputFactorDetail" />
+    <EntitySet Name="tblOutputFactorMains" EntityType="KOPStoreModel.tblOutputFactorMain" />
+    <AssociationSet Name="FK_tblOutputFactorMain_ToCustomer" Association="KOPStoreModel.FK_tblOutputFactorMain_ToCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblOutputFactorMain" EntitySet="tblOutputFactorMains" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOutPayment_outFactorMain" Association="KOPStoreModel.FK_tblOutPayment_outFactorMain">
+      <End Role="tblOutputFactorMain" EntitySet="tblOutputFactorMains" />
+      <End Role="tbloutPayment" EntitySet="tbloutPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOutputFactorDetail_ToOutputMain" Association="KOPStoreModel.FK_tblOutputFactorDetail_ToOutputMain">
+      <End Role="tblOutputFactorMain" EntitySet="tblOutputFactorMains" />
+      <End Role="tblOutputFactorDetail" EntitySet="tblOutputFactorDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOutputFactorDetail_ToProductDetail" Association="KOPStoreModel.FK_tblOutputFactorDetail_ToProductDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+      <End Role="tblOutputFactorDetail" EntitySet="tblOutputFactorDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOutputFactorMain_ToUser" Association="KOPStoreModel.FK_tblOutputFactorMain_ToUser">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblOutputFactorMain" EntitySet="tblOutputFactorMains" />
+    </AssociationSet>
+    <EntitySet Name="tblMojoodis" EntityType="KOPStoreModel.tblMojoodi" />
+    <AssociationSet Name="FK_tblMojoodi_tblProductsDetail" Association="KOPStoreModel.FK_tblMojoodi_tblProductsDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+      <End Role="tblMojoodi" EntitySet="tblMojoodis" />
+    </AssociationSet>
+    <FunctionImport Name="sp_UpdateMojoodi">
+      <Parameter Name="pdid" Mode="In" Type="Int32" />
+      <Parameter Name="num" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tblTakhsisAmvals" EntityType="KOPStoreModel.tblTakhsisAmval" />
+    <AssociationSet Name="FK_tblTakhsisAmval_tblCustomer" Association="KOPStoreModel.FK_tblTakhsisAmval_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblTakhsisAmval" EntitySet="tblTakhsisAmvals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTakhsisAmval_tblProductsDetail" Association="KOPStoreModel.FK_tblTakhsisAmval_tblProductsDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+      <End Role="tblTakhsisAmval" EntitySet="tblTakhsisAmvals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTakhsisAmval_tblUsers" Association="KOPStoreModel.FK_tblTakhsisAmval_tblUsers">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblTakhsisAmval" EntitySet="tblTakhsisAmvals" />
+    </AssociationSet>
+    <EntitySet Name="tblVendors" EntityType="KOPStoreModel.tblVendor" />
+    <EntitySet Name="tblServiceDetails" EntityType="KOPStoreModel.tblServiceDetail" />
+    <AssociationSet Name="FK_tblServiceDetail_tblCustomer" Association="KOPStoreModel.FK_tblServiceDetail_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblServiceDetail" EntitySet="tblServiceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblServiceDetail_tblProductsDetail" Association="KOPStoreModel.FK_tblServiceDetail_tblProductsDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+      <End Role="tblServiceDetail" EntitySet="tblServiceDetails" />
+    </AssociationSet>
+    <EntitySet Name="vAmvalCustomers" EntityType="KOPStoreModel.vAmvalCustomer" />
+    <EntitySet Name="tblEsghatAmvals" EntityType="KOPStoreModel.tblEsghatAmval" />
+    <AssociationSet Name="FK_tblEsghat_tblCustomer" Association="KOPStoreModel.FK_tblEsghat_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblEsghatAmval" EntitySet="tblEsghatAmvals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEsghat_tblProductsDetail" Association="KOPStoreModel.FK_tblEsghat_tblProductsDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+      <End Role="tblEsghatAmval" EntitySet="tblEsghatAmvals" />
+    </AssociationSet>
+    <EntitySet Name="vEshghatAmvals" EntityType="KOPStoreModel.vEshghatAmval" />
+    <FunctionImport Name="sp_FilterCustomer" ReturnType="Collection(KOPStoreModel.sp_FilterCustomer_Result)">
+      <Parameter Name="searchValue" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tblServiceMains" EntityType="KOPStoreModel.tblServiceMain" />
+    <AssociationSet Name="FK_tblServiceDetail_tblServiceMain" Association="KOPStoreModel.FK_tblServiceDetail_tblServiceMain">
+      <End Role="tblServiceMain" EntitySet="tblServiceMains" />
+      <End Role="tblServiceDetail" EntitySet="tblServiceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblServiceMain_tblVendors" Association="KOPStoreModel.FK_tblServiceMain_tblVendors">
+      <End Role="tblVendor" EntitySet="tblVendors" />
+      <End Role="tblServiceMain" EntitySet="tblServiceMains" />
+    </AssociationSet>
+    <EntitySet Name="vProductDetailFilters" EntityType="KOPStoreModel.vProductDetailFilter" />
+    <EntitySet Name="vProductDetails" EntityType="KOPStoreModel.vProductDetail" />
+    <EntitySet Name="vInputFactorFulls" EntityType="KOPStoreModel.vInputFactorFull" />
+    <EntitySet Name="vOutputFactorFulls" EntityType="KOPStoreModel.vOutputFactorFull" />
+    <EntitySet Name="vAmvals" EntityType="KOPStoreModel.vAmval" />
+    <FunctionImport Name="sp_Tajmi" ReturnType="Collection(KOPStoreModel.sp_Tajmi_Result)">
+      <Parameter Name="p" Mode="In" Type="Int16" />
+      <Parameter Name="d1" Mode="In" Type="String" />
+      <Parameter Name="d2" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TajmiMasrafiProduct" ReturnType="Collection(KOPStoreModel.sp_TajmiMasrafiProduct_Result)">
+      <Parameter Name="d1" Mode="In" Type="String" />
+      <Parameter Name="d2" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TafsilUsersDate" ReturnType="Collection(KOPStoreModel.sp_TafsilUsersDate_Result)">
+      <Parameter Name="d1" Mode="In" Type="String" />
+      <Parameter Name="d2" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tblActions" EntityType="KOPStoreModel.tblAction" />
+    <EntitySet Name="tblAmvalActions" EntityType="KOPStoreModel.tblAmvalAction" />
+    <AssociationSet Name="FK_tblAmvalAction_tblActions" Association="KOPStoreModel.FK_tblAmvalAction_tblActions">
+      <End Role="tblAction" EntitySet="tblActions" />
+      <End Role="tblAmvalAction" EntitySet="tblAmvalActions" />
+    </AssociationSet>
+    <EntitySet Name="tblAmvals" EntityType="KOPStoreModel.tblAmval" />
+    <AssociationSet Name="FK_tblAmvalAction_tblAmval" Association="KOPStoreModel.FK_tblAmvalAction_tblAmval">
+      <End Role="tblAmval" EntitySet="tblAmvals" />
+      <End Role="tblAmvalAction" EntitySet="tblAmvalActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEsghatAmval_tblAmval" Association="KOPStoreModel.FK_tblEsghatAmval_tblAmval">
+      <End Role="tblAmval" EntitySet="tblAmvals" />
+      <End Role="tblEsghatAmval" EntitySet="tblEsghatAmvals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblServiceDetail_tblAmval" Association="KOPStoreModel.FK_tblServiceDetail_tblAmval">
+      <End Role="tblAmval" EntitySet="tblAmvals" />
+      <End Role="tblServiceDetail" EntitySet="tblServiceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTakhsisAmval_tblAmval" Association="KOPStoreModel.FK_tblTakhsisAmval_tblAmval">
+      <End Role="tblAmval" EntitySet="tblAmvals" />
+      <End Role="tblTakhsisAmval" EntitySet="tblTakhsisAmvals" />
+    </AssociationSet>
+    <FunctionImport Name="sp_MojoodiLessThan5" ReturnType="Collection(KOPStoreModel.sp_MojoodiLessThan5_Result)">
+      <Parameter Name="n1" Mode="In" Type="Int32" />
+      <Parameter Name="n2" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TheLastFivePersonWhoTake" ReturnType="Collection(KOPStoreModel.sp_TheLastFivePersonWhoTake_Result)" />
+    <FunctionImport Name="sp_FiveMostCustomerOut" ReturnType="Collection(KOPStoreModel.sp_FiveMostCustomerOut_Result)">
+      <Parameter Name="d1" Mode="In" Type="DateTime" />
+      <Parameter Name="d2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_FiveMostProductOut" ReturnType="Collection(KOPStoreModel.sp_FiveMostProductOut_Result)">
+      <Parameter Name="d1" Mode="In" Type="DateTime" />
+      <Parameter Name="d2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="vServiceFulls" EntityType="KOPStoreModel.vServiceFull" />
+    <FunctionImport Name="sp_RepAmvalAssignToCustomer" ReturnType="Collection(KOPStoreModel.sp_RepAmvalAssignToCustomer_Result)">
+      <Parameter Name="cid" Mode="In" Type="Int32" />
+      <Parameter Name="op" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="vGardeshAmvals" EntityType="KOPStoreModel.vGardeshAmval" />
+    <EntitySet Name="vActionAmvals" EntityType="KOPStoreModel.vActionAmval" />
+  </EntityContainer>
+  <EntityType Name="tblUserLevel">
+    <Key>
+      <PropertyRef Name="levelCode" />
+    </Key>
+    <Property Name="levelCode" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="levelDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblUsers" Relationship="KOPStoreModel.FK_tblUsers_tblUserLevel" FromRole="tblUserLevel" ToRole="tblUser" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="levelCode" Type="Int16" />
+    <NavigationProperty Name="tblUserLevel" Relationship="KOPStoreModel.FK_tblUsers_tblUserLevel" FromRole="tblUser" ToRole="tblUserLevel" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblInputFactorMains" Relationship="KOPStoreModel.FK_tblInputFactorMain_ToUser" FromRole="tblUsers" ToRole="tblInputFactorMain" />
+    <NavigationProperty Name="tblOutputFactorMains" Relationship="KOPStoreModel.FK_tblOutputFactorMain_ToUser" FromRole="tblUsers" ToRole="tblOutputFactorMain" />
+    <NavigationProperty Name="tblTakhsisAmvals" Relationship="KOPStoreModel.FK_tblTakhsisAmval_tblUsers" FromRole="tblUsers" ToRole="tblTakhsisAmval" />
+  </EntityType>
+  <Association Name="FK_tblUsers_tblUserLevel">
+    <End Type="KOPStoreModel.tblUserLevel" Role="tblUserLevel" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblUsers" Role="tblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserLevel">
+        <PropertyRef Name="levelCode" />
+      </Principal>
+      <Dependent Role="tblUser">
+        <PropertyRef Name="levelCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="vUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="levelCode" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="levelDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="levelCode" Type="Int16" Nullable="false" />
+    <Property Name="active" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblLoginLog">
+    <Key>
+      <PropertyRef Name="radif" />
+    </Key>
+    <Property Name="radif" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="xTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="xDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ipAddress" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblBrand">
+    <Key>
+      <PropertyRef Name="brandID" />
+    </Key>
+    <Property Name="brandID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="brandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProductsDetails" Relationship="KOPStoreModel.FK_tblProductsDetail_tblBrand" FromRole="tblBrand" ToRole="tblProductsDetail" />
+  </EntityType>
+  <EntityType Name="tblColor">
+    <Key>
+      <PropertyRef Name="colorId" />
+    </Key>
+    <Property Name="colorId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="colorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProductsDetails" Relationship="KOPStoreModel.FK_tblProductsDetail_tblColor" FromRole="tblColor" ToRole="tblProductsDetail" />
+  </EntityType>
+  <EntityType Name="tblCountry">
+    <Key>
+      <PropertyRef Name="countryId" />
+    </Key>
+    <Property Name="countryId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="countryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProductsDetails" Relationship="KOPStoreModel.FK_tblProductsDetail_tblCountry" FromRole="tblCountry" ToRole="tblProductsDetail" />
+  </EntityType>
+  <EntityType Name="tblMaterial">
+    <Key>
+      <PropertyRef Name="materialId" />
+    </Key>
+    <Property Name="materialId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="materialName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProductsDetails" Relationship="KOPStoreModel.FK_tblProductsDetail_tblMaterial" FromRole="tblMaterial" ToRole="tblProductsDetail" />
+  </EntityType>
+  <EntityType Name="tblSize">
+    <Key>
+      <PropertyRef Name="sizeId" />
+    </Key>
+    <Property Name="sizeId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sizeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProductsDetails" Relationship="KOPStoreModel.FK_tblProductsDetail_tblSize" FromRole="tblSize" ToRole="tblProductsDetail" />
+  </EntityType>
+  <EntityType Name="tblGender">
+    <Key>
+      <PropertyRef Name="genderId" />
+    </Key>
+    <Property Name="genderId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="genderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProductsDetails" Relationship="KOPStoreModel.FK_tblProductsDetail_tblGender" FromRole="tblGender" ToRole="tblProductsDetail" />
+  </EntityType>
+  <EntityType Name="tblProductsDetail">
+    <Key>
+      <PropertyRef Name="pdId" />
+    </Key>
+    <Property Name="pdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productId" Type="Int32" Nullable="false" />
+    <Property Name="pBrand" Type="Int16" />
+    <Property Name="pMaterial" Type="Int16" />
+    <Property Name="pColor" Type="Int16" />
+    <Property Name="pSize" Type="Int16" />
+    <Property Name="pGender" Type="Int16" />
+    <Property Name="pCountry" Type="Int16" />
+    <Property Name="pDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="pImage" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="tblBrand" Relationship="KOPStoreModel.FK_tblProductsDetail_tblBrand" FromRole="tblProductsDetail" ToRole="tblBrand" />
+    <NavigationProperty Name="tblColor" Relationship="KOPStoreModel.FK_tblProductsDetail_tblColor" FromRole="tblProductsDetail" ToRole="tblColor" />
+    <NavigationProperty Name="tblCountry" Relationship="KOPStoreModel.FK_tblProductsDetail_tblCountry" FromRole="tblProductsDetail" ToRole="tblCountry" />
+    <NavigationProperty Name="tblGender" Relationship="KOPStoreModel.FK_tblProductsDetail_tblGender" FromRole="tblProductsDetail" ToRole="tblGender" />
+    <NavigationProperty Name="tblMaterial" Relationship="KOPStoreModel.FK_tblProductsDetail_tblMaterial" FromRole="tblProductsDetail" ToRole="tblMaterial" />
+    <NavigationProperty Name="tblProduct" Relationship="KOPStoreModel.FK_Table_ToProduct" FromRole="tblProductsDetail" ToRole="tblProduct" />
+    <NavigationProperty Name="tblSize" Relationship="KOPStoreModel.FK_tblProductsDetail_tblSize" FromRole="tblProductsDetail" ToRole="tblSize" />
+    <NavigationProperty Name="tblInputFactorDetails" Relationship="KOPStoreModel.FK_tblInputFactorDetail_ToProductDetail" FromRole="tblProductsDetail" ToRole="tblInputFactorDetail" />
+    <NavigationProperty Name="tblOutputFactorDetails" Relationship="KOPStoreModel.FK_tblOutputFactorDetail_ToProductDetail" FromRole="tblProductsDetail" ToRole="tblOutputFactorDetail" />
+    <NavigationProperty Name="tblMojoodi" Relationship="KOPStoreModel.FK_tblMojoodi_tblProductsDetail" FromRole="tblProductsDetail" ToRole="tblMojoodi" />
+    <NavigationProperty Name="tblTakhsisAmvals" Relationship="KOPStoreModel.FK_tblTakhsisAmval_tblProductsDetail" FromRole="tblProductsDetail" ToRole="tblTakhsisAmval" />
+    <NavigationProperty Name="tblServiceDetails" Relationship="KOPStoreModel.FK_tblServiceDetail_tblProductsDetail" FromRole="tblProductsDetail" ToRole="tblServiceDetail" />
+    <NavigationProperty Name="tblEsghatAmvals" Relationship="KOPStoreModel.FK_tblEsghat_tblProductsDetail" FromRole="tblProductsDetail" ToRole="tblEsghatAmval" />
+  </EntityType>
+  <Association Name="FK_tblProductsDetail_tblBrand">
+    <End Type="KOPStoreModel.tblBrand" Role="tblBrand" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBrand">
+        <PropertyRef Name="brandID" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pBrand" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProductsDetail_tblColor">
+    <End Type="KOPStoreModel.tblColor" Role="tblColor" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblColor">
+        <PropertyRef Name="colorId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pColor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProductsDetail_tblCountry">
+    <End Type="KOPStoreModel.tblCountry" Role="tblCountry" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCountry">
+        <PropertyRef Name="countryId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pCountry" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProductsDetail_tblGender">
+    <End Type="KOPStoreModel.tblGender" Role="tblGender" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGender">
+        <PropertyRef Name="genderId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pGender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProductsDetail_tblMaterial">
+    <End Type="KOPStoreModel.tblMaterial" Role="tblMaterial" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMaterial">
+        <PropertyRef Name="materialId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_ToProduct">
+    <End Type="KOPStoreModel.tblProduct" Role="tblProduct" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProduct">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProductsDetail_tblSize">
+    <End Type="KOPStoreModel.tblSize" Role="tblSize" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSize">
+        <PropertyRef Name="sizeId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblCustomer">
+    <Key>
+      <PropertyRef Name="customerId" />
+    </Key>
+    <Property Name="customerId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerFName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="customerLName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="customerMobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="customerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="customerAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customerCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblInputFactorMains" Relationship="KOPStoreModel.FK_tblInputFactorMain_ToCustomer" FromRole="tblCustomer" ToRole="tblInputFactorMain" />
+    <NavigationProperty Name="tblOutputFactorMains" Relationship="KOPStoreModel.FK_tblOutputFactorMain_ToCustomer" FromRole="tblCustomer" ToRole="tblOutputFactorMain" />
+    <NavigationProperty Name="tblTakhsisAmvals" Relationship="KOPStoreModel.FK_tblTakhsisAmval_tblCustomer" FromRole="tblCustomer" ToRole="tblTakhsisAmval" />
+    <NavigationProperty Name="tblServiceDetails" Relationship="KOPStoreModel.FK_tblServiceDetail_tblCustomer" FromRole="tblCustomer" ToRole="tblServiceDetail" />
+    <NavigationProperty Name="tblEsghatAmvals" Relationship="KOPStoreModel.FK_tblEsghat_tblCustomer" FromRole="tblCustomer" ToRole="tblEsghatAmval" />
+  </EntityType>
+  <EntityType Name="tblInputFactorMain">
+    <Key>
+      <PropertyRef Name="inpFactorId" />
+    </Key>
+    <Property Name="inpFactorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int16" />
+    <Property Name="inpFactorDate" Type="DateTime" Precision="0" />
+    <Property Name="inpFactorTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="inpFactorDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="inpFactorTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="payType" Type="Int16" />
+    <NavigationProperty Name="tblCustomer" Relationship="KOPStoreModel.FK_tblInputFactorMain_ToCustomer" FromRole="tblInputFactorMain" ToRole="tblCustomer" />
+    <NavigationProperty Name="tblUser" Relationship="KOPStoreModel.FK_tblInputFactorMain_ToUser" FromRole="tblInputFactorMain" ToRole="tblUsers" />
+    <NavigationProperty Name="tblInputFactorDetails" Relationship="KOPStoreModel.FK_tblInputFactorDetail_ToInputMain" FromRole="tblInputFactorMain" ToRole="tblInputFactorDetail" />
+    <NavigationProperty Name="tblInpPayments" Relationship="KOPStoreModel.FK_tblInpPayment_inpFactorMain" FromRole="tblInputFactorMain" ToRole="tblInpPayment" />
+  </EntityType>
+  <Association Name="FK_tblInputFactorMain_ToCustomer">
+    <End Type="KOPStoreModel.tblCustomer" Role="tblCustomer" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblInputFactorMain" Role="tblInputFactorMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="customerId" />
+      </Principal>
+      <Dependent Role="tblInputFactorMain">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblInputFactorMain_ToUser">
+    <End Type="KOPStoreModel.tblUsers" Role="tblUsers" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblInputFactorMain" Role="tblInputFactorMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblInputFactorMain">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblInputFactorDetail">
+    <Key>
+      <PropertyRef Name="inpFactorId" />
+      <PropertyRef Name="inpFactorDetailId" />
+    </Key>
+    <Property Name="inpFactorId" Type="Int32" Nullable="false" />
+    <Property Name="inpFactorDetailId" Type="Int32" Nullable="false" />
+    <Property Name="pdId" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int16" Nullable="false" />
+    <Property Name="unitPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="discount" Type="Double" />
+    <Property Name="totalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="inpDetailDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblInputFactorMain" Relationship="KOPStoreModel.FK_tblInputFactorDetail_ToInputMain" FromRole="tblInputFactorDetail" ToRole="tblInputFactorMain" />
+    <NavigationProperty Name="tblProductsDetail" Relationship="KOPStoreModel.FK_tblInputFactorDetail_ToProductDetail" FromRole="tblInputFactorDetail" ToRole="tblProductsDetail" />
+  </EntityType>
+  <Association Name="FK_tblInputFactorDetail_ToInputMain">
+    <End Type="KOPStoreModel.tblInputFactorMain" Role="tblInputFactorMain" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblInputFactorDetail" Role="tblInputFactorDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblInputFactorMain">
+        <PropertyRef Name="inpFactorId" />
+      </Principal>
+      <Dependent Role="tblInputFactorDetail">
+        <PropertyRef Name="inpFactorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblInputFactorDetail_ToProductDetail">
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblInputFactorDetail" Role="tblInputFactorDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblInputFactorDetail">
+        <PropertyRef Name="pdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblInpPayment">
+    <Key>
+      <PropertyRef Name="inpFactorId" />
+      <PropertyRef Name="radif" />
+    </Key>
+    <Property Name="inpFactorId" Type="Int32" Nullable="false" />
+    <Property Name="radif" Type="Int16" Nullable="false" />
+    <Property Name="checkDate" Type="DateTime" Precision="3" />
+    <Property Name="giveMoney" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="paid" Type="Int16" />
+    <Property Name="paidDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblInputFactorMain" Relationship="KOPStoreModel.FK_tblInpPayment_inpFactorMain" FromRole="tblInpPayment" ToRole="tblInputFactorMain" />
+  </EntityType>
+  <Association Name="FK_tblInpPayment_inpFactorMain">
+    <End Type="KOPStoreModel.tblInputFactorMain" Role="tblInputFactorMain" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblInpPayment" Role="tblInpPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblInputFactorMain">
+        <PropertyRef Name="inpFactorId" />
+      </Principal>
+      <Dependent Role="tblInpPayment">
+        <PropertyRef Name="inpFactorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbloutPayment">
+    <Key>
+      <PropertyRef Name="outFactorId" />
+      <PropertyRef Name="radif" />
+    </Key>
+    <Property Name="outFactorId" Type="Int32" Nullable="false" />
+    <Property Name="radif" Type="Int16" Nullable="false" />
+    <Property Name="checkDate" Type="DateTime" Precision="3" />
+    <Property Name="giveMoney" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="paid" Type="Int16" />
+    <Property Name="paidDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblOutputFactorMain" Relationship="KOPStoreModel.FK_tblOutPayment_outFactorMain" FromRole="tbloutPayment" ToRole="tblOutputFactorMain" />
+  </EntityType>
+  <EntityType Name="tblOutputFactorDetail">
+    <Key>
+      <PropertyRef Name="outFactorId" />
+      <PropertyRef Name="outFactorDetailId" />
+    </Key>
+    <Property Name="outFactorId" Type="Int32" Nullable="false" />
+    <Property Name="outFactorDetailId" Type="Int32" Nullable="false" />
+    <Property Name="pdId" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int16" Nullable="false" />
+    <Property Name="unitPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="discount" Type="Double" />
+    <Property Name="totalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="outDetailDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblOutputFactorMain" Relationship="KOPStoreModel.FK_tblOutputFactorDetail_ToOutputMain" FromRole="tblOutputFactorDetail" ToRole="tblOutputFactorMain" />
+    <NavigationProperty Name="tblProductsDetail" Relationship="KOPStoreModel.FK_tblOutputFactorDetail_ToProductDetail" FromRole="tblOutputFactorDetail" ToRole="tblProductsDetail" />
+  </EntityType>
+  <EntityType Name="tblOutputFactorMain">
+    <Key>
+      <PropertyRef Name="outFactorId" />
+    </Key>
+    <Property Name="outFactorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int16" />
+    <Property Name="outFactorDate" Type="DateTime" Precision="0" />
+    <Property Name="outFactorTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="outFactorDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="outFactorTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="payType" Type="Int16" />
+    <NavigationProperty Name="tblCustomer" Relationship="KOPStoreModel.FK_tblOutputFactorMain_ToCustomer" FromRole="tblOutputFactorMain" ToRole="tblCustomer" />
+    <NavigationProperty Name="tbloutPayments" Relationship="KOPStoreModel.FK_tblOutPayment_outFactorMain" FromRole="tblOutputFactorMain" ToRole="tbloutPayment" />
+    <NavigationProperty Name="tblOutputFactorDetails" Relationship="KOPStoreModel.FK_tblOutputFactorDetail_ToOutputMain" FromRole="tblOutputFactorMain" ToRole="tblOutputFactorDetail" />
+    <NavigationProperty Name="tblUser" Relationship="KOPStoreModel.FK_tblOutputFactorMain_ToUser" FromRole="tblOutputFactorMain" ToRole="tblUsers" />
+  </EntityType>
+  <Association Name="FK_tblOutputFactorMain_ToCustomer">
+    <End Type="KOPStoreModel.tblCustomer" Role="tblCustomer" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblOutputFactorMain" Role="tblOutputFactorMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="customerId" />
+      </Principal>
+      <Dependent Role="tblOutputFactorMain">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOutPayment_outFactorMain">
+    <End Type="KOPStoreModel.tblOutputFactorMain" Role="tblOutputFactorMain" Multiplicity="1" />
+    <End Type="KOPStoreModel.tbloutPayment" Role="tbloutPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOutputFactorMain">
+        <PropertyRef Name="outFactorId" />
+      </Principal>
+      <Dependent Role="tbloutPayment">
+        <PropertyRef Name="outFactorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOutputFactorDetail_ToOutputMain">
+    <End Type="KOPStoreModel.tblOutputFactorMain" Role="tblOutputFactorMain" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblOutputFactorDetail" Role="tblOutputFactorDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOutputFactorMain">
+        <PropertyRef Name="outFactorId" />
+      </Principal>
+      <Dependent Role="tblOutputFactorDetail">
+        <PropertyRef Name="outFactorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOutputFactorDetail_ToProductDetail">
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblOutputFactorDetail" Role="tblOutputFactorDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblOutputFactorDetail">
+        <PropertyRef Name="pdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOutputFactorMain_ToUser">
+    <End Type="KOPStoreModel.tblUsers" Role="tblUsers" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblOutputFactorMain" Role="tblOutputFactorMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblOutputFactorMain">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblMojoodi">
+    <Key>
+      <PropertyRef Name="pdid" />
+    </Key>
+    <Property Name="pdid" Type="Int32" Nullable="false" />
+    <Property Name="number" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblProductsDetail" Relationship="KOPStoreModel.FK_tblMojoodi_tblProductsDetail" FromRole="tblMojoodi" ToRole="tblProductsDetail" />
+  </EntityType>
+  <Association Name="FK_tblMojoodi_tblProductsDetail">
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblMojoodi" Role="tblMojoodi" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblMojoodi">
+        <PropertyRef Name="pdid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblTakhsisAmval">
+    <Key>
+      <PropertyRef Name="radif" />
+    </Key>
+    <Property Name="radif" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerId" Type="Int16" Nullable="false" />
+    <Property Name="pdId" Type="Int32" Nullable="false" />
+    <Property Name="amval" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="deliverDate" Type="DateTime" Precision="0" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="esghat" Type="Boolean" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="userId" Type="Int32" />
+    <NavigationProperty Name="tblCustomer" Relationship="KOPStoreModel.FK_tblTakhsisAmval_tblCustomer" FromRole="tblTakhsisAmval" ToRole="tblCustomer" />
+    <NavigationProperty Name="tblProductsDetail" Relationship="KOPStoreModel.FK_tblTakhsisAmval_tblProductsDetail" FromRole="tblTakhsisAmval" ToRole="tblProductsDetail" />
+    <NavigationProperty Name="tblUser" Relationship="KOPStoreModel.FK_tblTakhsisAmval_tblUsers" FromRole="tblTakhsisAmval" ToRole="tblUsers" />
+    <NavigationProperty Name="tblAmval" Relationship="KOPStoreModel.FK_tblTakhsisAmval_tblAmval" FromRole="tblTakhsisAmval" ToRole="tblAmval" />
+  </EntityType>
+  <Association Name="FK_tblTakhsisAmval_tblCustomer">
+    <End Type="KOPStoreModel.tblCustomer" Role="tblCustomer" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblTakhsisAmval" Role="tblTakhsisAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="customerId" />
+      </Principal>
+      <Dependent Role="tblTakhsisAmval">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTakhsisAmval_tblProductsDetail">
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblTakhsisAmval" Role="tblTakhsisAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblTakhsisAmval">
+        <PropertyRef Name="pdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTakhsisAmval_tblUsers">
+    <End Type="KOPStoreModel.tblUsers" Role="tblUsers" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblTakhsisAmval" Role="tblTakhsisAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblTakhsisAmval">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblVendor">
+    <Key>
+      <PropertyRef Name="vendorId" />
+    </Key>
+    <Property Name="vendorId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="companyName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="vendorName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="companyPhone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="fax" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="mobile" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblServiceMains" Relationship="KOPStoreModel.FK_tblServiceMain_tblVendors" FromRole="tblVendor" ToRole="tblServiceMain" />
+  </EntityType>
+  <EntityType Name="tblServiceDetail">
+    <Key>
+      <PropertyRef Name="serviceId" />
+      <PropertyRef Name="serviceDetailId" />
+    </Key>
+    <Property Name="serviceId" Type="Int32" Nullable="false" />
+    <Property Name="serviceDetailId" Type="Int32" Nullable="false" />
+    <Property Name="pdid" Type="Int32" />
+    <Property Name="amval" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="customerId" Type="Int16" />
+    <Property Name="servicePrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="serviceDetailDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblCustomer" Relationship="KOPStoreModel.FK_tblServiceDetail_tblCustomer" FromRole="tblServiceDetail" ToRole="tblCustomer" />
+    <NavigationProperty Name="tblProductsDetail" Relationship="KOPStoreModel.FK_tblServiceDetail_tblProductsDetail" FromRole="tblServiceDetail" ToRole="tblProductsDetail" />
+    <NavigationProperty Name="tblServiceMain" Relationship="KOPStoreModel.FK_tblServiceDetail_tblServiceMain" FromRole="tblServiceDetail" ToRole="tblServiceMain" />
+    <NavigationProperty Name="tblAmval" Relationship="KOPStoreModel.FK_tblServiceDetail_tblAmval" FromRole="tblServiceDetail" ToRole="tblAmval" />
+  </EntityType>
+  <Association Name="FK_tblServiceDetail_tblCustomer">
+    <End Type="KOPStoreModel.tblCustomer" Role="tblCustomer" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblServiceDetail" Role="tblServiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="customerId" />
+      </Principal>
+      <Dependent Role="tblServiceDetail">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblServiceDetail_tblProductsDetail">
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblServiceDetail" Role="tblServiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblServiceDetail">
+        <PropertyRef Name="pdid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="vAmvalCustomer">
+    <Key>
+      <PropertyRef Name="amval" />
+      <PropertyRef Name="customerId" />
+      <PropertyRef Name="radif" />
+      <PropertyRef Name="pdId" />
+    </Key>
+    <Property Name="amval" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="customerFName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="customerLName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="esghat" Type="Boolean" />
+    <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customerId" Type="Int16" Nullable="false" />
+    <Property Name="radif" Type="Int32" Nullable="false" />
+    <Property Name="pdId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblEsghatAmval">
+    <Key>
+      <PropertyRef Name="radif" />
+    </Key>
+    <Property Name="radif" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="amval" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="pdId" Type="Int32" Nullable="false" />
+    <Property Name="customerId" Type="Int16" Nullable="false" />
+    <Property Name="esghatDate" Type="DateTime" Precision="0" />
+    <Property Name="esghatDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblCustomer" Relationship="KOPStoreModel.FK_tblEsghat_tblCustomer" FromRole="tblEsghatAmval" ToRole="tblCustomer" />
+    <NavigationProperty Name="tblProductsDetail" Relationship="KOPStoreModel.FK_tblEsghat_tblProductsDetail" FromRole="tblEsghatAmval" ToRole="tblProductsDetail" />
+    <NavigationProperty Name="tblAmval" Relationship="KOPStoreModel.FK_tblEsghatAmval_tblAmval" FromRole="tblEsghatAmval" ToRole="tblAmval" />
+  </EntityType>
+  <Association Name="FK_tblEsghat_tblCustomer">
+    <End Type="KOPStoreModel.tblCustomer" Role="tblCustomer" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblEsghatAmval" Role="tblEsghatAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="customerId" />
+      </Principal>
+      <Dependent Role="tblEsghatAmval">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEsghat_tblProductsDetail">
+    <End Type="KOPStoreModel.tblProductsDetail" Role="tblProductsDetail" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblEsghatAmval" Role="tblEsghatAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblEsghatAmval">
+        <PropertyRef Name="pdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="vEshghatAmval">
+    <Key>
+      <PropertyRef Name="amval" />
+    </Key>
+    <Property Name="amval" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ProductName" Type="String" MaxLength="202" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerName" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+    <Property Name="myDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="esghatDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="esghatDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <ComplexType Name="sp_FilterCustomer_Result">
+    <Property Type="Int16" Name="customerId" Nullable="false" />
+    <Property Type="String" Name="customerFName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="customerLName" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="customerMobile" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="customerPhone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="customerAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="customerCompany" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="tblServiceMain">
+    <Key>
+      <PropertyRef Name="serviceId" />
+    </Key>
+    <Property Name="serviceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="serviceDate" Type="DateTime" Precision="0" />
+    <Property Name="vendorId" Type="Int16" />
+    <Property Name="serviceDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="serviceTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="userid" Type="Int32" />
+    <NavigationProperty Name="tblServiceDetails" Relationship="KOPStoreModel.FK_tblServiceDetail_tblServiceMain" FromRole="tblServiceMain" ToRole="tblServiceDetail" />
+    <NavigationProperty Name="tblVendor" Relationship="KOPStoreModel.FK_tblServiceMain_tblVendors" FromRole="tblServiceMain" ToRole="tblVendor" />
+  </EntityType>
+  <Association Name="FK_tblServiceDetail_tblServiceMain">
+    <End Type="KOPStoreModel.tblServiceMain" Role="tblServiceMain" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblServiceDetail" Role="tblServiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblServiceMain">
+        <PropertyRef Name="serviceId" />
+      </Principal>
+      <Dependent Role="tblServiceDetail">
+        <PropertyRef Name="serviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblServiceMain_tblVendors">
+    <End Type="KOPStoreModel.tblVendor" Role="tblVendor" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblServiceMain" Role="tblServiceMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblVendor">
+        <PropertyRef Name="vendorId" />
+      </Principal>
+      <Dependent Role="tblServiceMain">
+        <PropertyRef Name="vendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="vProductDetailFilter">
+    <Key>
+      <PropertyRef Name="pdId" />
+    </Key>
+    <Property Name="pdId" Type="Int32" Nullable="false" />
+    <Property Name="productNameX" Type="String" MaxLength="457" FixedLength="false" Unicode="true" />
+    <Property Name="number" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vProductDetail">
+    <Key>
+      <PropertyRef Name="pdId" />
+      <PropertyRef Name="productId" />
+      <PropertyRef Name="productGroupName" />
+    </Key>
+    <Property Name="pdId" Type="Int32" Nullable="false" />
+    <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productId" Type="Int32" Nullable="false" />
+    <Property Name="productGroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pBrand" Type="Int16" />
+    <Property Name="brandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pMaterial" Type="Int16" />
+    <Property Name="materialName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pColor" Type="Int16" />
+    <Property Name="colorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pSize" Type="Int16" />
+    <Property Name="sizeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pGender" Type="Int16" />
+    <Property Name="genderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pCountry" Type="Int16" />
+    <Property Name="countryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="pImage" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <Property Name="number" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vInputFactorFull">
+    <Key>
+      <PropertyRef Name="inpFactorDetailId" />
+      <PropertyRef Name="pdId" />
+      <PropertyRef Name="quantity" />
+    </Key>
+    <Property Name="inpFactorId" Type="Int32" />
+    <Property Name="CustomerId" Type="Int16" />
+    <Property Name="CustomerName" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+    <Property Name="inpFactorDate" Type="DateTime" Precision="0" />
+    <Property Name="myDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="inpFactorTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="inpFactorDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="inpFactorDetailId" Type="Int32" Nullable="false" />
+    <Property Name="pdId" Type="Int32" Nullable="false" />
+    <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pBrand" Type="Int16" />
+    <Property Name="brandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pColor" Type="Int16" />
+    <Property Name="colorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pMaterial" Type="Int16" />
+    <Property Name="materialName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pSize" Type="Int16" />
+    <Property Name="sizeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pGender" Type="Int16" />
+    <Property Name="genderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pCountry" Type="Int16" />
+    <Property Name="countryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="pImage" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <Property Name="quantity" Type="Int16" Nullable="false" />
+    <Property Name="unitPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="discount" Type="Double" />
+    <Property Name="totalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="inpDetailDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vOutputFactorFull">
+    <Key>
+      <PropertyRef Name="outFactorDetailId" />
+      <PropertyRef Name="pdId" />
+      <PropertyRef Name="quantity" />
+    </Key>
+    <Property Name="outFactorId" Type="Int32" />
+    <Property Name="CustomerId" Type="Int16" />
+    <Property Name="CustomerName" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+    <Property Name="outFactorDate" Type="DateTime" Precision="0" />
+    <Property Name="myDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="outFactorTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="outFactorDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="outFactorDetailId" Type="Int32" Nullable="false" />
+    <Property Name="pdId" Type="Int32" Nullable="false" />
+    <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pBrand" Type="Int16" />
+    <Property Name="brandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pColor" Type="Int16" />
+    <Property Name="colorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pMaterial" Type="Int16" />
+    <Property Name="materialName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pSize" Type="Int16" />
+    <Property Name="sizeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pGender" Type="Int16" />
+    <Property Name="genderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pCountry" Type="Int16" />
+    <Property Name="countryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="pImage" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <Property Name="quantity" Type="Int16" Nullable="false" />
+    <Property Name="unitPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="discount" Type="Double" />
+    <Property Name="totalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="outDetailDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vAmval">
+    <Key>
+      <PropertyRef Name="amval" />
+      <PropertyRef Name="pdId" />
+    </Key>
+    <Property Name="amval" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="pdId" Type="Int32" Nullable="false" />
+    <Property Name="productNameX" Type="String" MaxLength="457" FixedLength="false" Unicode="true" />
+    <Property Name="myDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="buyPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="sapPR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="serialNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="barcodeNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="buyDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <ComplexType Name="sp_Tajmi_Result">
+    <Property Type="Int32" Name="pdId" Nullable="false" />
+    <Property Type="String" Name="productNameX" Nullable="true" MaxLength="457" />
+    <Property Type="Int16" Name="quantity" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_TajmiMasrafiProduct_Result">
+    <Property Type="Int32" Name="pdId" Nullable="false" />
+    <Property Type="String" Name="productNameX" Nullable="true" MaxLength="457" />
+    <Property Type="Int16" Name="quantity" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_TafsilUsersDate_Result">
+    <Property Type="Int16" Name="CustomerId" Nullable="true" />
+    <Property Type="Int32" Name="pdId" Nullable="false" />
+    <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="productNameX" Nullable="true" MaxLength="457" />
+    <Property Type="DateTime" Name="outFactorDate" Nullable="true" Precision="16" />
+    <Property Type="String" Name="myDate" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="myDesc" Nullable="true" MaxLength="151" />
+    <Property Type="Int16" Name="quantity" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="tblAction">
+    <Key>
+      <PropertyRef Name="actionId" />
+    </Key>
+    <Property Name="actionId" Type="Int16" Nullable="false" />
+    <Property Name="actionName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="actionFarsiName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblAmvalActions" Relationship="KOPStoreModel.FK_tblAmvalAction_tblActions" FromRole="tblAction" ToRole="tblAmvalAction" />
+  </EntityType>
+  <EntityType Name="tblAmvalAction">
+    <Key>
+      <PropertyRef Name="radifId" />
+    </Key>
+    <Property Name="radifId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="amval" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="actionId" Type="Int16" />
+    <Property Name="actionDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tblAction" Relationship="KOPStoreModel.FK_tblAmvalAction_tblActions" FromRole="tblAmvalAction" ToRole="tblAction" />
+    <NavigationProperty Name="tblAmval" Relationship="KOPStoreModel.FK_tblAmvalAction_tblAmval" FromRole="tblAmvalAction" ToRole="tblAmval" />
+  </EntityType>
+  <Association Name="FK_tblAmvalAction_tblActions">
+    <End Type="KOPStoreModel.tblAction" Role="tblAction" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblAmvalAction" Role="tblAmvalAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAction">
+        <PropertyRef Name="actionId" />
+      </Principal>
+      <Dependent Role="tblAmvalAction">
+        <PropertyRef Name="actionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblAmval">
+    <Key>
+      <PropertyRef Name="amval" />
+    </Key>
+    <Property Name="amval" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="pdId" Type="Int32" Nullable="false" />
+    <Property Name="buyDate" Type="DateTime" Precision="0" />
+    <Property Name="buyPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="sapPR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="serialNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="barcodeNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userId" Type="Int32" />
+    <NavigationProperty Name="tblAmvalActions" Relationship="KOPStoreModel.FK_tblAmvalAction_tblAmval" FromRole="tblAmval" ToRole="tblAmvalAction" />
+    <NavigationProperty Name="tblEsghatAmvals" Relationship="KOPStoreModel.FK_tblEsghatAmval_tblAmval" FromRole="tblAmval" ToRole="tblEsghatAmval" />
+    <NavigationProperty Name="tblServiceDetails" Relationship="KOPStoreModel.FK_tblServiceDetail_tblAmval" FromRole="tblAmval" ToRole="tblServiceDetail" />
+    <NavigationProperty Name="tblTakhsisAmvals" Relationship="KOPStoreModel.FK_tblTakhsisAmval_tblAmval" FromRole="tblAmval" ToRole="tblTakhsisAmval" />
+  </EntityType>
+  <Association Name="FK_tblAmvalAction_tblAmval">
+    <End Type="KOPStoreModel.tblAmval" Role="tblAmval" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="KOPStoreModel.tblAmvalAction" Role="tblAmvalAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAmval">
+        <PropertyRef Name="amval" />
+      </Principal>
+      <Dependent Role="tblAmvalAction">
+        <PropertyRef Name="amval" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEsghatAmval_tblAmval">
+    <End Type="KOPStoreModel.tblAmval" Role="tblAmval" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblEsghatAmval" Role="tblEsghatAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAmval">
+        <PropertyRef Name="amval" />
+      </Principal>
+      <Dependent Role="tblEsghatAmval">
+        <PropertyRef Name="amval" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblServiceDetail_tblAmval">
+    <End Type="KOPStoreModel.tblAmval" Role="tblAmval" Multiplicity="0..1" />
+    <End Type="KOPStoreModel.tblServiceDetail" Role="tblServiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAmval">
+        <PropertyRef Name="amval" />
+      </Principal>
+      <Dependent Role="tblServiceDetail">
+        <PropertyRef Name="amval" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTakhsisAmval_tblAmval">
+    <End Type="KOPStoreModel.tblAmval" Role="tblAmval" Multiplicity="1" />
+    <End Type="KOPStoreModel.tblTakhsisAmval" Role="tblTakhsisAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAmval">
+        <PropertyRef Name="amval" />
+      </Principal>
+      <Dependent Role="tblTakhsisAmval">
+        <PropertyRef Name="amval" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="sp_FiveMostProductOut_Result">
+    <Property Type="String" Name="productNameX" Nullable="true" MaxLength="457" />
+    <Property Type="Int32" Name="pdId" Nullable="false" />
+    <Property Type="Int32" Name="Expr1" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_MojoodiLessThan5_Result">
+    <Property Type="Int32" Name="pdid" Nullable="false" />
+    <Property Type="String" Name="productNameX" Nullable="true" MaxLength="457" />
+    <Property Type="Int32" Name="number" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_TheLastFivePersonWhoTake_Result">
+    <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="productName" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="outFactorDate" Nullable="true" Precision="16" />
+    <Property Type="String" Name="myDate" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="outFactorTime" Nullable="true" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="FiveMostCustomerOut_Result">
+    <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="51" />
+    <Property Type="Int16" Name="CustomerId" Nullable="true" />
+    <Property Type="Int32" Name="Expr1" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_FiveMostCustomerOut_Result">
+    <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="51" />
+    <Property Type="Int16" Name="CustomerId" Nullable="true" />
+    <Property Type="Int32" Name="Expr1" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="vServiceFull">
+    <Key>
+      <PropertyRef Name="serviceId" />
+    </Key>
+    <Property Name="serviceId" Type="Int32" Nullable="false" />
+    <Property Name="serviceDate" Type="DateTime" Precision="0" />
+    <Property Name="myDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="vendorId" Type="Int16" />
+    <Property Name="companyName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="vendorName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="serviceDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="serviceTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="productNameX" Type="String" MaxLength="457" FixedLength="false" Unicode="true" />
+    <Property Name="customerLName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="customerFName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="servicePrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="serviceDetailDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pdid" Type="Int32" />
+    <Property Name="customerId" Type="Int16" />
+    <Property Name="amval" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="sp_RepAmvalAssignToCustomer_Result">
+    <Property Type="Int16" Name="customerId" Nullable="false" />
+    <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="amval" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="productNameX" Nullable="true" MaxLength="457" />
+    <Property Type="DateTime" Name="deliverDate" Nullable="true" Precision="16" />
+    <Property Type="String" Name="myDate" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="active" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="esghat" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="vGardeshAmval">
+    <Key>
+      <PropertyRef Name="radif" />
+      <PropertyRef Name="customerId" />
+      <PropertyRef Name="amval" />
+    </Key>
+    <Property Name="radif" Type="Int32" Nullable="false" />
+    <Property Name="customerId" Type="Int16" Nullable="false" />
+    <Property Name="amval" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="productNameX" Type="String" MaxLength="457" FixedLength="false" Unicode="true" />
+    <Property Name="customerFName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="customerLName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="deliverDate" Type="DateTime" Precision="0" />
+    <Property Name="myDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="esghat" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="vActionAmval">
+    <Key>
+      <PropertyRef Name="customerId" />
+    </Key>
+    <Property Name="amval" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="actionId" Type="Int16" />
+    <Property Name="actionFarsiName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="actionDate" Type="DateTime" Precision="0" />
+    <Property Name="actionName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="productNameX" Type="String" MaxLength="457" FixedLength="false" Unicode="true" />
+    <Property Name="customerId" Type="Int16" Nullable="false" />
+    <Property Name="customerFName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="customerLName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="myDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

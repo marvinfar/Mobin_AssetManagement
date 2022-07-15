@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="dbModel-Web.config Connection String" description="dbModel Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.DataBaseModels.Model1.csdl|res://*/Models.DataBaseModels.Model1.ssdl|res://*/Models.DataBaseModels.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\MSSQLLocalDB;initial catalog=E:\LOGIN\DB\KOPSTORE.MDF;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\My\ Vs\ Code\\KOP\ Store\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='dbModel']/@connectionString" />
+  </parameter>
+  <parameter name="db-Web.config Connection String" description="db Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\MSSQLLocalDB;initial catalog=E:\LOGIN\DB\KOPSTORE.MDF;integrated security=True;multipleactiveresultsets=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\My\ Vs\ Code\\KOP\ Store\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='db']/@connectionString" />
+  </parameter>
+  <parameter name="KOPStoreEntities-Web.config Connection String" description="KOPStoreEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.DataBaseModels.Model1.csdl|res://*/Models.DataBaseModels.Model1.ssdl|res://*/Models.DataBaseModels.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=KOPSTORE;persist security info=True;user id=sa;password=Man13622004a;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\My\ Vs\ Code\\KOP\ Store\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='KOPStoreEntities']/@connectionString" />
+  </parameter>
+</parameters>

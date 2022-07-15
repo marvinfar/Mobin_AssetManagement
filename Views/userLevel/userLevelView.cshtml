@@ -1,0 +1,64 @@
+﻿@model KOP_Store.Models.mdluserLevel
+@{
+    Layout = null;
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/functions/UserLevel.js?v=1.5"></script>
+<script src="~/functions/PublicFunc.js?v=1.3"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bagaStyle.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="~/Content/jquery-confirm.css" />
+<script src="~/Scripts/jquery-confirm.js"></script>
+
+
+<body>
+
+    <div class="row">
+
+        <div id="divTableUserLevel" class="myDiv">
+
+            <div class="myDiv" style="width: 100%; height: 100%; overflow: auto">
+                <div class="modalDiv" style="margin-top: 5%; margin-left: 35%; background-color: rgb(30, 180, 200); height: 450px">
+                    <label class="lblStyle">عنوان سطح دسترسی کاربر:</label>
+                    <input id="txtUserLevel" class="txtStyle"></input>
+
+                    <select id="lstUserLevel" class="txtStyle" name="sometext" size="10" style="width: 200px; height: 150px; margin-right: 42%">
+                    </select>
+
+                    <br /><br />
+                    <button id="cmdAddUserLevel" class="myBtn" onclick="AddNewUserLevel()">ثبت اطلاعات</button>
+                    <button data-id="0" id="cmdEditUserLevel" class="myBtn" onclick="EditUserLevel()">ویرایش اطلاعات</button>
+                    <button id="cmdDelUserLevel" class="myBtn" onclick="showDeleteModal()">حذف اطلاعات</button>
+                    <button id="cmdBack" class="myBtn" onclick="BackToMain()"> بازگشت</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="frmModalDelete" class="modalDiv">
+        <label>آیا مایل به حذف سطر انتخاب شده می باشید؟</label>
+        <br /><br />
+        <label id="lblDisplayDeleteInfo">11</label>
+        <br /><br />
+        <table>
+            <tr>
+                <td>
+                    <button class="myBtn" onclick="DeleteUserLevel()">حذف</button>
+                </td>
+                <td>
+                    <button class="myBtn" onclick="closeModal('frmModalDelete')">انصراف </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+<script>
+
+
+
+
+</script>

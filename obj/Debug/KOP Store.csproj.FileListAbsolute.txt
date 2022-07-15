@@ -1,0 +1,324 @@
+E:\My Vs Code\KOP Store\KOP Store\bin\KOP Store.dll.config
+E:\My Vs Code\KOP Store\KOP Store\bin\KOP Store.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\KOP Store.pdb
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\csc.exe
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\csc.exe.config
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\csc.rsp
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\csi.exe
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\csi.exe.config
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\csi.rsp
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.Managed.Core.targets
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.AppContext.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Collections.Immutable.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Console.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Globalization.Calendars.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.IO.Compression.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.IO.FileSystem.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Net.Http.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Net.Sockets.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Reflection.Metadata.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.ValueTuple.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Xml.XmlDocument.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Xml.XPath.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\vbc.exe
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\vbc.exe.config
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\vbc.rsp
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\VBCSCompiler.exe
+E:\My Vs Code\KOP Store\KOP Store\bin\roslyn\VBCSCompiler.exe.config
+E:\My Vs Code\KOP Store\KOP Store\bin\Antlr3.Runtime.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\EntityFramework.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\Microsoft.Web.Infrastructure.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\Newtonsoft.Json.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.Helpers.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.Mvc.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.Optimization.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.Razor.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.WebPages.Deployment.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.WebPages.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.WebPages.Razor.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\WebGrease.dll
+E:\My Vs Code\KOP Store\KOP Store\bin\EntityFramework.xml
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.Helpers.xml
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.Mvc.xml
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.Optimization.xml
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.Razor.xml
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.WebPages.xml
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.WebPages.Deployment.xml
+E:\My Vs Code\KOP Store\KOP Store\bin\System.Web.WebPages.Razor.xml
+E:\My Vs Code\KOP Store\KOP Store\bin\Newtonsoft.Json.xml
+E:\My Vs Code\KOP Store\KOP Store\bin\Antlr3.Runtime.pdb
+E:\My Vs Code\KOP Store\KOP Store\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\My Vs Code\KOP Store\KOP Store\obj\Debug\KOP Store.csproj.CoreCompileInputs.cache
+E:\My Vs Code\KOP Store\KOP Store\obj\Debug\KOP Store.csproj.CopyComplete
+E:\My Vs Code\KOP Store\KOP Store\obj\Debug\KOP Store.dll
+E:\My Vs Code\KOP Store\KOP Store\obj\Debug\KOP Store.pdb
+E:\My Vs Code\KOP Store\KOP Store\obj\Debug\KOP Store.csprojAssemblyReference.cache
+E:\MVC Projects\KOP Store\bin\KOP Store.dll.config
+E:\MVC Projects\KOP Store\bin\KOP Store.dll
+E:\MVC Projects\KOP Store\bin\KOP Store.pdb
+E:\MVC Projects\KOP Store\bin\roslyn\csc.exe
+E:\MVC Projects\KOP Store\bin\roslyn\csc.exe.config
+E:\MVC Projects\KOP Store\bin\roslyn\csc.rsp
+E:\MVC Projects\KOP Store\bin\roslyn\csi.exe
+E:\MVC Projects\KOP Store\bin\roslyn\csi.exe.config
+E:\MVC Projects\KOP Store\bin\roslyn\csi.rsp
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.Managed.Core.targets
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\MVC Projects\KOP Store\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.AppContext.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Collections.Immutable.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Console.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Globalization.Calendars.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.IO.Compression.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.IO.FileSystem.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Net.Http.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Net.Sockets.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Reflection.Metadata.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.ValueTuple.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Xml.XmlDocument.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Xml.XPath.dll
+E:\MVC Projects\KOP Store\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\MVC Projects\KOP Store\bin\roslyn\vbc.exe
+E:\MVC Projects\KOP Store\bin\roslyn\vbc.exe.config
+E:\MVC Projects\KOP Store\bin\roslyn\vbc.rsp
+E:\MVC Projects\KOP Store\bin\roslyn\VBCSCompiler.exe
+E:\MVC Projects\KOP Store\bin\roslyn\VBCSCompiler.exe.config
+E:\MVC Projects\KOP Store\bin\Antlr3.Runtime.dll
+E:\MVC Projects\KOP Store\bin\EntityFramework.dll
+E:\MVC Projects\KOP Store\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\MVC Projects\KOP Store\bin\Microsoft.Web.Infrastructure.dll
+E:\MVC Projects\KOP Store\bin\Newtonsoft.Json.dll
+E:\MVC Projects\KOP Store\bin\System.Web.Helpers.dll
+E:\MVC Projects\KOP Store\bin\System.Web.Mvc.dll
+E:\MVC Projects\KOP Store\bin\System.Web.Optimization.dll
+E:\MVC Projects\KOP Store\bin\System.Web.Razor.dll
+E:\MVC Projects\KOP Store\bin\System.Web.WebPages.Deployment.dll
+E:\MVC Projects\KOP Store\bin\System.Web.WebPages.dll
+E:\MVC Projects\KOP Store\bin\System.Web.WebPages.Razor.dll
+E:\MVC Projects\KOP Store\bin\WebGrease.dll
+E:\MVC Projects\KOP Store\bin\EntityFramework.xml
+E:\MVC Projects\KOP Store\bin\System.Web.Helpers.xml
+E:\MVC Projects\KOP Store\bin\System.Web.Mvc.xml
+E:\MVC Projects\KOP Store\bin\System.Web.Optimization.xml
+E:\MVC Projects\KOP Store\bin\System.Web.Razor.xml
+E:\MVC Projects\KOP Store\bin\System.Web.WebPages.xml
+E:\MVC Projects\KOP Store\bin\System.Web.WebPages.Deployment.xml
+E:\MVC Projects\KOP Store\bin\System.Web.WebPages.Razor.xml
+E:\MVC Projects\KOP Store\bin\Newtonsoft.Json.xml
+E:\MVC Projects\KOP Store\bin\Antlr3.Runtime.pdb
+E:\MVC Projects\KOP Store\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\MVC Projects\KOP Store\obj\Debug\KOP Store.csproj.CoreCompileInputs.cache
+E:\MVC Projects\KOP Store\obj\Debug\KOP Store.csproj.CopyComplete
+E:\MVC Projects\KOP Store\obj\Debug\KOP Store.dll
+E:\MVC Projects\KOP Store\obj\Debug\KOP Store.pdb
+E:\MVC Projects\KOP Store\obj\Debug\KOP Store.csprojAssemblyReference.cache
+E:\My Vs Code\KOP Store\obj\Debug\KOP Store.csproj.CoreCompileInputs.cache
+E:\My Vs Code\KOP Store\bin\KOP Store.dll.config
+E:\My Vs Code\KOP Store\bin\KOP Store.dll
+E:\My Vs Code\KOP Store\bin\KOP Store.pdb
+E:\My Vs Code\KOP Store\bin\roslyn\csc.exe
+E:\My Vs Code\KOP Store\bin\roslyn\csc.exe.config
+E:\My Vs Code\KOP Store\bin\roslyn\csc.rsp
+E:\My Vs Code\KOP Store\bin\roslyn\csi.exe
+E:\My Vs Code\KOP Store\bin\roslyn\csi.exe.config
+E:\My Vs Code\KOP Store\bin\roslyn\csi.rsp
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.Managed.Core.targets
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\My Vs Code\KOP Store\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.AppContext.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Collections.Immutable.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Console.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Globalization.Calendars.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.IO.Compression.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.IO.FileSystem.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Net.Http.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Net.Sockets.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Reflection.Metadata.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.ValueTuple.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Xml.XmlDocument.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Xml.XPath.dll
+E:\My Vs Code\KOP Store\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\My Vs Code\KOP Store\bin\roslyn\vbc.exe
+E:\My Vs Code\KOP Store\bin\roslyn\vbc.exe.config
+E:\My Vs Code\KOP Store\bin\roslyn\vbc.rsp
+E:\My Vs Code\KOP Store\bin\roslyn\VBCSCompiler.exe
+E:\My Vs Code\KOP Store\bin\roslyn\VBCSCompiler.exe.config
+E:\My Vs Code\KOP Store\bin\Antlr3.Runtime.dll
+E:\My Vs Code\KOP Store\bin\EntityFramework.dll
+E:\My Vs Code\KOP Store\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\My Vs Code\KOP Store\bin\Microsoft.Web.Infrastructure.dll
+E:\My Vs Code\KOP Store\bin\Newtonsoft.Json.dll
+E:\My Vs Code\KOP Store\bin\System.Web.Helpers.dll
+E:\My Vs Code\KOP Store\bin\System.Web.Mvc.dll
+E:\My Vs Code\KOP Store\bin\System.Web.Optimization.dll
+E:\My Vs Code\KOP Store\bin\System.Web.Razor.dll
+E:\My Vs Code\KOP Store\bin\System.Web.WebPages.Deployment.dll
+E:\My Vs Code\KOP Store\bin\System.Web.WebPages.dll
+E:\My Vs Code\KOP Store\bin\System.Web.WebPages.Razor.dll
+E:\My Vs Code\KOP Store\bin\WebGrease.dll
+E:\My Vs Code\KOP Store\bin\EntityFramework.xml
+E:\My Vs Code\KOP Store\bin\System.Web.Helpers.xml
+E:\My Vs Code\KOP Store\bin\System.Web.Mvc.xml
+E:\My Vs Code\KOP Store\bin\System.Web.Optimization.xml
+E:\My Vs Code\KOP Store\bin\System.Web.Razor.xml
+E:\My Vs Code\KOP Store\bin\System.Web.WebPages.xml
+E:\My Vs Code\KOP Store\bin\System.Web.WebPages.Deployment.xml
+E:\My Vs Code\KOP Store\bin\System.Web.WebPages.Razor.xml
+E:\My Vs Code\KOP Store\bin\Newtonsoft.Json.xml
+E:\My Vs Code\KOP Store\bin\Antlr3.Runtime.pdb
+E:\My Vs Code\KOP Store\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\My Vs Code\KOP Store\obj\Debug\KOP Store.csproj.CopyComplete
+E:\My Vs Code\KOP Store\obj\Debug\KOP Store.dll
+E:\My Vs Code\KOP Store\obj\Debug\KOP Store.pdb
+E:\My Vs Code\KOP Store\obj\Debug\KOP Store.csprojAssemblyReference.cache
+D:\My Vs Code\KOP Store\bin\KOP Store.dll.config
+D:\My Vs Code\KOP Store\bin\KOP Store.dll
+D:\My Vs Code\KOP Store\bin\KOP Store.pdb
+D:\My Vs Code\KOP Store\bin\roslyn\csc.exe
+D:\My Vs Code\KOP Store\bin\roslyn\csc.exe.config
+D:\My Vs Code\KOP Store\bin\roslyn\csc.rsp
+D:\My Vs Code\KOP Store\bin\roslyn\csi.exe
+D:\My Vs Code\KOP Store\bin\roslyn\csi.exe.config
+D:\My Vs Code\KOP Store\bin\roslyn\csi.rsp
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.Managed.Core.targets
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\My Vs Code\KOP Store\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.AppContext.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Collections.Immutable.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Console.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Globalization.Calendars.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.IO.Compression.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.IO.FileSystem.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Net.Http.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Net.Sockets.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Reflection.Metadata.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.ValueTuple.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Xml.XmlDocument.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Xml.XPath.dll
+D:\My Vs Code\KOP Store\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\My Vs Code\KOP Store\bin\roslyn\vbc.exe
+D:\My Vs Code\KOP Store\bin\roslyn\vbc.exe.config
+D:\My Vs Code\KOP Store\bin\roslyn\vbc.rsp
+D:\My Vs Code\KOP Store\bin\roslyn\VBCSCompiler.exe
+D:\My Vs Code\KOP Store\bin\roslyn\VBCSCompiler.exe.config
+D:\My Vs Code\KOP Store\bin\Antlr3.Runtime.dll
+D:\My Vs Code\KOP Store\bin\EntityFramework.dll
+D:\My Vs Code\KOP Store\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\My Vs Code\KOP Store\bin\Microsoft.Web.Infrastructure.dll
+D:\My Vs Code\KOP Store\bin\Newtonsoft.Json.dll
+D:\My Vs Code\KOP Store\bin\System.Web.Helpers.dll
+D:\My Vs Code\KOP Store\bin\System.Web.Mvc.dll
+D:\My Vs Code\KOP Store\bin\System.Web.Optimization.dll
+D:\My Vs Code\KOP Store\bin\System.Web.Razor.dll
+D:\My Vs Code\KOP Store\bin\System.Web.WebPages.Deployment.dll
+D:\My Vs Code\KOP Store\bin\System.Web.WebPages.dll
+D:\My Vs Code\KOP Store\bin\System.Web.WebPages.Razor.dll
+D:\My Vs Code\KOP Store\bin\WebGrease.dll
+D:\My Vs Code\KOP Store\bin\EntityFramework.xml
+D:\My Vs Code\KOP Store\bin\System.Web.Helpers.xml
+D:\My Vs Code\KOP Store\bin\System.Web.Mvc.xml
+D:\My Vs Code\KOP Store\bin\System.Web.Optimization.xml
+D:\My Vs Code\KOP Store\bin\System.Web.Razor.xml
+D:\My Vs Code\KOP Store\bin\System.Web.WebPages.xml
+D:\My Vs Code\KOP Store\bin\System.Web.WebPages.Deployment.xml
+D:\My Vs Code\KOP Store\bin\System.Web.WebPages.Razor.xml
+D:\My Vs Code\KOP Store\bin\Newtonsoft.Json.xml
+D:\My Vs Code\KOP Store\bin\Antlr3.Runtime.pdb
+D:\My Vs Code\KOP Store\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\My Vs Code\KOP Store\obj\Debug\KOP Store.csproj.CoreCompileInputs.cache
+D:\My Vs Code\KOP Store\obj\Debug\KOP Store.csproj.CopyComplete
+D:\My Vs Code\KOP Store\obj\Debug\KOP Store.dll
+D:\My Vs Code\KOP Store\obj\Debug\KOP Store.pdb
+D:\My Vs Code\KOP Store\obj\Debug\KOP Store.csprojAssemblyReference.cache

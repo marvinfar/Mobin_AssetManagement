@@ -1,0 +1,248 @@
+﻿@model KOP_Store.Models.mdlInputFactor
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/functions/FactorInput.js?v=6.0"></script>
+<script src="~/functions/PublicFunc.js?v=1.9"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bagaStyle.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="~/Scripts/notify.js"></script>
+<script src="~/Scripts/notify.min.js"></script>
+<link rel="stylesheet" href="~/Content/jquery-confirm.css" />
+<script src="~/Scripts/jquery-confirm.js"></script>
+
+<html>
+<head>
+    <title>ورود کالا به انبار</title>
+</head>
+
+
+<body>
+    <div class="row">
+        <div class="dockedDiv" style="overflow: auto">
+            @* Docked Right Menu Bar *@
+            <button id="m-1" class="myBtn" style="background-color: green" onclick="subMenuOpen();">اطلاعات پایه</button>
+
+            <div id="sm-1" class="subDiv">
+                <button class="myBtn" id="cmdDefProductGroup" onclick="RedirectToPage();">تعریف گروهبندی کالا</button>
+                <button class="myBtn" id="cmdDefProducts" onclick="RedirectToPage();">تعریف کالا</button>
+                <button class="myBtn" id="cmdDefProductDetails" onclick="RedirectToPage();">تعریف زیر مجموعه کالا</button>
+                <br />
+                <button class="myBtn" id="cmdDefCountry" onclick="RedirectToPage();">تعریف کشور</button>
+                <button class="myBtn" id="cmdDefBrand" onclick="RedirectToPage();">تعریف برند کالا</button>
+                <button class="myBtn" id="cmdDefMaterial" onclick="RedirectToPage();">تعریف متریال(جنس) کالا</button>
+                <button class="myBtn" id="cmdDefSize" onclick="RedirectToPage();">تعریف سایز کالا</button>
+                <button class="myBtn" id="cmdDefColor" onclick="RedirectToPage();">تعریف رنگ کالا</button>
+                <br />
+                <button class="myBtn" id="cmdDefUsers" onclick="RedirectToPage();">تعریف کاربران</button>
+                <button class="myBtn" id="cmdDefUserLevel" onclick="RedirectToPage();">تعریف سطح دسترسی کاربران</button>
+                <br />
+                <button class="myBtn" id="cmdDefCustomer" onclick="RedirectToPage();">تعریف خریدار/فروشنده</button>
+                <button class="myBtn" id="cmdDefVendor" onclick="RedirectToPage();">تعریف پیمانکاران</button>
+                <button class="myBtn" id="cmdChangePass" onclick="RedirectToPage();">تغییر رمز عبور...</button>
+
+            </div>
+            <br /> <br />
+            <button id="m-2" class="myBtn" onclick="subMenuOpen();" style="background-color: green">عملیات کالا و اموال(ورود/خروج و...)</button>
+            <div id="sm-2" class="subDiv">
+                <button class="myBtn" id="cmdInpFactor" onclick="RedirectToPage();">ثبت فاکتور خرید-ورود کالا</button>
+                <button id="cmdOutFactor" class="myBtn" onclick="RedirectToPage();">ثبت فاکتور فروش-خروج کالا</button>
+                <br />
+                <button id="cmdDefAmvalProduct" class="myBtn" onclick="RedirectToPage();">تعریف و تخصیص شماره اموال برای کالا</button>
+
+                <button id="cmdTakhsisAmvalToUser" class="myBtn" onclick="RedirectToPage();">تخصیص اموال به شخص</button>
+                <button id="cmdEsghatAmval" class="myBtn" onclick="RedirectToPage();">اسقاط کالای دارای اموال</button>
+                <br />
+                <button id="cmdService" class="myBtn" onclick="RedirectToPage();">سرویس و نگهداری</button>
+            </div>
+            <br /> <br />
+            <button id="m-3" class="myBtn" onclick="subMenuOpen();" style="background-color: green">گزارشات</button>
+            <div id="sm-3" class="subDiv">
+                <button class="myBtn" id="cmdRepMasrafi" onclick="RedirectToPage();">گزارشات کالای غیر مصرفی</button>
+                <button class="myBtn" id="cmdRepAmval" onclick="RedirectToPage();">گزارشات کالای دارای اموال</button>
+                <button id="cmdDashboard" class="myBtn" onclick="RedirectToPage();">داشبورد</button>
+            </div>
+            <br /> <br />
+
+
+        </div>
+
+        <div id="divFactor" class="myDiv">
+
+            @* Input Factor  Table *@
+            <div class="myDiv" style="width: 100%; height: 45%; overflow: auto; color:white">
+                <h2>ثبت اطلاعات فاکتور-ورود کالا </h2> &nbsp;
+                <div dir="rtl">
+                    <label>نام تحویل دهنده/فروشنده </label>
+                    <input type="text" class="txtStyle" id="txtFactorCustomerName" />
+                    <label>کد تحویل دهنده/فروشنده </label>
+                    <label class="txtStyle" id="lblCustomerId" style="color: black">0000</label>
+                    <table style="width: 80%; visibility:collapse" id="tCustomerFilter" class="myTbl">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center">ردیف</th>
+                                <th style="text-align: center">نام </th>
+                                <th style="text-align: center"> نام خانوادگی</th>
+                                <th style="text-align: center"> موبایل</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="SetCustomerList">
+                            <tr id="LoadingStatusCustomer" style="color: red"></tr>
+                        </tbody>
+
+                    </table>
+
+                    <label>تاریخ </label>
+                    <input type="text" class="txtStyle" id="txtFactorDate" />
+                    <label>ساعت </label>
+                    <input type="time" class="txtStyle" id="txtFactorTime" />
+                    <label>کاربر </label>
+                    <input type="text" class="txtStyle" id="txtUserName" readonly="readonly" />
+                    <label>شرح فاکتور </label>
+                    <input type="text" class="txtStyle" id="txtFactorMainDesc" />
+                    <label>نحوه ی پرداخت </label>
+                    <select class="txtStyle" id="selInpFactorPayType">
+                        <option value="0">نقد</option>
+                        <option value="1">اقساط</option>
+                    </select>
+                    <u id="lblTaghsit" style="cursor:pointer">قسط بندی</u>
+                    <br /><br /><br />
+
+                    <label>انتخاب کالا</label>
+                    <input type="text" class="txtStyle" id="txtFindProducts" style="width: 300px" />
+                    <label>کد ردیف کالای انتخابی</label>
+                    <label class="txtStyle" id="lblFindpdID" style="color: black">0000</label>
+
+                    <table style="width: 80%; visibility:collapse" id="tPDFilter" class="myTbl">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center">ردیف</th>
+                                <th style="text-align: center">نام کالا</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="SetProductDetailsList">
+                            <tr id="LoadingStatusProductDetails" style="color: red"></tr>
+                        </tbody>
+
+                    </table>
+                    <label>تعداد </label>
+                    <input type="text" class="txtStyle Calc" id="txtQuantity" />
+                    <label>قیمت واحد</label>
+                    <input type="text" class="txtStyle Calc" id="txtUnitPrice" />
+                    <label>درصد تخفیف</label>
+                    <input type="text" class="txtStyle Calc" id="txtDiscount" />
+                    <label>قمیت کل</label>
+                    <input type="text" class="txtStyle Calc" id="txtTotalPrice" readonly="readonly" />
+                    <label>توضیحات</label>
+                    <input type="text" class="txtStyle" id="txtFactorDetDesc" />
+                    <br />
+                    <table>
+                        <tr>
+                            <td><input type="button" class="myBtn" id="cmdSaveFactorDet" value="ثبت ردیف فاکتور" style="height: 50px;width: 250px" /></td>
+                            <td><input type="button" class="myBtn" id="cmdUpdateDetail" value="ثبت سطر ویرایش شده" style="height: 50px;width: 250px" /></td>
+                        </tr>
+                    </table>
+                    <br />
+                </div>
+            </div>
+
+            <div class="myDiv" style="width: 100%; height: 40%; overflow: auto; color: white" id="s">
+                <table id="tFactorDetail" class="myTbl">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">ردیف</th>
+                            <th style="text-align: center">کد کالا</th>
+                            <th style="text-align: center">عنوان کالا</th>
+                            <th style="text-align: center">تعداد</th>
+                            <th style="text-align: center">قیمت واحد</th>
+                            <th style="text-align: center">تخفیف</th>
+                            <th style="text-align: center">قیمت کل</th>
+                            <th style="text-align: center">توضیحات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="SetFactorDetailList">
+                    </tbody>
+                </table>
+            </div>
+            <table>
+                <tr>
+                    <td><input type="button" class="myBtn" id="cmdEditDetail" value="ویرایش ردیف انتخاب شده" /></td>
+                    <td><input type="button" class="myBtn" id="cmdDeleteDetail" value="حذف ردیف انتخاب شده" /></td>
+                    <td><label class="lblStyle">مبلغ کل فاکتور</label></td>
+                    <td><label id="lblFactorTotalPrice">0000</label></td>
+                    <td>
+                        <input type="button" class="myBtn" id="cmdSaveFactor" value="ثبت کل فاکتور" style="width: 150px; height: 50px">
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <div id="frmModalGetData1" class="modalDiv">
+        <label>مبلغ کل فاکتور</label>
+        <label class="lblStyle" id="lblPayTypeTotalPrice"></label>
+        <br />
+        <label style="color:red">مبلغ باقیمانده </label>
+        <label style="color:red" ;class="lblStyle" id="lblResidualPrice"></label>
+        <br />
+        <label>تاریخ پرداخت</label>
+        <input type="text" class="txtStyle" id="txtPayDate" />
+        <br />
+        <label>مبلغ پرداخت</label>
+        <input type="text" class="txtStyle Calc" id="txtGiveMoney" />
+        <br />
+        <input type="checkbox" id="chkFirstPay" />
+        <label for="chkFirstPay"> پرداخت اول بعنوان پیش پرداخت</label>
+        <br />
+        <input type="button" class="myBtn" id="cmdAddPayType" value="افزودن" />
+        <br />
+        <div class="myDiv" style="height: 60%">
+            <table class="myTbl" id="tblPayList">
+                <thead>
+                    <tr>
+                        <th>ردیف</th>
+                        <th>تاریخ پرداخت</th>
+                        <th>مبلغ پرداخت</th>
+                    </tr>
+                </thead>
+                <tbody id="SetPayType">
+                </tbody>
+            </table>
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <input type="button" class="myBtn" id="cmdDeletePayType" value="حذف سطر" />
+                </td>
+                <td>
+                    <input type="button" class="myBtn" id="cmdSavePayList" value="ثبت اطلاعات" />
+                </td>
+                <td>
+                    <input type="button" class="myBtn" id="cmdCancelPayList" value="انصراف" />
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
+<div>
+    <script>
+
+        $(document).delegate(".myTbl > tbody > tr",
+            "click",
+            function () {
+                $('.myTbl > tbody > tr').removeClass('rowSelected');
+                $(this).addClass('rowSelected');
+            });
+
+
+    </script>
+</div>
+

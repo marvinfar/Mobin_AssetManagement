@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KOPStoreModelStoreContainer" CdmEntityContainer="KOPStoreEntities">
+    <EntitySetMapping Name="tblProductGroups">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblProductGroup">
+        <MappingFragment StoreEntitySet="tblProductGroup">
+          <ScalarProperty Name="productGroupId" ColumnName="productGroupId" />
+          <ScalarProperty Name="productGroupName" ColumnName="productGroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProducts">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblProduct">
+        <MappingFragment StoreEntitySet="tblProducts">
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="productGroupId" ColumnName="productGroupId" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vProducts">
+      <EntityTypeMapping TypeName="KOPStoreModel.vProduct">
+        <MappingFragment StoreEntitySet="vProducts">
+          <ScalarProperty Name="productGroupId" ColumnName="productGroupId" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="productGroupName" ColumnName="productGroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUserLevels">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblUserLevel">
+        <MappingFragment StoreEntitySet="tblUserLevel">
+          <ScalarProperty Name="levelDescription" ColumnName="levelDescription" />
+          <ScalarProperty Name="levelCode" ColumnName="levelCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblUsers">
+        <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="levelCode" ColumnName="levelCode" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vUsers1">
+      <EntityTypeMapping TypeName="KOPStoreModel.vUsers">
+        <MappingFragment StoreEntitySet="vUsers">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="levelCode" ColumnName="levelCode" />
+          <ScalarProperty Name="levelDescription" ColumnName="levelDescription" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLoginLogs">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblLoginLog">
+        <MappingFragment StoreEntitySet="tblLoginLog">
+          <ScalarProperty Name="ipAddress" ColumnName="ipAddress" />
+          <ScalarProperty Name="xDate" ColumnName="xDate" />
+          <ScalarProperty Name="xTime" ColumnName="xTime" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="radif" ColumnName="radif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBrands">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblBrand">
+        <MappingFragment StoreEntitySet="tblBrand">
+          <ScalarProperty Name="brandName" ColumnName="brandName" />
+          <ScalarProperty Name="brandID" ColumnName="brandID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblColors">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblColor">
+        <MappingFragment StoreEntitySet="tblColor">
+          <ScalarProperty Name="colorName" ColumnName="colorName" />
+          <ScalarProperty Name="colorId" ColumnName="colorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCountries">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblCountry">
+        <MappingFragment StoreEntitySet="tblCountry">
+          <ScalarProperty Name="countryName" ColumnName="countryName" />
+          <ScalarProperty Name="countryId" ColumnName="countryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMaterials">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblMaterial">
+        <MappingFragment StoreEntitySet="tblMaterial">
+          <ScalarProperty Name="materialName" ColumnName="materialName" />
+          <ScalarProperty Name="materialId" ColumnName="materialId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSizes">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblSize">
+        <MappingFragment StoreEntitySet="tblSize">
+          <ScalarProperty Name="sizeName" ColumnName="sizeName" />
+          <ScalarProperty Name="sizeId" ColumnName="sizeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblGenders">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblGender">
+        <MappingFragment StoreEntitySet="tblGender">
+          <ScalarProperty Name="genderName" ColumnName="genderName" />
+          <ScalarProperty Name="genderId" ColumnName="genderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProductsDetails">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblProductsDetail">
+        <MappingFragment StoreEntitySet="tblProductsDetail">
+          <ScalarProperty Name="pImage" ColumnName="pImage" />
+          <ScalarProperty Name="pDescription" ColumnName="pDescription" />
+          <ScalarProperty Name="pCountry" ColumnName="pCountry" />
+          <ScalarProperty Name="pGender" ColumnName="pGender" />
+          <ScalarProperty Name="pSize" ColumnName="pSize" />
+          <ScalarProperty Name="pColor" ColumnName="pColor" />
+          <ScalarProperty Name="pMaterial" ColumnName="pMaterial" />
+          <ScalarProperty Name="pBrand" ColumnName="pBrand" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCustomers">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblCustomer">
+        <MappingFragment StoreEntitySet="tblCustomer">
+          <ScalarProperty Name="customerCompany" ColumnName="customerCompany" />
+          <ScalarProperty Name="customerAddress" ColumnName="customerAddress" />
+          <ScalarProperty Name="customerPhone" ColumnName="customerPhone" />
+          <ScalarProperty Name="customerMobile" ColumnName="customerMobile" />
+          <ScalarProperty Name="customerLName" ColumnName="customerLName" />
+          <ScalarProperty Name="customerFName" ColumnName="customerFName" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblInputFactorMains">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblInputFactorMain">
+        <MappingFragment StoreEntitySet="tblInputFactorMain">
+          <ScalarProperty Name="payType" ColumnName="payType" />
+          <ScalarProperty Name="inpFactorTotalPrice" ColumnName="inpFactorTotalPrice" />
+          <ScalarProperty Name="inpFactorDesc" ColumnName="inpFactorDesc" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="inpFactorTime" ColumnName="inpFactorTime" />
+          <ScalarProperty Name="inpFactorDate" ColumnName="inpFactorDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="inpFactorId" ColumnName="inpFactorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblInputFactorDetails">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblInputFactorDetail">
+        <MappingFragment StoreEntitySet="tblInputFactorDetail">
+          <ScalarProperty Name="inpDetailDesc" ColumnName="inpDetailDesc" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="inpFactorDetailId" ColumnName="inpFactorDetailId" />
+          <ScalarProperty Name="inpFactorId" ColumnName="inpFactorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblInpPayments">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblInpPayment">
+        <MappingFragment StoreEntitySet="tblInpPayment">
+          <ScalarProperty Name="paidDate" ColumnName="paidDate" />
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="giveMoney" ColumnName="giveMoney" />
+          <ScalarProperty Name="checkDate" ColumnName="checkDate" />
+          <ScalarProperty Name="radif" ColumnName="radif" />
+          <ScalarProperty Name="inpFactorId" ColumnName="inpFactorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbloutPayments">
+      <EntityTypeMapping TypeName="KOPStoreModel.tbloutPayment">
+        <MappingFragment StoreEntitySet="tbloutPayment">
+          <ScalarProperty Name="paidDate" ColumnName="paidDate" />
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="giveMoney" ColumnName="giveMoney" />
+          <ScalarProperty Name="checkDate" ColumnName="checkDate" />
+          <ScalarProperty Name="radif" ColumnName="radif" />
+          <ScalarProperty Name="outFactorId" ColumnName="outFactorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOutputFactorDetails">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblOutputFactorDetail">
+        <MappingFragment StoreEntitySet="tblOutputFactorDetail">
+          <ScalarProperty Name="outDetailDesc" ColumnName="outDetailDesc" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="outFactorDetailId" ColumnName="outFactorDetailId" />
+          <ScalarProperty Name="outFactorId" ColumnName="outFactorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOutputFactorMains">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblOutputFactorMain">
+        <MappingFragment StoreEntitySet="tblOutputFactorMain">
+          <ScalarProperty Name="payType" ColumnName="payType" />
+          <ScalarProperty Name="outFactorTotalPrice" ColumnName="outFactorTotalPrice" />
+          <ScalarProperty Name="outFactorDesc" ColumnName="outFactorDesc" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="outFactorTime" ColumnName="outFactorTime" />
+          <ScalarProperty Name="outFactorDate" ColumnName="outFactorDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="outFactorId" ColumnName="outFactorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMojoodis">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblMojoodi">
+        <MappingFragment StoreEntitySet="tblMojoodi">
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="pdid" ColumnName="pdid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTakhsisAmvals">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblTakhsisAmval">
+        <MappingFragment StoreEntitySet="tblTakhsisAmval">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="esghat" ColumnName="esghat" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="deliverDate" ColumnName="deliverDate" />
+          <ScalarProperty Name="amval" ColumnName="amval" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="radif" ColumnName="radif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVendors">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblVendor">
+        <MappingFragment StoreEntitySet="tblVendors">
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="companyPhone" ColumnName="companyPhone" />
+          <ScalarProperty Name="vendorName" ColumnName="vendorName" />
+          <ScalarProperty Name="companyName" ColumnName="companyName" />
+          <ScalarProperty Name="vendorId" ColumnName="vendorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblServiceDetails">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblServiceDetail">
+        <MappingFragment StoreEntitySet="tblServiceDetail">
+          <ScalarProperty Name="serviceDetailDesc" ColumnName="serviceDetailDesc" />
+          <ScalarProperty Name="servicePrice" ColumnName="servicePrice" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="amval" ColumnName="amval" />
+          <ScalarProperty Name="pdid" ColumnName="pdid" />
+          <ScalarProperty Name="serviceDetailId" ColumnName="serviceDetailId" />
+          <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vAmvalCustomers">
+      <EntityTypeMapping TypeName="KOPStoreModel.vAmvalCustomer">
+        <MappingFragment StoreEntitySet="vAmvalCustomer">
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="radif" ColumnName="radif" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="esghat" ColumnName="esghat" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="customerLName" ColumnName="customerLName" />
+          <ScalarProperty Name="customerFName" ColumnName="customerFName" />
+          <ScalarProperty Name="amval" ColumnName="amval" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEsghatAmvals">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblEsghatAmval">
+        <MappingFragment StoreEntitySet="tblEsghatAmval">
+          <ScalarProperty Name="esghatDescription" ColumnName="esghatDescription" />
+          <ScalarProperty Name="esghatDate" ColumnName="esghatDate" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="amval" ColumnName="amval" />
+          <ScalarProperty Name="radif" ColumnName="radif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vEshghatAmvals">
+      <EntityTypeMapping TypeName="KOPStoreModel.vEshghatAmval">
+        <MappingFragment StoreEntitySet="vEshghatAmval">
+          <ScalarProperty Name="esghatDate" ColumnName="esghatDate" />
+          <ScalarProperty Name="esghatDescription" ColumnName="esghatDescription" />
+          <ScalarProperty Name="myDate" ColumnName="myDate" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="amval" ColumnName="amval" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblServiceMains">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblServiceMain">
+        <MappingFragment StoreEntitySet="tblServiceMain">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="serviceTotalPrice" ColumnName="serviceTotalPrice" />
+          <ScalarProperty Name="serviceDescription" ColumnName="serviceDescription" />
+          <ScalarProperty Name="vendorId" ColumnName="vendorId" />
+          <ScalarProperty Name="serviceDate" ColumnName="serviceDate" />
+          <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vProductDetailFilters">
+      <EntityTypeMapping TypeName="KOPStoreModel.vProductDetailFilter">
+        <MappingFragment StoreEntitySet="vProductDetailFilter">
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="productNameX" ColumnName="productNameX" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vProductDetails">
+      <EntityTypeMapping TypeName="KOPStoreModel.vProductDetail">
+        <MappingFragment StoreEntitySet="vProductDetails">
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="pImage" ColumnName="pImage" />
+          <ScalarProperty Name="pDescription" ColumnName="pDescription" />
+          <ScalarProperty Name="countryName" ColumnName="countryName" />
+          <ScalarProperty Name="pCountry" ColumnName="pCountry" />
+          <ScalarProperty Name="genderName" ColumnName="genderName" />
+          <ScalarProperty Name="pGender" ColumnName="pGender" />
+          <ScalarProperty Name="sizeName" ColumnName="sizeName" />
+          <ScalarProperty Name="pSize" ColumnName="pSize" />
+          <ScalarProperty Name="colorName" ColumnName="colorName" />
+          <ScalarProperty Name="pColor" ColumnName="pColor" />
+          <ScalarProperty Name="materialName" ColumnName="materialName" />
+          <ScalarProperty Name="pMaterial" ColumnName="pMaterial" />
+          <ScalarProperty Name="brandName" ColumnName="brandName" />
+          <ScalarProperty Name="pBrand" ColumnName="pBrand" />
+          <ScalarProperty Name="productGroupName" ColumnName="productGroupName" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vInputFactorFulls">
+      <EntityTypeMapping TypeName="KOPStoreModel.vInputFactorFull">
+        <MappingFragment StoreEntitySet="vInputFactorFull">
+          <ScalarProperty Name="inpDetailDesc" ColumnName="inpDetailDesc" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="pImage" ColumnName="pImage" />
+          <ScalarProperty Name="pDescription" ColumnName="pDescription" />
+          <ScalarProperty Name="countryName" ColumnName="countryName" />
+          <ScalarProperty Name="pCountry" ColumnName="pCountry" />
+          <ScalarProperty Name="genderName" ColumnName="genderName" />
+          <ScalarProperty Name="pGender" ColumnName="pGender" />
+          <ScalarProperty Name="sizeName" ColumnName="sizeName" />
+          <ScalarProperty Name="pSize" ColumnName="pSize" />
+          <ScalarProperty Name="materialName" ColumnName="materialName" />
+          <ScalarProperty Name="pMaterial" ColumnName="pMaterial" />
+          <ScalarProperty Name="colorName" ColumnName="colorName" />
+          <ScalarProperty Name="pColor" ColumnName="pColor" />
+          <ScalarProperty Name="brandName" ColumnName="brandName" />
+          <ScalarProperty Name="pBrand" ColumnName="pBrand" />
+          <ScalarProperty Name="productGroupName" ColumnName="productGroupName" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="inpFactorDetailId" ColumnName="inpFactorDetailId" />
+          <ScalarProperty Name="inpFactorDesc" ColumnName="inpFactorDesc" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="inpFactorTime" ColumnName="inpFactorTime" />
+          <ScalarProperty Name="myDate" ColumnName="myDate" />
+          <ScalarProperty Name="inpFactorDate" ColumnName="inpFactorDate" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="inpFactorId" ColumnName="inpFactorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vOutputFactorFulls">
+      <EntityTypeMapping TypeName="KOPStoreModel.vOutputFactorFull">
+        <MappingFragment StoreEntitySet="vOutputFactorFull">
+          <ScalarProperty Name="outDetailDesc" ColumnName="outDetailDesc" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="pImage" ColumnName="pImage" />
+          <ScalarProperty Name="pDescription" ColumnName="pDescription" />
+          <ScalarProperty Name="countryName" ColumnName="countryName" />
+          <ScalarProperty Name="pCountry" ColumnName="pCountry" />
+          <ScalarProperty Name="genderName" ColumnName="genderName" />
+          <ScalarProperty Name="pGender" ColumnName="pGender" />
+          <ScalarProperty Name="sizeName" ColumnName="sizeName" />
+          <ScalarProperty Name="pSize" ColumnName="pSize" />
+          <ScalarProperty Name="materialName" ColumnName="materialName" />
+          <ScalarProperty Name="pMaterial" ColumnName="pMaterial" />
+          <ScalarProperty Name="colorName" ColumnName="colorName" />
+          <ScalarProperty Name="pColor" ColumnName="pColor" />
+          <ScalarProperty Name="brandName" ColumnName="brandName" />
+          <ScalarProperty Name="pBrand" ColumnName="pBrand" />
+          <ScalarProperty Name="productGroupName" ColumnName="productGroupName" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="outFactorDetailId" ColumnName="outFactorDetailId" />
+          <ScalarProperty Name="outFactorDesc" ColumnName="outFactorDesc" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="outFactorTime" ColumnName="outFactorTime" />
+          <ScalarProperty Name="myDate" ColumnName="myDate" />
+          <ScalarProperty Name="outFactorDate" ColumnName="outFactorDate" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="outFactorId" ColumnName="outFactorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vAmvals">
+      <EntityTypeMapping TypeName="KOPStoreModel.vAmval">
+        <MappingFragment StoreEntitySet="vAmval">
+          <ScalarProperty Name="buyDate" ColumnName="buyDate" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="barcodeNumber" ColumnName="barcodeNumber" />
+          <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+          <ScalarProperty Name="sapPR" ColumnName="sapPR" />
+          <ScalarProperty Name="buyPrice" ColumnName="buyPrice" />
+          <ScalarProperty Name="myDate" ColumnName="myDate" />
+          <ScalarProperty Name="productNameX" ColumnName="productNameX" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="amval" ColumnName="amval" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_TajmiMasrafiProduct" FunctionName="KOPStoreModel.Store.sp_TajmiMasrafiProduct">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KOPStoreModel.sp_TajmiMasrafiProduct_Result">
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="productNameX" ColumnName="productNameX" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_TafsilUsersDate" FunctionName="KOPStoreModel.Store.sp_TafsilUsersDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KOPStoreModel.sp_TafsilUsersDate_Result">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="productNameX" ColumnName="productNameX" />
+          <ScalarProperty Name="outFactorDate" ColumnName="outFactorDate" />
+          <ScalarProperty Name="myDate" ColumnName="myDate" />
+          <ScalarProperty Name="myDesc" ColumnName="myDesc" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tblActions">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblAction">
+        <MappingFragment StoreEntitySet="tblActions">
+          <ScalarProperty Name="actionFarsiName" ColumnName="actionFarsiName" />
+          <ScalarProperty Name="actionName" ColumnName="actionName" />
+          <ScalarProperty Name="actionId" ColumnName="actionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAmvalActions">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblAmvalAction">
+        <MappingFragment StoreEntitySet="tblAmvalAction">
+          <ScalarProperty Name="actionDate" ColumnName="actionDate" />
+          <ScalarProperty Name="actionId" ColumnName="actionId" />
+          <ScalarProperty Name="amval" ColumnName="amval" />
+          <ScalarProperty Name="radifId" ColumnName="radifId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAmvals">
+      <EntityTypeMapping TypeName="KOPStoreModel.tblAmval">
+        <MappingFragment StoreEntitySet="tblAmval">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="barcodeNumber" ColumnName="barcodeNumber" />
+          <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+          <ScalarProperty Name="sapPR" ColumnName="sapPR" />
+          <ScalarProperty Name="buyPrice" ColumnName="buyPrice" />
+          <ScalarProperty Name="buyDate" ColumnName="buyDate" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="amval" ColumnName="amval" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_MojoodiLessThan5" FunctionName="KOPStoreModel.Store.sp_MojoodiLessThan5">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KOPStoreModel.sp_MojoodiLessThan5_Result">
+          <ScalarProperty Name="pdid" ColumnName="pdid" />
+          <ScalarProperty Name="productNameX" ColumnName="productNameX" />
+          <ScalarProperty Name="number" ColumnName="number" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_TheLastFivePersonWhoTake" FunctionName="KOPStoreModel.Store.sp_TheLastFivePersonWhoTake">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KOPStoreModel.sp_TheLastFivePersonWhoTake_Result">
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="outFactorDate" ColumnName="outFactorDate" />
+          <ScalarProperty Name="myDate" ColumnName="myDate" />
+          <ScalarProperty Name="outFactorTime" ColumnName="outFactorTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_FiveMostCustomerOut" FunctionName="KOPStoreModel.Store.sp_FiveMostCustomerOut">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KOPStoreModel.sp_FiveMostCustomerOut_Result">
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_FiveMostProductOut" FunctionName="KOPStoreModel.Store.sp_FiveMostProductOut">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KOPStoreModel.sp_FiveMostProductOut_Result">
+          <ScalarProperty Name="productNameX" ColumnName="productNameX" />
+          <ScalarProperty Name="pdId" ColumnName="pdId" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="vServiceFulls">
+      <EntityTypeMapping TypeName="KOPStoreModel.vServiceFull">
+        <MappingFragment StoreEntitySet="vServiceFull">
+          <ScalarProperty Name="amval" ColumnName="amval" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="pdid" ColumnName="pdid" />
+          <ScalarProperty Name="serviceDetailDesc" ColumnName="serviceDetailDesc" />
+          <ScalarProperty Name="servicePrice" ColumnName="servicePrice" />
+          <ScalarProperty Name="customerFName" ColumnName="customerFName" />
+          <ScalarProperty Name="customerLName" ColumnName="customerLName" />
+          <ScalarProperty Name="productNameX" ColumnName="productNameX" />
+          <ScalarProperty Name="serviceTotalPrice" ColumnName="serviceTotalPrice" />
+          <ScalarProperty Name="serviceDescription" ColumnName="serviceDescription" />
+          <ScalarProperty Name="vendorName" ColumnName="vendorName" />
+          <ScalarProperty Name="companyName" ColumnName="companyName" />
+          <ScalarProperty Name="vendorId" ColumnName="vendorId" />
+          <ScalarProperty Name="myDate" ColumnName="myDate" />
+          <ScalarProperty Name="serviceDate" ColumnName="serviceDate" />
+          <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_RepAmvalAssignToCustomer" FunctionName="KOPStoreModel.Store.sp_RepAmvalAssignToCustomer">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KOPStoreModel.sp_RepAmvalAssignToCustomer_Result">
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="amval" ColumnName="amval" />
+          <ScalarProperty Name="productNameX" ColumnName="productNameX" />
+          <ScalarProperty Name="deliverDate" ColumnName="deliverDate" />
+          <ScalarProperty Name="myDate" ColumnName="myDate" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="esghat" ColumnName="esghat" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="vGardeshAmvals">
+      <EntityTypeMapping TypeName="KOPStoreModel.vGardeshAmval">
+        <MappingFragment StoreEntitySet="vGardeshAmval">
+          <ScalarProperty Name="esghat" ColumnName="esghat" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="myDate" ColumnName="myDate" />
+          <ScalarProperty Name="deliverDate" ColumnName="deliverDate" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="customerLName" ColumnName="customerLName" />
+          <ScalarProperty Name="customerFName" ColumnName="customerFName" />
+          <ScalarProperty Name="productNameX" ColumnName="productNameX" />
+          <ScalarProperty Name="amval" ColumnName="amval" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="radif" ColumnName="radif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vActionAmvals">
+      <EntityTypeMapping TypeName="KOPStoreModel.vActionAmval">
+        <MappingFragment StoreEntitySet="vActionAmval">
+          <ScalarProperty Name="myDate" ColumnName="myDate" />
+          <ScalarProperty Name="customerLName" ColumnName="customerLName" />
+          <ScalarProperty Name="customerFName" ColumnName="customerFName" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="productNameX" ColumnName="productNameX" />
+          <ScalarProperty Name="actionName" ColumnName="actionName" />
+          <ScalarProperty Name="actionDate" ColumnName="actionDate" />
+          <ScalarProperty Name="actionFarsiName" ColumnName="actionFarsiName" />
+          <ScalarProperty Name="actionId" ColumnName="actionId" />
+          <ScalarProperty Name="amval" ColumnName="amval" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,195 @@
+﻿@model KOP_Store.Models.mdlDefineUsers
+@{
+    Layout = null;
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/functions/DefineUsers.js?v=2.4"></script>
+<script src="~/functions/PublicFunc.js?v=1.5"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bagaStyle.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="~/Content/jquery-confirm.css" />
+<script src="~/Scripts/jquery-confirm.js"></script>
+
+<html>
+<head>
+    <title>تعریف کاربران سیستم</title>
+</head>
+</html>
+<body>
+    <div class="row">
+        <div class="dockedDiv" style="overflow: auto">
+            @* Docked Right Menu Bar *@
+            <button id="m-1" class="myBtn" style="background-color: green" onclick="subMenuOpen();">اطلاعات پایه</button>
+
+            <div id="sm-1" class="subDiv">
+                <button class="myBtn" id="cmdDefProductGroup" onclick="RedirectToPage();">تعریف گروهبندی کالا</button>
+                <button class="myBtn" id="cmdDefProducts" onclick="RedirectToPage();">تعریف کالا</button>
+                <button class="myBtn" id="cmdDefProductDetails" onclick="RedirectToPage();">تعریف زیر مجموعه کالا</button>
+                <br />
+                <button class="myBtn" id="cmdDefCountry" onclick="RedirectToPage();">تعریف کشور</button>
+                <button class="myBtn" id="cmdDefBrand" onclick="RedirectToPage();">تعریف برند کالا</button>
+                <button class="myBtn" id="cmdDefMaterial" onclick="RedirectToPage();">تعریف متریال(جنس) کالا</button>
+                <button class="myBtn" id="cmdDefSize" onclick="RedirectToPage();">تعریف سایز کالا</button>
+                <button class="myBtn" id="cmdDefColor" onclick="RedirectToPage();">تعریف رنگ کالا</button>
+                <br />
+                <button class="myBtn" id="cmdDefUsers" onclick="RedirectToPage();">تعریف کاربران</button>
+                <button class="myBtn" id="cmdDefUserLevel" onclick="RedirectToPage();">تعریف سطح دسترسی کاربران</button>
+                <br />
+                <button class="myBtn" id="cmdDefCustomer" onclick="RedirectToPage();">تعریف خریدار/فروشنده</button>
+                <button class="myBtn" id="cmdDefVendor" onclick="RedirectToPage();">تعریف پیمانکاران</button>
+                <button class="myBtn" id="cmdChangePass" onclick="RedirectToPage();">تغییر رمز عبور...</button>
+
+            </div>
+            <br /> <br />
+            <button id="m-2" class="myBtn" onclick="subMenuOpen();" style="background-color: green">عملیات کالا و اموال(ورود/خروج و...)</button>
+            <div id="sm-2" class="subDiv">
+                <button class="myBtn" id="cmdInpFactor" onclick="RedirectToPage();">ثبت فاکتور خرید-ورود کالا</button>
+                <button id="cmdOutFactor" class="myBtn" onclick="RedirectToPage();">ثبت فاکتور فروش-خروج کالا</button>
+                <br />
+                <button id="cmdDefAmvalProduct" class="myBtn" onclick="RedirectToPage();">تعریف و تخصیص شماره اموال برای کالا</button>
+
+                <button id="cmdTakhsisAmvalToUser" class="myBtn" onclick="RedirectToPage();">تخصیص اموال به شخص</button>
+                <button id="cmdEsghatAmval" class="myBtn" onclick="RedirectToPage();">اسقاط کالای دارای اموال</button>
+                <br />
+                <button id="cmdService" class="myBtn" onclick="RedirectToPage();">سرویس و نگهداری</button>
+            </div>
+            <br /> <br />
+            <button id="m-3" class="myBtn" onclick="subMenuOpen();" style="background-color: green">گزارشات</button>
+            <div id="sm-3" class="subDiv">
+                <button class="myBtn" id="cmdRepMasrafi" onclick="RedirectToPage();">گزارشات کالای غیر مصرفی</button>
+            </div>
+            <br /> <br />
+            <button id="cmdDashboard" class="myBtn" onclick="RedirectToPage();" style="background-color: green">داشبورد</button>
+
+        </div>
+
+        <div id="divTableUsers" class="myDiv">
+            @* Users Table *@
+            <div id="divNavigatorUsers" class="myDiv">
+                <table>
+                    <tr>
+                        <td>
+                            <button id="cmdAddNewUsers" class="myRadiousBtn" onclick="addNewUsers();"><i class="fa fa-plus"></i></button>
+                        </td>
+                        <td>
+                            <button id="cmdEditUsers" class="myRadiousBtn" onclick="editUsers()" ;><i class="fa fa-edit"></i></button>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>&nbsp;</td>
+
+                        <td>
+                            <button id="cmdLastUsers" class="myRadiousBtn" onclick="ome('cmdLast', 'کلیک کنید');"><i class="fas fa-angle-double-right"></i></button>
+                        </td>
+                        <td>
+                            <button id="cmdNextUsers" class="myRadiousBtn" onclick="ome('cmdLast', 'کلیک کنید');"><i class="fas fa-angle-right"></i></button>
+                        </td>
+                        <td><input type="text" class="myText" id="txtPage" style="width: 50px" /></td>
+                        <td>
+                            <button id="cmdPrevUsers" class="myRadiousBtn" onclick="ome('cmdLast', 'کلیک کنید');"><i class="fas fa-angle-left"></i></button>
+                        </td>
+                        <td>
+                            <button id="cmdFirstUsers" class="myRadiousBtn" onclick="ome('cmdLast', 'کلیک کنید');"><i class="fas fa-angle-double-left"></i></button>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+            <div class="myDiv" style="width: 100%; height: 90%; overflow: auto">
+                <table id="tUsers" class="myTbl">
+
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">ردیف</th>
+                            <th style="text-align: center">کد کاربری</th>
+                            <th style="text-align: center">نام کاربری</th>
+                            <th style="text-align: center;display:none">رمز عبور</th>
+                            <th style="text-align: center">سطح دسترسی</th>
+                            <th style="text-align: center">وضعیت</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="SetUsersList">
+                        <tr id="LoadingStatus" style="color: red"></tr>
+                    </tbody>
+                    <tfoot style="background-color: silver">
+                        <tr>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+
+
+        <div id="frmModalGetData1" class="modalDiv">
+            <label class="lblStyle">کد کاربر:</label>
+            <label class="txtStyle" id="lblUserID">0</label>
+            <br /><br /><br />
+            <label class="lblStyle">نام کاربری:</label>
+            <input class="txtStyle" type="text" id="txtUserName" />
+            <br /><br />
+            <label class="lblStyle">رمز عبور:</label>
+            <input class="txtStyle" type="password" id="txtPassword" />
+            <br /><br />
+            <label class="lblStyle">سطح دسترسی:</label>
+            <select class="txtStyle" id="selUserLevel">
+                @*هنگام اجرا تکمیل می گردد*@
+            </select>
+            <br /><br />
+            <input type="checkbox" id="chkActive" />
+            <label for="chkActive">فعال باشد؟</label>
+            <br /><br /><br />
+            <table>
+                <tr>
+                    <td>
+                        <button class="myBtn" onclick="cmdUpdate()">ثبت</button>
+                    </td>
+                    <td>
+                        <button class="myBtn" onclick="closeModal('frmModalGetData1')">بستن </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    function editUsers() {
+        //the select user
+        var uId = $('.rowSelected').find('td').eq(1).text();
+        var uName = $('.rowSelected').find('td').eq(2).text();
+        var pass = $('.rowSelected').find('td').eq(3).text();
+        var lvlcode = $('.rowSelected').data('id');
+        var active = $('.rowSelected').find('td').eq(5).children('input[type=checkbox]').prop("checked");
+
+        /////////////////////////////\\\\\\\\\\\\\\\
+        GetUsersLevel(lvlcode);
+        if (uId.length > 0) {
+            $('#lblUserID').text(uId);
+            $('#txtUserName').val(uName);
+            $('#txtPassword').val(pass);
+            $('#chkActive').prop('checked', active);
+
+            $('#frmModalGetData1').css({ "top": "200px", "left": "800px", "height": "400px" });
+            $('#frmModalGetData1').show();
+            $('#txtUserName').focus();
+        } else {
+            alert('یک سطر را انتخاب نمایید');
+        }
+    }
+
+
+    $(document).delegate(".myTbl > tbody > tr",
+        "click",
+        function () {
+            $('.myTbl > tbody > tr').removeClass('rowSelected');
+            $(this).addClass('rowSelected');
+        });
+
+
+</script>

@@ -1,0 +1,199 @@
+﻿@model KOP_Store.Models.mdlService
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/functions/Service.js?v=1.9"></script>
+<script src="~/functions/PublicFunc.js?v=1.7"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bagaStyle.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="~/Scripts/notify.js"></script>
+<script src="~/Scripts/notify.min.js"></script>
+<link rel="stylesheet" href="~/Content/jquery-confirm.css" />
+<script src="~/Scripts/jquery-confirm.js"></script>
+
+<html>
+<head>
+    <title>سرویس و نگهداری تجهیزات</title>
+</head>
+</html>
+
+<body>
+    <div class="row">
+        <div class="dockedDiv" style="overflow: auto">
+            @* Docked Right Menu Bar *@
+            <button id="m-1" class="myBtn" style="background-color: green" onclick="subMenuOpen();">اطلاعات پایه</button>
+
+            <div id="sm-1" class="subDiv">
+                <button class="myBtn" id="cmdDefProductGroup" onclick="RedirectToPage();">تعریف گروهبندی کالا</button>
+                <button class="myBtn" id="cmdDefProducts" onclick="RedirectToPage();">تعریف کالا</button>
+                <button class="myBtn" id="cmdDefProductDetails" onclick="RedirectToPage();">تعریف زیر مجموعه کالا</button>
+                <br />
+                <button class="myBtn" id="cmdDefCountry" onclick="RedirectToPage();">تعریف کشور</button>
+                <button class="myBtn" id="cmdDefBrand" onclick="RedirectToPage();">تعریف برند کالا</button>
+                <button class="myBtn" id="cmdDefMaterial" onclick="RedirectToPage();">تعریف متریال(جنس) کالا</button>
+                <button class="myBtn" id="cmdDefSize" onclick="RedirectToPage();">تعریف سایز کالا</button>
+                <button class="myBtn" id="cmdDefColor" onclick="RedirectToPage();">تعریف رنگ کالا</button>
+                <br />
+                <button class="myBtn" id="cmdDefUsers" onclick="RedirectToPage();">تعریف کاربران</button>
+                <button class="myBtn" id="cmdDefUserLevel" onclick="RedirectToPage();">تعریف سطح دسترسی کاربران</button>
+                <br />
+                <button class="myBtn" id="cmdDefCustomer" onclick="RedirectToPage();">تعریف خریدار/فروشنده</button>
+                <button class="myBtn" id="cmdDefVendor" onclick="RedirectToPage();">تعریف پیمانکاران</button>
+                <button class="myBtn" id="cmdChangePass" onclick="RedirectToPage();">تغییر رمز عبور...</button>
+
+            </div>
+            <br /> <br />
+            <button id="m-2" class="myBtn" onclick="subMenuOpen();" style="background-color: green">عملیات کالا و اموال(ورود/خروج و...)</button>
+            <div id="sm-2" class="subDiv">
+                <button class="myBtn" id="cmdInpFactor" onclick="RedirectToPage();">ثبت فاکتور خرید-ورود کالا</button>
+                <button id="cmdOutFactor" class="myBtn" onclick="RedirectToPage();">ثبت فاکتور فروش-خروج کالا</button>
+                <br />
+                <button id="cmdDefAmvalProduct" class="myBtn" onclick="RedirectToPage();">تعریف و تخصیص شماره اموال برای کالا</button>
+
+                <button id="cmdTakhsisAmvalToUser" class="myBtn" onclick="RedirectToPage();">تخصیص اموال به شخص</button>
+                <button id="cmdEsghatAmval" class="myBtn" onclick="RedirectToPage();">اسقاط کالای دارای اموال</button>
+                <br />
+                <button id="cmdService" class="myBtn" onclick="RedirectToPage();">سرویس و نگهداری</button>
+            </div>
+            <br /> <br />
+            <button id="m-3" class="myBtn" onclick="subMenuOpen();" style="background-color: green">گزارشات</button>
+            <div id="sm-3" class="subDiv">
+                <button class="myBtn" id="cmdRepMasrafi" onclick="RedirectToPage();">گزارشات کالای غیر مصرفی</button>
+                <button class="myBtn" id="cmdRepAmval" onclick="RedirectToPage();">گزارشات کالای دارای اموال</button>
+                <button id="cmdDashboard" class="myBtn" onclick="RedirectToPage();">داشبورد</button>
+            </div>
+            <br /> <br />
+
+
+        </div>
+
+        <div id="divFactor" class="myDiv">
+
+            @* Input Factor  Table *@
+            <div class="myDiv" style="width: 100%; height: 50%; overflow: auto; color:white">
+                <h2>ثبت اطلاعات مربوط به سرویس تجهیزات </h2> &nbsp;
+                <div dir="rtl">
+                    <label>نام پیمانکار </label>
+                    <input type="text" class="txtStyle" id="txtServiceVendorName" />
+                    <label>کد پیمانکار </label>
+                    <label class="txtStyle" id="lblServiceVendorId" style="color: black">0000</label>
+                    <table style="width: 80%; visibility:collapse" id="tVendorFilter" class="myTbl">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center">ردیف</th>
+                                <th style="text-align: center">نام شرکت </th>
+                                <th style="text-align: center"> نام پیمانکار</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="SetVendorList">
+                            <tr id="LoadingStatusVendor" style="color: red"></tr>
+                        </tbody>
+                    </table>
+                    <label>شرح سرویس </label>
+                    <input type="text" class="txtStyle" id="txtServiceDesc" style="width:200px" />
+                    <label>تاریخ ارسال به سرویس</label>
+                    <input type="text" class="txtStyle" id="txtServiceDate" />
+                    <label>کل هزینه انجام شده</label>
+                    <input type="text" class="txtStyle Calc" id="txtServiceTotalPrice" />
+                    <label>کاربر </label>
+                    <input type="text" class="txtStyle" id="txtUserName" readonly="readonly" />
+                    <br /><br /><br />
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="lblStyle">شماره اموال:</label>
+                                <input type="number" class="txtStyle" id="txtServiceAmvalNumber" maxlength="5" />
+                            </td>
+                            <td>
+                                <input type="button" id="cmdCheckServiceAmval" class="myBtn" value="چک کردن شماره اموال" style="width: 150px; height: 30px" />
+                            </td>
+                            <td>
+                                <label id="lblServiceMessage" style="color: red">پبام</label>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <label>انتخاب کالا</label>
+                    <input type="text" class="txtStyle" id="txtServiceFindProducts" readonly="readonly" />
+                    <label>کد ردیف کالای انتخابی</label>
+                    <label class="txtStyle" id="lblServiceFindpdID" style="color: black">0000</label>
+                    <label>نام کاربر/درخواست کننده </label>
+                    <input type="text" class="txtStyle" id="txtServiceCustomerName" readonly="readonly" />
+                    <label>کد کاربر/درخواست کننده </label>
+                    <label class="txtStyle" id="lblServiceCustomerId" style="color: black">0000</label>
+                    <label class="lblStyle" id="lblRadifTakhsis"></label>
+                    <br />
+                    <label>قیمت سرویس هر مورد</label>
+                    <input type="text" class="txtStyle Calc" id="txtServiceDetPrice" />
+                    <label>توضیحات موردی</label>
+                    <input type="text" class="txtStyle" id="txtServiceDetDesc" style="width:400px" />
+
+                    <label for="chkServiceKhoroojHesab">از حساب شخص خارج شود؟</label>
+                    <input type="checkbox" id="chkServiceKhoroojHesab" />
+                    <label for="chkServiceEsghat">پس از سرویس اسقاط شده است؟</label>
+                    <input type="checkbox" id="chkServiceEsghat" />
+                    <br />
+                    <table>
+                        <tr>
+                            <td><input type="button" class="myBtn" id="cmdServiceSaveDet" value="ثبت مورد سرویس " style="height: 40px;width: 150px" /></td>
+                        </tr>
+                    </table>
+                    <br />
+                </div>
+            </div>
+
+            <div class="myDiv" style="width: 100%; height: 40%; overflow: auto; color: white" id="s">
+                <table id="tServiceDetail" class="myTbl">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">ردیف</th>
+                            <th style="text-align: center">کد کالا</th>
+                            <th style="text-align: center">عنوان کالا</th>
+                            <th style="text-align: center">شماره اموال</th>
+                            <th style="text-align: center">کد درخواست کننده</th>
+                            <th style="text-align: center">نام درحواست کننده</th>
+                            <th style="text-align: center">قیمت سرویس</th>
+                            <th style="text-align: center">توضیحات</th>
+                            <th style="text-align: center">خروج از حساب</th>
+                            <th style="text-align: center">اسقاط</th>
+                        </tr>
+                    </thead>
+                    <tbody id="SetServiceDetailList">
+                    </tbody>
+                </table>
+            </div>
+            <table>
+                <tr>
+                    <td><input type="button" class="myBtn" id="cmdDeleteDetail" value="حذف ردیف انتخاب شده" /></td>
+                    <td><label class="lblStyle">مبلغ کل فاکتور</label></td>
+                    <td><label id="lblFactorTotalPrice">0000</label></td>
+                    <td>
+                        <input type="button" class="myBtn" id="cmdServiceSaveMain" value="ثبت کل فاکتور سرویس" style="width: 150px; height: 50px">
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+</body>
+
+<div>
+    <script>
+
+        $(document).delegate(".myTbl > tbody > tr",
+            "click",
+            function () {
+                $('.myTbl > tbody > tr').removeClass('rowSelected');
+                $(this).addClass('rowSelected');
+            });
+
+
+    </script>
+</div>
+

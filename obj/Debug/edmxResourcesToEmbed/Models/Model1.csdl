@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblProductGroup">
+    <Key>
+      <PropertyRef Name="productGroupId" />
+    </Key>
+    <Property Name="productGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblProducts" Relationship="Self.FK_productTable_ToTable" FromRole="tblProductGroup" ToRole="tblProducts" />
+  </EntityType>
+  <EntityType Name="tblProduct">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productGroupId" Type="Int32" Nullable="false" />
+    <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProductGroup" Relationship="Self.FK_productTable_ToTable" FromRole="tblProducts" ToRole="tblProductGroup" />
+    <NavigationProperty Name="tblProductsDetails" Relationship="Self.FK_productsDetailTable_ToTable" FromRole="tblProducts" ToRole="tblProductsDetail" />
+  </EntityType>
+  <EntityType Name="tblProductsDetail">
+    <Key>
+      <PropertyRef Name="productDetailId" />
+    </Key>
+    <Property Name="productDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productId" Type="Int32" Nullable="false" />
+    <Property Name="productBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productSize" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="productGender" Type="Boolean" />
+    <Property Name="productCountry" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="productDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProduct" Relationship="Self.FK_productsDetailTable_ToTable" FromRole="tblProductsDetail" ToRole="tblProducts" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vProduct">
+    <Key>
+      <PropertyRef Name="productId" />
+      <PropertyRef Name="productGroupName" />
+    </Key>
+    <Property Name="productId" Type="Int32" Nullable="false" />
+    <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_productTable_ToTable">
+    <End Role="tblProductGroup" Type="Self.tblProductGroup" Multiplicity="1" />
+    <End Role="tblProducts" Type="Self.tblProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductGroup">
+        <PropertyRef Name="productGroupId" />
+      </Principal>
+      <Dependent Role="tblProducts">
+        <PropertyRef Name="productGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productsDetailTable_ToTable">
+    <End Role="tblProducts" Type="Self.tblProduct" Multiplicity="1" />
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProducts">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblProductGroups" EntityType="Self.tblProductGroup" />
+    <EntitySet Name="tblProducts" EntityType="Self.tblProduct" />
+    <EntitySet Name="tblProductsDetails" EntityType="Self.tblProductsDetail" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <EntitySet Name="vProducts" EntityType="Self.vProduct" />
+    <AssociationSet Name="FK_productTable_ToTable" Association="Self.FK_productTable_ToTable">
+      <End Role="tblProductGroup" EntitySet="tblProductGroups" />
+      <End Role="tblProducts" EntitySet="tblProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productsDetailTable_ToTable" Association="Self.FK_productsDetailTable_ToTable">
+      <End Role="tblProducts" EntitySet="tblProducts" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

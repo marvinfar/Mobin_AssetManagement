@@ -1,0 +1,1354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KOPStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblActions">
+    <Key>
+      <PropertyRef Name="actionId" />
+    </Key>
+    <Property Name="actionId" Type="smallint" Nullable="false" />
+    <Property Name="actionName" Type="nvarchar" MaxLength="20" />
+    <Property Name="actionFarsiName" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblAmval">
+    <Key>
+      <PropertyRef Name="amval" />
+    </Key>
+    <Property Name="amval" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="pdId" Type="int" Nullable="false" />
+    <Property Name="buyDate" Type="smalldatetime" />
+    <Property Name="buyPrice" Type="money" />
+    <Property Name="sapPR" Type="nvarchar" MaxLength="10" />
+    <Property Name="serialNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="barcodeNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="description" Type="nvarchar" MaxLength="50" />
+    <Property Name="userId" Type="int" />
+  </EntityType>
+  <EntityType Name="tblAmvalAction">
+    <Key>
+      <PropertyRef Name="radifId" />
+    </Key>
+    <Property Name="radifId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amval" Type="nvarchar" MaxLength="5" />
+    <Property Name="actionId" Type="smallint" />
+    <Property Name="actionDate" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="tblBrand">
+    <Key>
+      <PropertyRef Name="brandID" />
+    </Key>
+    <Property Name="brandID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="brandName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblColor">
+    <Key>
+      <PropertyRef Name="colorId" />
+    </Key>
+    <Property Name="colorId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="colorName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblCountry">
+    <Key>
+      <PropertyRef Name="countryId" />
+    </Key>
+    <Property Name="countryId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="countryName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblCustomer">
+    <Key>
+      <PropertyRef Name="customerId" />
+    </Key>
+    <Property Name="customerId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerFName" Type="nvarchar" MaxLength="25" />
+    <Property Name="customerLName" Type="nvarchar" MaxLength="25" />
+    <Property Name="customerMobile" Type="nvarchar" MaxLength="15" />
+    <Property Name="customerPhone" Type="nvarchar" MaxLength="15" />
+    <Property Name="customerAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="customerCompany" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblEsghatAmval">
+    <Key>
+      <PropertyRef Name="radif" />
+    </Key>
+    <Property Name="radif" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amval" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="pdId" Type="int" Nullable="false" />
+    <Property Name="customerId" Type="smallint" Nullable="false" />
+    <Property Name="esghatDate" Type="smalldatetime" />
+    <Property Name="esghatDescription" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblGender">
+    <Key>
+      <PropertyRef Name="genderId" />
+    </Key>
+    <Property Name="genderId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="genderName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblInpPayment">
+    <Key>
+      <PropertyRef Name="inpFactorId" />
+      <PropertyRef Name="radif" />
+    </Key>
+    <Property Name="inpFactorId" Type="int" Nullable="false" />
+    <Property Name="radif" Type="smallint" Nullable="false" />
+    <Property Name="checkDate" Type="datetime" />
+    <Property Name="giveMoney" Type="money" />
+    <Property Name="paid" Type="smallint" />
+    <Property Name="paidDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblInputFactorDetail">
+    <Key>
+      <PropertyRef Name="inpFactorId" />
+      <PropertyRef Name="inpFactorDetailId" />
+    </Key>
+    <Property Name="inpFactorId" Type="int" Nullable="false" />
+    <Property Name="inpFactorDetailId" Type="int" Nullable="false" />
+    <Property Name="pdId" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="smallint" Nullable="false" />
+    <Property Name="unitPrice" Type="money" />
+    <Property Name="discount" Type="float" />
+    <Property Name="totalPrice" Type="money" />
+    <Property Name="inpDetailDesc" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblInputFactorMain">
+    <Key>
+      <PropertyRef Name="inpFactorId" />
+    </Key>
+    <Property Name="inpFactorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="smallint" />
+    <Property Name="inpFactorDate" Type="smalldatetime" />
+    <Property Name="inpFactorTime" Type="nvarchar" MaxLength="8" />
+    <Property Name="userId" Type="int" />
+    <Property Name="inpFactorDesc" Type="nvarchar" MaxLength="100" />
+    <Property Name="inpFactorTotalPrice" Type="money" />
+    <Property Name="payType" Type="smallint" />
+  </EntityType>
+  <EntityType Name="tblLoginLog">
+    <Key>
+      <PropertyRef Name="radif" />
+    </Key>
+    <Property Name="radif" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="xTime" Type="nvarchar" MaxLength="10" />
+    <Property Name="xDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="ipAddress" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="tblMaterial">
+    <Key>
+      <PropertyRef Name="materialId" />
+    </Key>
+    <Property Name="materialId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="materialName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblMojoodi">
+    <Key>
+      <PropertyRef Name="pdid" />
+    </Key>
+    <Property Name="pdid" Type="int" Nullable="false" />
+    <Property Name="number" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbloutPayment">
+    <Key>
+      <PropertyRef Name="outFactorId" />
+      <PropertyRef Name="radif" />
+    </Key>
+    <Property Name="outFactorId" Type="int" Nullable="false" />
+    <Property Name="radif" Type="smallint" Nullable="false" />
+    <Property Name="checkDate" Type="datetime" />
+    <Property Name="giveMoney" Type="money" />
+    <Property Name="paid" Type="smallint" />
+    <Property Name="paidDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblOutputFactorDetail">
+    <Key>
+      <PropertyRef Name="outFactorId" />
+      <PropertyRef Name="outFactorDetailId" />
+    </Key>
+    <Property Name="outFactorId" Type="int" Nullable="false" />
+    <Property Name="outFactorDetailId" Type="int" Nullable="false" />
+    <Property Name="pdId" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="smallint" Nullable="false" />
+    <Property Name="unitPrice" Type="money" />
+    <Property Name="discount" Type="float" />
+    <Property Name="totalPrice" Type="money" />
+    <Property Name="outDetailDesc" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblOutputFactorMain">
+    <Key>
+      <PropertyRef Name="outFactorId" />
+    </Key>
+    <Property Name="outFactorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="smallint" />
+    <Property Name="outFactorDate" Type="smalldatetime" />
+    <Property Name="outFactorTime" Type="nvarchar" MaxLength="8" />
+    <Property Name="userId" Type="int" />
+    <Property Name="outFactorDesc" Type="nvarchar" MaxLength="100" />
+    <Property Name="outFactorTotalPrice" Type="money" />
+    <Property Name="payType" Type="smallint" />
+  </EntityType>
+  <EntityType Name="tblProductGroup">
+    <Key>
+      <PropertyRef Name="productGroupId" />
+    </Key>
+    <Property Name="productGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblProducts">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productGroupId" Type="int" Nullable="false" />
+    <Property Name="productName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblProductsDetail">
+    <Key>
+      <PropertyRef Name="pdId" />
+    </Key>
+    <Property Name="pdId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productId" Type="int" Nullable="false" />
+    <Property Name="pBrand" Type="smallint" />
+    <Property Name="pMaterial" Type="smallint" />
+    <Property Name="pColor" Type="smallint" />
+    <Property Name="pSize" Type="smallint" />
+    <Property Name="pGender" Type="smallint" />
+    <Property Name="pCountry" Type="smallint" />
+    <Property Name="pDescription" Type="nvarchar" MaxLength="100" />
+    <Property Name="pImage" Type="nchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="tblServiceDetail">
+    <Key>
+      <PropertyRef Name="serviceId" />
+      <PropertyRef Name="serviceDetailId" />
+    </Key>
+    <Property Name="serviceId" Type="int" Nullable="false" />
+    <Property Name="serviceDetailId" Type="int" Nullable="false" />
+    <Property Name="pdid" Type="int" />
+    <Property Name="amval" Type="nvarchar" MaxLength="5" />
+    <Property Name="customerId" Type="smallint" />
+    <Property Name="servicePrice" Type="money" />
+    <Property Name="serviceDetailDesc" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblServiceMain">
+    <Key>
+      <PropertyRef Name="serviceId" />
+    </Key>
+    <Property Name="serviceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="serviceDate" Type="smalldatetime" />
+    <Property Name="vendorId" Type="smallint" />
+    <Property Name="serviceDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="serviceTotalPrice" Type="money" />
+    <Property Name="userid" Type="int" />
+  </EntityType>
+  <EntityType Name="tblSize">
+    <Key>
+      <PropertyRef Name="sizeId" />
+    </Key>
+    <Property Name="sizeId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sizeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblTakhsisAmval">
+    <Key>
+      <PropertyRef Name="radif" />
+    </Key>
+    <Property Name="radif" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerId" Type="smallint" Nullable="false" />
+    <Property Name="pdId" Type="int" Nullable="false" />
+    <Property Name="amval" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="deliverDate" Type="smalldatetime" />
+    <Property Name="active" Type="bit" />
+    <Property Name="esghat" Type="bit" />
+    <Property Name="description" Type="nvarchar" MaxLength="100" />
+    <Property Name="userId" Type="int" />
+  </EntityType>
+  <EntityType Name="tblUserLevel">
+    <Key>
+      <PropertyRef Name="levelCode" />
+    </Key>
+    <Property Name="levelCode" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="levelDescription" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+    <Property Name="levelCode" Type="smallint" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblVendors">
+    <Key>
+      <PropertyRef Name="vendorId" />
+    </Key>
+    <Property Name="vendorId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="companyName" Type="nvarchar" MaxLength="40" />
+    <Property Name="vendorName" Type="nvarchar" MaxLength="30" />
+    <Property Name="companyPhone" Type="nvarchar" MaxLength="25" />
+    <Property Name="fax" Type="nvarchar" MaxLength="25" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="25" />
+    <Property Name="email" Type="nvarchar" MaxLength="30" />
+    <Property Name="address" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vActionAmval' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vActionAmval">
+    <Key>
+      <PropertyRef Name="customerId" />
+    </Key>
+    <Property Name="amval" Type="nvarchar" MaxLength="5" />
+    <Property Name="actionId" Type="smallint" />
+    <Property Name="actionFarsiName" Type="nvarchar" MaxLength="20" />
+    <Property Name="actionDate" Type="smalldatetime" />
+    <Property Name="actionName" Type="nvarchar" MaxLength="20" />
+    <Property Name="productNameX" Type="nvarchar" MaxLength="457" />
+    <Property Name="customerId" Type="smallint" Nullable="false" />
+    <Property Name="customerFName" Type="nvarchar" MaxLength="25" />
+    <Property Name="customerLName" Type="nvarchar" MaxLength="25" />
+    <Property Name="myDate" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vAmval' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vAmval">
+    <Key>
+      <PropertyRef Name="amval" />
+      <PropertyRef Name="pdId" />
+    </Key>
+    <Property Name="amval" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="pdId" Type="int" Nullable="false" />
+    <Property Name="productNameX" Type="nvarchar" MaxLength="457" />
+    <Property Name="myDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="buyPrice" Type="money" />
+    <Property Name="sapPR" Type="nvarchar" MaxLength="10" />
+    <Property Name="serialNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="barcodeNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="description" Type="nvarchar" MaxLength="50" />
+    <Property Name="userId" Type="int" />
+    <Property Name="buyDate" Type="smalldatetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vAmvalCustomer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vAmvalCustomer">
+    <Key>
+      <PropertyRef Name="amval" />
+      <PropertyRef Name="customerId" />
+      <PropertyRef Name="radif" />
+      <PropertyRef Name="pdId" />
+    </Key>
+    <Property Name="amval" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="customerFName" Type="nvarchar" MaxLength="25" />
+    <Property Name="customerLName" Type="nvarchar" MaxLength="25" />
+    <Property Name="active" Type="bit" />
+    <Property Name="esghat" Type="bit" />
+    <Property Name="productName" Type="nvarchar" MaxLength="50" />
+    <Property Name="customerId" Type="smallint" Nullable="false" />
+    <Property Name="radif" Type="int" Nullable="false" />
+    <Property Name="pdId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vEshghatAmval' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vEshghatAmval">
+    <Key>
+      <PropertyRef Name="amval" />
+    </Key>
+    <Property Name="amval" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="202" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="51" />
+    <Property Name="myDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="esghatDescription" Type="nvarchar" MaxLength="100" />
+    <Property Name="esghatDate" Type="smalldatetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vGardeshAmval' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vGardeshAmval">
+    <Key>
+      <PropertyRef Name="radif" />
+      <PropertyRef Name="customerId" />
+      <PropertyRef Name="amval" />
+    </Key>
+    <Property Name="radif" Type="int" Nullable="false" />
+    <Property Name="customerId" Type="smallint" Nullable="false" />
+    <Property Name="amval" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="productNameX" Type="nvarchar" MaxLength="457" />
+    <Property Name="customerFName" Type="nvarchar" MaxLength="25" />
+    <Property Name="customerLName" Type="nvarchar" MaxLength="25" />
+    <Property Name="description" Type="nvarchar" MaxLength="100" />
+    <Property Name="deliverDate" Type="smalldatetime" />
+    <Property Name="myDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="active" Type="bit" />
+    <Property Name="esghat" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vInputFactorFull' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vInputFactorFull">
+    <Key>
+      <PropertyRef Name="inpFactorDetailId" />
+      <PropertyRef Name="pdId" />
+      <PropertyRef Name="quantity" />
+    </Key>
+    <Property Name="inpFactorId" Type="int" />
+    <Property Name="CustomerId" Type="smallint" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="51" />
+    <Property Name="inpFactorDate" Type="smalldatetime" />
+    <Property Name="myDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="inpFactorTime" Type="nvarchar" MaxLength="8" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="inpFactorDesc" Type="nvarchar" MaxLength="100" />
+    <Property Name="inpFactorDetailId" Type="int" Nullable="false" />
+    <Property Name="pdId" Type="int" Nullable="false" />
+    <Property Name="productName" Type="nvarchar" MaxLength="50" />
+    <Property Name="productGroupName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pBrand" Type="smallint" />
+    <Property Name="brandName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pColor" Type="smallint" />
+    <Property Name="colorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pMaterial" Type="smallint" />
+    <Property Name="materialName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pSize" Type="smallint" />
+    <Property Name="sizeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pGender" Type="smallint" />
+    <Property Name="genderName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pCountry" Type="smallint" />
+    <Property Name="countryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pDescription" Type="nvarchar" MaxLength="100" />
+    <Property Name="pImage" Type="nchar" MaxLength="150" />
+    <Property Name="quantity" Type="smallint" Nullable="false" />
+    <Property Name="unitPrice" Type="money" />
+    <Property Name="discount" Type="float" />
+    <Property Name="totalPrice" Type="money" />
+    <Property Name="inpDetailDesc" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vOutputFactorFull' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vOutputFactorFull">
+    <Key>
+      <PropertyRef Name="outFactorDetailId" />
+      <PropertyRef Name="pdId" />
+      <PropertyRef Name="quantity" />
+    </Key>
+    <Property Name="outFactorId" Type="int" />
+    <Property Name="CustomerId" Type="smallint" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="51" />
+    <Property Name="outFactorDate" Type="smalldatetime" />
+    <Property Name="myDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="outFactorTime" Type="nvarchar" MaxLength="8" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="outFactorDesc" Type="nvarchar" MaxLength="100" />
+    <Property Name="outFactorDetailId" Type="int" Nullable="false" />
+    <Property Name="pdId" Type="int" Nullable="false" />
+    <Property Name="productName" Type="nvarchar" MaxLength="50" />
+    <Property Name="productGroupName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pBrand" Type="smallint" />
+    <Property Name="brandName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pColor" Type="smallint" />
+    <Property Name="colorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pMaterial" Type="smallint" />
+    <Property Name="materialName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pSize" Type="smallint" />
+    <Property Name="sizeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pGender" Type="smallint" />
+    <Property Name="genderName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pCountry" Type="smallint" />
+    <Property Name="countryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pDescription" Type="nvarchar" MaxLength="100" />
+    <Property Name="pImage" Type="nchar" MaxLength="150" />
+    <Property Name="quantity" Type="smallint" Nullable="false" />
+    <Property Name="unitPrice" Type="money" />
+    <Property Name="discount" Type="float" />
+    <Property Name="totalPrice" Type="money" />
+    <Property Name="outDetailDesc" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vProductDetailFilter' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vProductDetailFilter">
+    <Key>
+      <PropertyRef Name="pdId" />
+    </Key>
+    <Property Name="pdId" Type="int" Nullable="false" />
+    <Property Name="productNameX" Type="nvarchar" MaxLength="457" />
+    <Property Name="number" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vProductDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vProductDetails">
+    <Key>
+      <PropertyRef Name="pdId" />
+      <PropertyRef Name="productId" />
+      <PropertyRef Name="productGroupName" />
+    </Key>
+    <Property Name="pdId" Type="int" Nullable="false" />
+    <Property Name="productName" Type="nvarchar" MaxLength="50" />
+    <Property Name="productId" Type="int" Nullable="false" />
+    <Property Name="productGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="pBrand" Type="smallint" />
+    <Property Name="brandName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pMaterial" Type="smallint" />
+    <Property Name="materialName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pColor" Type="smallint" />
+    <Property Name="colorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pSize" Type="smallint" />
+    <Property Name="sizeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pGender" Type="smallint" />
+    <Property Name="genderName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pCountry" Type="smallint" />
+    <Property Name="countryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pDescription" Type="nvarchar" MaxLength="100" />
+    <Property Name="pImage" Type="nchar" MaxLength="150" />
+    <Property Name="number" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vProducts">
+    <Key>
+      <PropertyRef Name="productId" />
+      <PropertyRef Name="productGroupName" />
+      <PropertyRef Name="productGroupId" />
+    </Key>
+    <Property Name="productId" Type="int" Nullable="false" />
+    <Property Name="productName" Type="nvarchar" MaxLength="50" />
+    <Property Name="productGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="productGroupId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vServiceFull' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vServiceFull">
+    <Key>
+      <PropertyRef Name="serviceId" />
+    </Key>
+    <Property Name="serviceId" Type="int" Nullable="false" />
+    <Property Name="serviceDate" Type="smalldatetime" />
+    <Property Name="myDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="vendorId" Type="smallint" />
+    <Property Name="companyName" Type="nvarchar" MaxLength="40" />
+    <Property Name="vendorName" Type="nvarchar" MaxLength="30" />
+    <Property Name="serviceDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="serviceTotalPrice" Type="money" />
+    <Property Name="productNameX" Type="nvarchar" MaxLength="457" />
+    <Property Name="customerLName" Type="nvarchar" MaxLength="25" />
+    <Property Name="customerFName" Type="nvarchar" MaxLength="25" />
+    <Property Name="servicePrice" Type="money" />
+    <Property Name="serviceDetailDesc" Type="nvarchar" MaxLength="50" />
+    <Property Name="pdid" Type="int" />
+    <Property Name="customerId" Type="smallint" />
+    <Property Name="amval" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KOPSTORE.dbo.vUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="levelCode" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+    <Property Name="levelDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="levelCode" Type="smallint" Nullable="false" />
+    <Property Name="active" Type="bit" />
+  </EntityType>
+  <Association Name="FK_productTable_ToTable">
+    <End Role="tblProductGroup" Type="Self.tblProductGroup" Multiplicity="1" />
+    <End Role="tblProducts" Type="Self.tblProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductGroup">
+        <PropertyRef Name="productGroupId" />
+      </Principal>
+      <Dependent Role="tblProducts">
+        <PropertyRef Name="productGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_ToProduct">
+    <End Role="tblProducts" Type="Self.tblProducts" Multiplicity="1" />
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProducts">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAmvalAction_tblActions">
+    <End Role="tblActions" Type="Self.tblActions" Multiplicity="0..1" />
+    <End Role="tblAmvalAction" Type="Self.tblAmvalAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblActions">
+        <PropertyRef Name="actionId" />
+      </Principal>
+      <Dependent Role="tblAmvalAction">
+        <PropertyRef Name="actionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAmvalAction_tblAmval">
+    <End Role="tblAmval" Type="Self.tblAmval" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblAmvalAction" Type="Self.tblAmvalAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAmval">
+        <PropertyRef Name="amval" />
+      </Principal>
+      <Dependent Role="tblAmvalAction">
+        <PropertyRef Name="amval" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEsghat_tblCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+    <End Role="tblEsghatAmval" Type="Self.tblEsghatAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="customerId" />
+      </Principal>
+      <Dependent Role="tblEsghatAmval">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEsghat_tblProductsDetail">
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="1" />
+    <End Role="tblEsghatAmval" Type="Self.tblEsghatAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblEsghatAmval">
+        <PropertyRef Name="pdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEsghatAmval_tblAmval">
+    <End Role="tblAmval" Type="Self.tblAmval" Multiplicity="1" />
+    <End Role="tblEsghatAmval" Type="Self.tblEsghatAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAmval">
+        <PropertyRef Name="amval" />
+      </Principal>
+      <Dependent Role="tblEsghatAmval">
+        <PropertyRef Name="amval" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblInpPayment_inpFactorMain">
+    <End Role="tblInputFactorMain" Type="Self.tblInputFactorMain" Multiplicity="1" />
+    <End Role="tblInpPayment" Type="Self.tblInpPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblInputFactorMain">
+        <PropertyRef Name="inpFactorId" />
+      </Principal>
+      <Dependent Role="tblInpPayment">
+        <PropertyRef Name="inpFactorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblInputFactorDetail_ToInputMain">
+    <End Role="tblInputFactorMain" Type="Self.tblInputFactorMain" Multiplicity="1" />
+    <End Role="tblInputFactorDetail" Type="Self.tblInputFactorDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblInputFactorMain">
+        <PropertyRef Name="inpFactorId" />
+      </Principal>
+      <Dependent Role="tblInputFactorDetail">
+        <PropertyRef Name="inpFactorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblInputFactorDetail_ToProductDetail">
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="1" />
+    <End Role="tblInputFactorDetail" Type="Self.tblInputFactorDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblInputFactorDetail">
+        <PropertyRef Name="pdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblInputFactorMain_ToCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="0..1" />
+    <End Role="tblInputFactorMain" Type="Self.tblInputFactorMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="customerId" />
+      </Principal>
+      <Dependent Role="tblInputFactorMain">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblInputFactorMain_ToUser">
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+    <End Role="tblInputFactorMain" Type="Self.tblInputFactorMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblInputFactorMain">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMojoodi_tblProductsDetail">
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="1" />
+    <End Role="tblMojoodi" Type="Self.tblMojoodi" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblMojoodi">
+        <PropertyRef Name="pdid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOutPayment_outFactorMain">
+    <End Role="tblOutputFactorMain" Type="Self.tblOutputFactorMain" Multiplicity="1" />
+    <End Role="tbloutPayment" Type="Self.tbloutPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOutputFactorMain">
+        <PropertyRef Name="outFactorId" />
+      </Principal>
+      <Dependent Role="tbloutPayment">
+        <PropertyRef Name="outFactorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOutputFactorDetail_ToOutputMain">
+    <End Role="tblOutputFactorMain" Type="Self.tblOutputFactorMain" Multiplicity="1" />
+    <End Role="tblOutputFactorDetail" Type="Self.tblOutputFactorDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOutputFactorMain">
+        <PropertyRef Name="outFactorId" />
+      </Principal>
+      <Dependent Role="tblOutputFactorDetail">
+        <PropertyRef Name="outFactorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOutputFactorDetail_ToProductDetail">
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="1" />
+    <End Role="tblOutputFactorDetail" Type="Self.tblOutputFactorDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblOutputFactorDetail">
+        <PropertyRef Name="pdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOutputFactorMain_ToCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="0..1" />
+    <End Role="tblOutputFactorMain" Type="Self.tblOutputFactorMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="customerId" />
+      </Principal>
+      <Dependent Role="tblOutputFactorMain">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOutputFactorMain_ToUser">
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+    <End Role="tblOutputFactorMain" Type="Self.tblOutputFactorMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblOutputFactorMain">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProductsDetail_tblBrand">
+    <End Role="tblBrand" Type="Self.tblBrand" Multiplicity="0..1" />
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBrand">
+        <PropertyRef Name="brandID" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pBrand" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProductsDetail_tblColor">
+    <End Role="tblColor" Type="Self.tblColor" Multiplicity="0..1" />
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblColor">
+        <PropertyRef Name="colorId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pColor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProductsDetail_tblCountry">
+    <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="0..1" />
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCountry">
+        <PropertyRef Name="countryId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pCountry" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProductsDetail_tblGender">
+    <End Role="tblGender" Type="Self.tblGender" Multiplicity="0..1" />
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGender">
+        <PropertyRef Name="genderId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pGender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProductsDetail_tblMaterial">
+    <End Role="tblMaterial" Type="Self.tblMaterial" Multiplicity="0..1" />
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMaterial">
+        <PropertyRef Name="materialId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProductsDetail_tblSize">
+    <End Role="tblSize" Type="Self.tblSize" Multiplicity="0..1" />
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSize">
+        <PropertyRef Name="sizeId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="pSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblServiceDetail_tblAmval">
+    <End Role="tblAmval" Type="Self.tblAmval" Multiplicity="0..1" />
+    <End Role="tblServiceDetail" Type="Self.tblServiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAmval">
+        <PropertyRef Name="amval" />
+      </Principal>
+      <Dependent Role="tblServiceDetail">
+        <PropertyRef Name="amval" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblServiceDetail_tblCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="0..1" />
+    <End Role="tblServiceDetail" Type="Self.tblServiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="customerId" />
+      </Principal>
+      <Dependent Role="tblServiceDetail">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblServiceDetail_tblProductsDetail">
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="0..1" />
+    <End Role="tblServiceDetail" Type="Self.tblServiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblServiceDetail">
+        <PropertyRef Name="pdid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblServiceDetail_tblServiceMain">
+    <End Role="tblServiceMain" Type="Self.tblServiceMain" Multiplicity="1" />
+    <End Role="tblServiceDetail" Type="Self.tblServiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblServiceMain">
+        <PropertyRef Name="serviceId" />
+      </Principal>
+      <Dependent Role="tblServiceDetail">
+        <PropertyRef Name="serviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblServiceMain_tblVendors">
+    <End Role="tblVendors" Type="Self.tblVendors" Multiplicity="0..1" />
+    <End Role="tblServiceMain" Type="Self.tblServiceMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblVendors">
+        <PropertyRef Name="vendorId" />
+      </Principal>
+      <Dependent Role="tblServiceMain">
+        <PropertyRef Name="vendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTakhsisAmval_tblAmval">
+    <End Role="tblAmval" Type="Self.tblAmval" Multiplicity="1" />
+    <End Role="tblTakhsisAmval" Type="Self.tblTakhsisAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAmval">
+        <PropertyRef Name="amval" />
+      </Principal>
+      <Dependent Role="tblTakhsisAmval">
+        <PropertyRef Name="amval" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTakhsisAmval_tblCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+    <End Role="tblTakhsisAmval" Type="Self.tblTakhsisAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="customerId" />
+      </Principal>
+      <Dependent Role="tblTakhsisAmval">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTakhsisAmval_tblProductsDetail">
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="1" />
+    <End Role="tblTakhsisAmval" Type="Self.tblTakhsisAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductsDetail">
+        <PropertyRef Name="pdId" />
+      </Principal>
+      <Dependent Role="tblTakhsisAmval">
+        <PropertyRef Name="pdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTakhsisAmval_tblUsers">
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+    <End Role="tblTakhsisAmval" Type="Self.tblTakhsisAmval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblTakhsisAmval">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUsers_tblUserLevel">
+    <End Role="tblUserLevel" Type="Self.tblUserLevel" Multiplicity="0..1" />
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserLevel">
+        <PropertyRef Name="levelCode" />
+      </Principal>
+      <Dependent Role="tblUsers">
+        <PropertyRef Name="levelCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_FiveMostCustomerOut" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="d1" Type="smalldatetime" Mode="In" />
+    <Parameter Name="d2" Type="smalldatetime" Mode="In" />
+  </Function>
+  <Function Name="sp_FiveMostProductOut" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="d1" Type="smalldatetime" Mode="In" />
+    <Parameter Name="d2" Type="smalldatetime" Mode="In" />
+  </Function>
+  <Function Name="sp_MojoodiLessThan5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="n1" Type="int" Mode="In" />
+    <Parameter Name="n2" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_RepAmvalAssignToCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="op" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_TafsilUsersDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="d1" Type="nvarchar" Mode="In" />
+    <Parameter Name="d2" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_TajmiMasrafiProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="d1" Type="nvarchar" Mode="In" />
+    <Parameter Name="d2" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_TheLastFivePersonWhoTake" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="KOPStoreModelStoreContainer">
+    <EntitySet Name="tblActions" EntityType="Self.tblActions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAmval" EntityType="Self.tblAmval" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAmvalAction" EntityType="Self.tblAmvalAction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBrand" EntityType="Self.tblBrand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblColor" EntityType="Self.tblColor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCountry" EntityType="Self.tblCountry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEsghatAmval" EntityType="Self.tblEsghatAmval" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblGender" EntityType="Self.tblGender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblInpPayment" EntityType="Self.tblInpPayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblInputFactorDetail" EntityType="Self.tblInputFactorDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblInputFactorMain" EntityType="Self.tblInputFactorMain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLoginLog" EntityType="Self.tblLoginLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMaterial" EntityType="Self.tblMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMojoodi" EntityType="Self.tblMojoodi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbloutPayment" EntityType="Self.tbloutPayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOutputFactorDetail" EntityType="Self.tblOutputFactorDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOutputFactorMain" EntityType="Self.tblOutputFactorMain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProductGroup" EntityType="Self.tblProductGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProducts" EntityType="Self.tblProducts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProductsDetail" EntityType="Self.tblProductsDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblServiceDetail" EntityType="Self.tblServiceDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblServiceMain" EntityType="Self.tblServiceMain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSize" EntityType="Self.tblSize" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTakhsisAmval" EntityType="Self.tblTakhsisAmval" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserLevel" EntityType="Self.tblUserLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVendors" EntityType="Self.tblVendors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vActionAmval" EntityType="Self.vActionAmval" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vActionAmval].[amval] AS [amval], 
+[vActionAmval].[actionId] AS [actionId], 
+[vActionAmval].[actionFarsiName] AS [actionFarsiName], 
+[vActionAmval].[actionDate] AS [actionDate], 
+[vActionAmval].[actionName] AS [actionName], 
+[vActionAmval].[productNameX] AS [productNameX], 
+[vActionAmval].[customerId] AS [customerId], 
+[vActionAmval].[customerFName] AS [customerFName], 
+[vActionAmval].[customerLName] AS [customerLName], 
+[vActionAmval].[myDate] AS [myDate]
+FROM [dbo].[vActionAmval] AS [vActionAmval]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vAmval" EntityType="Self.vAmval" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vAmval].[amval] AS [amval], 
+[vAmval].[pdId] AS [pdId], 
+[vAmval].[productNameX] AS [productNameX], 
+[vAmval].[myDate] AS [myDate], 
+[vAmval].[buyPrice] AS [buyPrice], 
+[vAmval].[sapPR] AS [sapPR], 
+[vAmval].[serialNumber] AS [serialNumber], 
+[vAmval].[barcodeNumber] AS [barcodeNumber], 
+[vAmval].[description] AS [description], 
+[vAmval].[userId] AS [userId], 
+[vAmval].[buyDate] AS [buyDate]
+FROM [dbo].[vAmval] AS [vAmval]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vAmvalCustomer" EntityType="Self.vAmvalCustomer" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vAmvalCustomer].[amval] AS [amval], 
+[vAmvalCustomer].[customerFName] AS [customerFName], 
+[vAmvalCustomer].[customerLName] AS [customerLName], 
+[vAmvalCustomer].[active] AS [active], 
+[vAmvalCustomer].[esghat] AS [esghat], 
+[vAmvalCustomer].[productName] AS [productName], 
+[vAmvalCustomer].[customerId] AS [customerId], 
+[vAmvalCustomer].[radif] AS [radif], 
+[vAmvalCustomer].[pdId] AS [pdId]
+FROM [dbo].[vAmvalCustomer] AS [vAmvalCustomer]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vEshghatAmval" EntityType="Self.vEshghatAmval" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vEshghatAmval].[amval] AS [amval], 
+[vEshghatAmval].[ProductName] AS [ProductName], 
+[vEshghatAmval].[CustomerName] AS [CustomerName], 
+[vEshghatAmval].[myDate] AS [myDate], 
+[vEshghatAmval].[esghatDescription] AS [esghatDescription], 
+[vEshghatAmval].[esghatDate] AS [esghatDate]
+FROM [dbo].[vEshghatAmval] AS [vEshghatAmval]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vGardeshAmval" EntityType="Self.vGardeshAmval" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vGardeshAmval].[radif] AS [radif], 
+[vGardeshAmval].[customerId] AS [customerId], 
+[vGardeshAmval].[amval] AS [amval], 
+[vGardeshAmval].[productNameX] AS [productNameX], 
+[vGardeshAmval].[customerFName] AS [customerFName], 
+[vGardeshAmval].[customerLName] AS [customerLName], 
+[vGardeshAmval].[description] AS [description], 
+[vGardeshAmval].[deliverDate] AS [deliverDate], 
+[vGardeshAmval].[myDate] AS [myDate], 
+[vGardeshAmval].[active] AS [active], 
+[vGardeshAmval].[esghat] AS [esghat]
+FROM [dbo].[vGardeshAmval] AS [vGardeshAmval]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vInputFactorFull" EntityType="Self.vInputFactorFull" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vInputFactorFull].[inpFactorId] AS [inpFactorId], 
+[vInputFactorFull].[CustomerId] AS [CustomerId], 
+[vInputFactorFull].[CustomerName] AS [CustomerName], 
+[vInputFactorFull].[inpFactorDate] AS [inpFactorDate], 
+[vInputFactorFull].[myDate] AS [myDate], 
+[vInputFactorFull].[inpFactorTime] AS [inpFactorTime], 
+[vInputFactorFull].[username] AS [username], 
+[vInputFactorFull].[inpFactorDesc] AS [inpFactorDesc], 
+[vInputFactorFull].[inpFactorDetailId] AS [inpFactorDetailId], 
+[vInputFactorFull].[pdId] AS [pdId], 
+[vInputFactorFull].[productName] AS [productName], 
+[vInputFactorFull].[productGroupName] AS [productGroupName], 
+[vInputFactorFull].[pBrand] AS [pBrand], 
+[vInputFactorFull].[brandName] AS [brandName], 
+[vInputFactorFull].[pColor] AS [pColor], 
+[vInputFactorFull].[colorName] AS [colorName], 
+[vInputFactorFull].[pMaterial] AS [pMaterial], 
+[vInputFactorFull].[materialName] AS [materialName], 
+[vInputFactorFull].[pSize] AS [pSize], 
+[vInputFactorFull].[sizeName] AS [sizeName], 
+[vInputFactorFull].[pGender] AS [pGender], 
+[vInputFactorFull].[genderName] AS [genderName], 
+[vInputFactorFull].[pCountry] AS [pCountry], 
+[vInputFactorFull].[countryName] AS [countryName], 
+[vInputFactorFull].[pDescription] AS [pDescription], 
+[vInputFactorFull].[pImage] AS [pImage], 
+[vInputFactorFull].[quantity] AS [quantity], 
+[vInputFactorFull].[unitPrice] AS [unitPrice], 
+[vInputFactorFull].[discount] AS [discount], 
+[vInputFactorFull].[totalPrice] AS [totalPrice], 
+[vInputFactorFull].[inpDetailDesc] AS [inpDetailDesc]
+FROM [dbo].[vInputFactorFull] AS [vInputFactorFull]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vOutputFactorFull" EntityType="Self.vOutputFactorFull" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vOutputFactorFull].[outFactorId] AS [outFactorId], 
+[vOutputFactorFull].[CustomerId] AS [CustomerId], 
+[vOutputFactorFull].[CustomerName] AS [CustomerName], 
+[vOutputFactorFull].[outFactorDate] AS [outFactorDate], 
+[vOutputFactorFull].[myDate] AS [myDate], 
+[vOutputFactorFull].[outFactorTime] AS [outFactorTime], 
+[vOutputFactorFull].[username] AS [username], 
+[vOutputFactorFull].[outFactorDesc] AS [outFactorDesc], 
+[vOutputFactorFull].[outFactorDetailId] AS [outFactorDetailId], 
+[vOutputFactorFull].[pdId] AS [pdId], 
+[vOutputFactorFull].[productName] AS [productName], 
+[vOutputFactorFull].[productGroupName] AS [productGroupName], 
+[vOutputFactorFull].[pBrand] AS [pBrand], 
+[vOutputFactorFull].[brandName] AS [brandName], 
+[vOutputFactorFull].[pColor] AS [pColor], 
+[vOutputFactorFull].[colorName] AS [colorName], 
+[vOutputFactorFull].[pMaterial] AS [pMaterial], 
+[vOutputFactorFull].[materialName] AS [materialName], 
+[vOutputFactorFull].[pSize] AS [pSize], 
+[vOutputFactorFull].[sizeName] AS [sizeName], 
+[vOutputFactorFull].[pGender] AS [pGender], 
+[vOutputFactorFull].[genderName] AS [genderName], 
+[vOutputFactorFull].[pCountry] AS [pCountry], 
+[vOutputFactorFull].[countryName] AS [countryName], 
+[vOutputFactorFull].[pDescription] AS [pDescription], 
+[vOutputFactorFull].[pImage] AS [pImage], 
+[vOutputFactorFull].[quantity] AS [quantity], 
+[vOutputFactorFull].[unitPrice] AS [unitPrice], 
+[vOutputFactorFull].[discount] AS [discount], 
+[vOutputFactorFull].[totalPrice] AS [totalPrice], 
+[vOutputFactorFull].[outDetailDesc] AS [outDetailDesc]
+FROM [dbo].[vOutputFactorFull] AS [vOutputFactorFull]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vProductDetailFilter" EntityType="Self.vProductDetailFilter" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vProductDetailFilter].[pdId] AS [pdId], 
+[vProductDetailFilter].[productNameX] AS [productNameX], 
+[vProductDetailFilter].[number] AS [number]
+FROM [dbo].[vProductDetailFilter] AS [vProductDetailFilter]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vProductDetails" EntityType="Self.vProductDetails" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vProductDetails].[pdId] AS [pdId], 
+[vProductDetails].[productName] AS [productName], 
+[vProductDetails].[productId] AS [productId], 
+[vProductDetails].[productGroupName] AS [productGroupName], 
+[vProductDetails].[pBrand] AS [pBrand], 
+[vProductDetails].[brandName] AS [brandName], 
+[vProductDetails].[pMaterial] AS [pMaterial], 
+[vProductDetails].[materialName] AS [materialName], 
+[vProductDetails].[pColor] AS [pColor], 
+[vProductDetails].[colorName] AS [colorName], 
+[vProductDetails].[pSize] AS [pSize], 
+[vProductDetails].[sizeName] AS [sizeName], 
+[vProductDetails].[pGender] AS [pGender], 
+[vProductDetails].[genderName] AS [genderName], 
+[vProductDetails].[pCountry] AS [pCountry], 
+[vProductDetails].[countryName] AS [countryName], 
+[vProductDetails].[pDescription] AS [pDescription], 
+[vProductDetails].[pImage] AS [pImage], 
+[vProductDetails].[number] AS [number]
+FROM [dbo].[vProductDetails] AS [vProductDetails]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vProducts" EntityType="Self.vProducts" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vProducts].[productId] AS [productId], 
+[vProducts].[productName] AS [productName], 
+[vProducts].[productGroupName] AS [productGroupName], 
+[vProducts].[productGroupId] AS [productGroupId]
+FROM [dbo].[vProducts] AS [vProducts]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vServiceFull" EntityType="Self.vServiceFull" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vServiceFull].[serviceId] AS [serviceId], 
+[vServiceFull].[serviceDate] AS [serviceDate], 
+[vServiceFull].[myDate] AS [myDate], 
+[vServiceFull].[vendorId] AS [vendorId], 
+[vServiceFull].[companyName] AS [companyName], 
+[vServiceFull].[vendorName] AS [vendorName], 
+[vServiceFull].[serviceDescription] AS [serviceDescription], 
+[vServiceFull].[serviceTotalPrice] AS [serviceTotalPrice], 
+[vServiceFull].[productNameX] AS [productNameX], 
+[vServiceFull].[customerLName] AS [customerLName], 
+[vServiceFull].[customerFName] AS [customerFName], 
+[vServiceFull].[servicePrice] AS [servicePrice], 
+[vServiceFull].[serviceDetailDesc] AS [serviceDetailDesc], 
+[vServiceFull].[pdid] AS [pdid], 
+[vServiceFull].[customerId] AS [customerId], 
+[vServiceFull].[amval] AS [amval]
+FROM [dbo].[vServiceFull] AS [vServiceFull]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vUsers" EntityType="Self.vUsers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vUsers].[Id] AS [Id], 
+[vUsers].[username] AS [username], 
+[vUsers].[password] AS [password], 
+[vUsers].[levelDescription] AS [levelDescription], 
+[vUsers].[levelCode] AS [levelCode], 
+[vUsers].[active] AS [active]
+FROM [dbo].[vUsers] AS [vUsers]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_productTable_ToTable" Association="Self.FK_productTable_ToTable">
+      <End Role="tblProductGroup" EntitySet="tblProductGroup" />
+      <End Role="tblProducts" EntitySet="tblProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_ToProduct" Association="Self.FK_Table_ToProduct">
+      <End Role="tblProducts" EntitySet="tblProducts" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAmvalAction_tblActions" Association="Self.FK_tblAmvalAction_tblActions">
+      <End Role="tblActions" EntitySet="tblActions" />
+      <End Role="tblAmvalAction" EntitySet="tblAmvalAction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAmvalAction_tblAmval" Association="Self.FK_tblAmvalAction_tblAmval">
+      <End Role="tblAmval" EntitySet="tblAmval" />
+      <End Role="tblAmvalAction" EntitySet="tblAmvalAction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEsghat_tblCustomer" Association="Self.FK_tblEsghat_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomer" />
+      <End Role="tblEsghatAmval" EntitySet="tblEsghatAmval" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEsghat_tblProductsDetail" Association="Self.FK_tblEsghat_tblProductsDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+      <End Role="tblEsghatAmval" EntitySet="tblEsghatAmval" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEsghatAmval_tblAmval" Association="Self.FK_tblEsghatAmval_tblAmval">
+      <End Role="tblAmval" EntitySet="tblAmval" />
+      <End Role="tblEsghatAmval" EntitySet="tblEsghatAmval" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblInpPayment_inpFactorMain" Association="Self.FK_tblInpPayment_inpFactorMain">
+      <End Role="tblInputFactorMain" EntitySet="tblInputFactorMain" />
+      <End Role="tblInpPayment" EntitySet="tblInpPayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblInputFactorDetail_ToInputMain" Association="Self.FK_tblInputFactorDetail_ToInputMain">
+      <End Role="tblInputFactorMain" EntitySet="tblInputFactorMain" />
+      <End Role="tblInputFactorDetail" EntitySet="tblInputFactorDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblInputFactorDetail_ToProductDetail" Association="Self.FK_tblInputFactorDetail_ToProductDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+      <End Role="tblInputFactorDetail" EntitySet="tblInputFactorDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblInputFactorMain_ToCustomer" Association="Self.FK_tblInputFactorMain_ToCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomer" />
+      <End Role="tblInputFactorMain" EntitySet="tblInputFactorMain" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblInputFactorMain_ToUser" Association="Self.FK_tblInputFactorMain_ToUser">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblInputFactorMain" EntitySet="tblInputFactorMain" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMojoodi_tblProductsDetail" Association="Self.FK_tblMojoodi_tblProductsDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+      <End Role="tblMojoodi" EntitySet="tblMojoodi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOutPayment_outFactorMain" Association="Self.FK_tblOutPayment_outFactorMain">
+      <End Role="tblOutputFactorMain" EntitySet="tblOutputFactorMain" />
+      <End Role="tbloutPayment" EntitySet="tbloutPayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOutputFactorDetail_ToOutputMain" Association="Self.FK_tblOutputFactorDetail_ToOutputMain">
+      <End Role="tblOutputFactorMain" EntitySet="tblOutputFactorMain" />
+      <End Role="tblOutputFactorDetail" EntitySet="tblOutputFactorDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOutputFactorDetail_ToProductDetail" Association="Self.FK_tblOutputFactorDetail_ToProductDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+      <End Role="tblOutputFactorDetail" EntitySet="tblOutputFactorDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOutputFactorMain_ToCustomer" Association="Self.FK_tblOutputFactorMain_ToCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomer" />
+      <End Role="tblOutputFactorMain" EntitySet="tblOutputFactorMain" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOutputFactorMain_ToUser" Association="Self.FK_tblOutputFactorMain_ToUser">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblOutputFactorMain" EntitySet="tblOutputFactorMain" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProductsDetail_tblBrand" Association="Self.FK_tblProductsDetail_tblBrand">
+      <End Role="tblBrand" EntitySet="tblBrand" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProductsDetail_tblColor" Association="Self.FK_tblProductsDetail_tblColor">
+      <End Role="tblColor" EntitySet="tblColor" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProductsDetail_tblCountry" Association="Self.FK_tblProductsDetail_tblCountry">
+      <End Role="tblCountry" EntitySet="tblCountry" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProductsDetail_tblGender" Association="Self.FK_tblProductsDetail_tblGender">
+      <End Role="tblGender" EntitySet="tblGender" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProductsDetail_tblMaterial" Association="Self.FK_tblProductsDetail_tblMaterial">
+      <End Role="tblMaterial" EntitySet="tblMaterial" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProductsDetail_tblSize" Association="Self.FK_tblProductsDetail_tblSize">
+      <End Role="tblSize" EntitySet="tblSize" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblServiceDetail_tblAmval" Association="Self.FK_tblServiceDetail_tblAmval">
+      <End Role="tblAmval" EntitySet="tblAmval" />
+      <End Role="tblServiceDetail" EntitySet="tblServiceDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblServiceDetail_tblCustomer" Association="Self.FK_tblServiceDetail_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomer" />
+      <End Role="tblServiceDetail" EntitySet="tblServiceDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblServiceDetail_tblProductsDetail" Association="Self.FK_tblServiceDetail_tblProductsDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+      <End Role="tblServiceDetail" EntitySet="tblServiceDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblServiceDetail_tblServiceMain" Association="Self.FK_tblServiceDetail_tblServiceMain">
+      <End Role="tblServiceMain" EntitySet="tblServiceMain" />
+      <End Role="tblServiceDetail" EntitySet="tblServiceDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblServiceMain_tblVendors" Association="Self.FK_tblServiceMain_tblVendors">
+      <End Role="tblVendors" EntitySet="tblVendors" />
+      <End Role="tblServiceMain" EntitySet="tblServiceMain" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTakhsisAmval_tblAmval" Association="Self.FK_tblTakhsisAmval_tblAmval">
+      <End Role="tblAmval" EntitySet="tblAmval" />
+      <End Role="tblTakhsisAmval" EntitySet="tblTakhsisAmval" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTakhsisAmval_tblCustomer" Association="Self.FK_tblTakhsisAmval_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomer" />
+      <End Role="tblTakhsisAmval" EntitySet="tblTakhsisAmval" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTakhsisAmval_tblProductsDetail" Association="Self.FK_tblTakhsisAmval_tblProductsDetail">
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+      <End Role="tblTakhsisAmval" EntitySet="tblTakhsisAmval" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTakhsisAmval_tblUsers" Association="Self.FK_tblTakhsisAmval_tblUsers">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblTakhsisAmval" EntitySet="tblTakhsisAmval" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUsers_tblUserLevel" Association="Self.FK_tblUsers_tblUserLevel">
+      <End Role="tblUserLevel" EntitySet="tblUserLevel" />
+      <End Role="tblUsers" EntitySet="tblUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

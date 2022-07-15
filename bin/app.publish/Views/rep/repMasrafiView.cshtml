@@ -1,0 +1,171 @@
+﻿
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/functions/ReportMasrafi.js?v=1.0"></script>
+<script src="~/functions/PublicFunc.js?v=2.8"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bagaStyle.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="~/Scripts/notify.js"></script>
+<link rel="stylesheet" href="~/Content/jquery-confirm.css" />
+<script src="~/Scripts/jquery-confirm.js"></script>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>صفحه ی گزارشات</title>
+</head>
+<body>
+    <div class="row">
+        <div class="myDiv">
+            <div id="divUpMasrafi" class="myDiv" style="width: 100%; height: 50%; overflow: auto; color:white">
+                <h3>گزارشات کالای مصرفی</h3>
+                <table style="color: white">
+                    <tr>
+                        <td>
+                            <input type="radio" id="rdb1" value="1" name="rnMasrafi" />
+                            <label>لیست کالاهای </label>
+                            <select class="txtfilter RepMas1" style="font-size:11px" id="selRepIO">
+                                <option value="1">خروجی از انبار</option>
+                                <option value="2">ورودی به انبار</option>
+                            </select>
+                            <label>از تاریخ</label>
+                            <input type="text" class="txtfilter Date RepMas1" id="txtRepDate1" />
+                            <label> تا</label>
+                            <input type="text" class="txtfilter Date RepMas1" id="txtRepDate2" />
+                            <input type="radio" id="rdb2" value="2" name="rnMasrafi" />
+                            <label>لیست کالاهای   </label>
+                            <select class="txtfilter RepMas2" style="font-size:11px" id="selML">
+                                <option value="1">کمتر</option>
+                                <option value="2">بیشتر</option>
+                            </select>
+                            <label> از </label>
+                            <input type="text" class="txtfilter RepMas2" id="txtNumberMojoodi" />
+                            <label>عدد</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" id="rdb3" value="3" name="rnMasrafi" />
+                            <label>لیست کالای  </label>
+                            <input type="text" class="txtfilter RepMas3" id="txtRepMasrafiFindProducts" />
+                            <label class="txtfilter RepMas3" id="lblFindpdID" style="color: black">0000</label>
+
+                            <label>تحویل شده به </label>
+                            <input type="text" class="txtfilter RepMas3" id="txtRepMasrafiCustomerName" />
+                            <label class="txtfilter RepMas3" id="lblCustomerId" style="color: black">0000</label>
+
+                            <label>از تاریخ</label>
+                            <input type="text" class="txtfilter Date RepMas3" id="txtRepDate3" />
+                            <label> تا</label>
+                            <input type="text" class="txtfilter Date RepMas3" id="txtRepDate4" />
+                        </td>
+                        <td>
+                            <input class="myBtn" type="button" value="T" id="cmdTodayRepDate" />
+                        </td>
+                        <td>
+                            <input class="myBtn" type="button" value="C" id="cmdClearRepDate" />
+                        </td>
+
+                        <td>
+                            <input type="button" class="myBtn" id="cmdRepMasrafi" value="گزارش" />
+                        </td>
+                        <td>
+                            <input type="button" class="myBtn" id="cmdClearRepMasrafi" value="پاک کردن گزارش" />
+                        </td>
+                        <td>
+                            <input type="button" class="myBtn" id="cmdExportToExcel" value="خروجی گزارش به اکسل" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <table style="width: 80%; visibility:collapse" id="tPDFilter" class="myTbl">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center">ردیف</th>
+                                    <th style="text-align: center">نام کالا</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="SetProductDetailsList">
+                                <tr id="LoadingStatusProductDetails" style="color: red"></tr>
+                            </tbody>
+
+                        </table>
+                        <table style="width: 80%; visibility: collapse" id="tCustomerFilter" class="myTbl">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center">ردیف</th>
+                                    <th style="text-align: center">نام </th>
+                                    <th style="text-align: center"> نام خانوادگی</th>
+                                    <th style="text-align: center"> موبایل</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="SetCustomerList">
+                                <tr id="LoadingStatusCustomer" style="color: red"></tr>
+                            </tbody>
+
+                        </table>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" id="rdb4" value="4" name="rnMasrafi" />
+                            <label for="rdb4">گزارش تجمیعی بر اساس</label>
+                            <select id="selRepMasrafiTajmi" class="txtfilter RepMas4">
+                                <option value="1">کالای تحویلی</option>
+                                <option value="2">کاربر </option>
+                            </select>
+                            <input type="checkbox" id="chkRepMasrafiTajmiDate" class="Rep4" />
+                            <label for="chkRepMasrafiTajmiDate">از تاریخ</label>
+                            <input type="text" class="txtfilter Date RepMas4" id="txtRepDate5" />
+                            <label> تا</label>
+                            <input type="text" class="txtfilter Date RepMas4" id="txtRepDate6" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" id="rdb5" value="5" name="rnMasrafi" />
+                            <label for="rdb5">گزارش تفصیلی کالاهای تحویل شده به تفکیک</label>
+                            <select id="selRepMasrafiTafsil" class="txtfilter RepMas5">
+                                <option value="1">کاربر</option>
+                                <option value="2">تاریخ </option>
+                            </select>
+                            <input type="checkbox" id="chkRepMasrafiTafsilDate" class="Rep5" />
+                            <label for="chkRepMasrafiTafsilDate">از تاریخ</label>
+                            <input type="text" class="txtfilter Date RepMas5" id="txtRepDate7" />
+                            <label> تا</label>
+                            <input type="text" class="txtfilter Date RepMas5" id="txtRepDate8" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="divDnMasrafi" class="myDiv" style="width: 100%; height: 50%; overflow: auto; color:black">
+                <table id="tblRepMasrafi" class="myTbl" style="width: 70%">
+                    <thead id="thListMasrafi">
+                    </thead>
+                    <tbody id="SetListMasrafi">
+                        <tr id="LoadingStatusMasrafi" style="color: red"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+    $(document).delegate(".myTbl > tbody > tr",
+        "click",
+        function () {
+            $('.myTbl > tbody > tr').removeClass('rowSelected');
+            $(this).addClass('rowSelected');
+        });
+
+
+</script>
+

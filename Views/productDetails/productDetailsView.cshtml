@@ -1,0 +1,413 @@
+﻿@model KOP_Store.Models.mdlProductDetails
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/functions/ProductDetails.js?v=3.0"></script>
+<script src="~/functions/PublicFunc.js?v=1.3"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bagaStyle.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="~/Scripts/notify.js"></script>
+<script src="~/Scripts/notify.min.js"></script>
+<link rel="stylesheet" href="~/Content/jquery-confirm.css" />
+<script src="~/Scripts/jquery-confirm.js"></script>
+
+<html>
+<head>
+    <title>تعریف ردیف کالا-زیرمجموعه</title>
+</head>
+</html>
+
+<style>
+    .column {
+        float: right;
+        width: 55%;
+        padding: 10px;
+        height: 550px; /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row1:before {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+
+<body>
+    <div class="row">
+        <div class="dockedDiv" style="overflow: auto">
+            @* Docked Right Menu Bar *@
+            <button id="m-1" class="myBtn" style="background-color: green" onclick="subMenuOpen();">اطلاعات پایه</button>
+
+            <div id="sm-1" class="subDiv">
+                <button class="myBtn" id="cmdDefProductGroup" onclick="RedirectToPage();">تعریف گروهبندی کالا</button>
+                <button class="myBtn" id="cmdDefProducts" onclick="RedirectToPage();">تعریف کالا</button>
+                <button class="myBtn" id="cmdDefProductDetails" onclick="RedirectToPage();">تعریف زیر مجموعه کالا</button>
+                <br />
+                <button class="myBtn" id="cmdDefCountry" onclick="RedirectToPage();">تعریف کشور</button>
+                <button class="myBtn" id="cmdDefBrand" onclick="RedirectToPage();">تعریف برند کالا</button>
+                <button class="myBtn" id="cmdDefMaterial" onclick="RedirectToPage();">تعریف متریال(جنس) کالا</button>
+                <button class="myBtn" id="cmdDefSize" onclick="RedirectToPage();">تعریف سایز کالا</button>
+                <button class="myBtn" id="cmdDefColor" onclick="RedirectToPage();">تعریف رنگ کالا</button>
+                <br />
+                <button class="myBtn" id="cmdDefUsers" onclick="RedirectToPage();">تعریف کاربران</button>
+                <button class="myBtn" id="cmdDefUserLevel" onclick="RedirectToPage();">تعریف سطح دسترسی کاربران</button>
+                <br />
+                <button class="myBtn" id="cmdDefCustomer" onclick="RedirectToPage();">تعریف خریدار/فروشنده</button>
+                <button class="myBtn" id="cmdDefVendor" onclick="RedirectToPage();">تعریف پیمانکاران</button>
+                <button class="myBtn" id="cmdChangePass" onclick="RedirectToPage();">تغییر رمز عبور...</button>
+
+            </div>
+            <br /> <br />
+            <button id="m-2" class="myBtn" onclick="subMenuOpen();" style="background-color: green">عملیات کالا و اموال(ورود/خروج و...)</button>
+            <div id="sm-2" class="subDiv">
+                <button class="myBtn" id="cmdInpFactor" onclick="RedirectToPage();">ثبت فاکتور خرید-ورود کالا</button>
+                <button id="cmdOutFactor" class="myBtn" onclick="RedirectToPage();">ثبت فاکتور فروش-خروج کالا</button>
+                <br />
+                <button id="cmdDefAmvalProduct" class="myBtn" onclick="RedirectToPage();">تعریف و تخصیص شماره اموال برای کالا</button>
+
+                <button id="cmdTakhsisAmvalToUser" class="myBtn" onclick="RedirectToPage();">تخصیص اموال به شخص</button>
+                <button id="cmdEsghatAmval" class="myBtn" onclick="RedirectToPage();">اسقاط کالای دارای اموال</button>
+                <br />
+                <button id="cmdService" class="myBtn" onclick="RedirectToPage();">سرویس و نگهداری</button>
+            </div>
+            <br /> <br />
+            <button id="m-3" class="myBtn" onclick="subMenuOpen();" style="background-color: green">گزارشات</button>
+            <div id="sm-3" class="subDiv">
+                <button class="myBtn" id="cmdRepMasrafi" onclick="RedirectToPage();">گزارشات کالای غیر مصرفی</button>
+                <button class="myBtn" id="cmdRepAmval" onclick="RedirectToPage();">گزارشات کالای دارای اموال</button>
+                <button id="cmdDashboard" class="myBtn" onclick="RedirectToPage();">داشبورد</button>
+            </div>
+            <br /> <br />
+
+
+        </div>
+
+        <div id="divTableProductDetails" class="myDiv">
+
+            <div id="divNavigatorProductDetails" class="myDiv">
+                <table>
+                    <tr>
+                        <td>
+                            <button id="cmdAddNewProductDetails" class="myRadiousBtn" onclick="addNewProductDetails();"><i class="fa fa-plus"></i></button>
+                        </td>
+                        <td>
+                            <button id="cmdEditProductDetails" class="myRadiousBtn" onclick="editProductDetails()" ;><i class="fa fa-edit"></i></button>
+                        </td>
+                        <td>
+                            <button id="cmdDeleteProductDetails" class="myRadiousBtn" onclick="showDeleteModal()"><i class="fa fa-trash"></i></button>
+                        </td>
+                        <td>&nbsp;</td>
+
+                        <td>
+                            <button id="cmdLastProductDetails" class="myRadiousBtn" onclick="ome('cmdLast', 'کلیک کنید');"><i class="fas fa-angle-double-right"></i></button>
+                        </td>
+                        <td>
+                            <button id="cmdNextProductDetails" class="myRadiousBtn" onclick="ome('cmdLast', 'کلیک کنید');"><i class="fas fa-angle-right"></i></button>
+                        </td>
+                        <td><input type="text" class="myText" id="txtPage" style="width: 50px" /></td>
+                        <td>
+                            <button id="cmdPrevProductDetails" class="myRadiousBtn" onclick="ome('cmdLast', 'کلیک کنید');"><i class="fas fa-angle-left"></i></button>
+                        </td>
+                        <td>
+                            <button id="cmdFirstProductDetails" class="myRadiousBtn" onclick="ome('cmdLast', 'کلیک کنید');"><i class="fas fa-angle-double-left"></i></button>
+                        </td>
+                        <td>
+                            <label class="lblfilter">فیلتر :</label>
+                            <label class="lblfilter">نام کالا</label>
+                            <input type="text" class="txtfilter" id="txtFilterPName" />
+                            <label class="lblfilter">گروه </label>
+                            <select class="txtfilter" id="selFilterPG">
+                                @*هنگام اجرا تکمیل می گردد*@
+                            </select>
+                            <label class="lblfilter">برند </label>
+                            <select class="txtfilter" id="selFilterPBr">
+                                @*هنگام اجرا تکمیل می گردد*@
+                            </select>
+                            <label class="lblfilter">متریال </label>
+                            <select class="txtfilter" id="selFilterPMt">
+                                @*هنگام اجرا تکمیل می گردد*@
+                            </select>
+                            <label class="lblfilter">رنگ</label>
+                            <select class="txtfilter" id="selFilterPCo">
+                                @*هنگام اجرا تکمیل می گردد*@
+                            </select>
+                            <label class="lblfilter">سایز</label>
+                            <select class="txtfilter" id="selFilterPSi">
+                                @*هنگام اجرا تکمیل می گردد*@
+                            </select>
+
+                            <label class="lblfilter">جنسیت</label>
+                            <select class="txtfilter" id="selFilterPGe">
+                                @*هنگام اجرا تکمیل می گردد*@
+                            </select>
+                            <label class="lblfilter">کشور</label>
+                            <select class="txtfilter" id="selFilterPCnt">
+                                @*هنگام اجرا تکمیل می گردد*@
+                            </select>
+                            <label class="lblfilter">توضیحات</label>
+                            <input type="text" class="txtfilter" id="txtFilterPDesc" />
+                        </td>
+                        <td style="width: 150px">
+                            <button id="cmdApplyFilter" class="myBtn" onclick="applyFilter()">اعمال فیلتر</button>
+                        </td>
+                        <td style="width: 150px">
+                            <button id="cmdClearFilter" class="myBtn" onclick="clearFilter()">پاک کردن فیلتر</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            @* ProductDetails  Table *@
+            <div class="myDiv" style="width: 100%; height: 90%; overflow: auto">
+                <table style="width:80%" id="tProductDetails" class="myTbl">
+
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">ردیف</th>
+                            <th style="text-align: center">نام کالا</th>
+                            <th style="text-align: center"> گروه کالا</th>
+                            <th style="text-align: center"> برند کالا</th>
+                            <th style="text-align: center"> متریال کالا</th>
+                            <th style="text-align: center"> رنگ کالا</th>
+                            <th style="text-align: center"> سایز کالا</th>
+                            <th style="text-align: center"> مردانه/زنانه</th>
+                            <th style="text-align: center"> کشور سازنده</th>
+                            <th style="text-align: center"> توضیحات</th>
+                            <th style="text-align: center"> تصویر</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody id="SetProductDetailsList">
+                        <tr id="LoadingStatusProductDetails" style="color: red"></tr>
+                    </tbody>
+                    <tfoot style="background-color: silver">
+                        <tr>
+                        </tr>
+                    </tfoot>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <div id="frmModalGetData1" class="modalDiv">
+            <div class="row1" style="direction: rtl">
+                <div class="column">
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="lblStyle">کد ردیف کالا:</label>
+                            </td>
+                            <td>
+                                <label class="txtStyle" id="lblProductDetailsID">0</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lblStyle">نام کالا :</label>
+                            </td>
+                            <td>
+                                <select class="txtStyle" id="selProducts">
+                                    @*هنگام اجرا تکمیل می گردد*@
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lblStyle">گروه کالا :</label>
+                            </td>
+                            <td>
+                                <label class="lblStyle" id="lblProductGroupName">0000</label>
+                            </td>
+                        </tr>
+                        @**********@
+                        <tr>
+                            <td>
+                                <label class="lblStyle">برند کالا :</label>
+                            </td>
+                            <td>
+                                <select class="txtStyle" id="selBrand">
+                                    @*هنگام اجرا تکمیل می گردد*@
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lblStyle">متریال کالا :</label>
+                            </td>
+                            <td>
+                                <select class="txtStyle" id="selMaterial">
+                                    @*هنگام اجرا تکمیل می گردد*@
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lblStyle">رنگ کالا :</label>
+                            </td>
+                            <td>
+                                <select class="txtStyle" id="selColor">
+                                    @*هنگام اجرا تکمیل می گردد*@
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lblStyle">سایز کالا :</label>
+                            </td>
+                            <td>
+                                <select class="txtStyle" id="selSize">
+                                    @*هنگام اجرا تکمیل می گردد*@
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lblStyle">مردانه/زنانه :</label>
+                            </td>
+                            <td>
+                                <select class="txtStyle" id="selGender">
+                                    @*هنگام اجرا تکمیل می گردد*@
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lblStyle">کشور سازنده :</label>
+                            </td>
+                            <td>
+                                <select class="txtStyle" id="selCountry">
+                                    @*هنگام اجرا تکمیل می گردد*@
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lblStyle">توضیحات :</label>
+                            </td>
+                            <td>
+                                <input type="text" class="txtStyle" id="txtDescription" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button class="myBtn" onclick="cmdUpdate()">ثبت</button>
+
+                                <button class="myBtn" onclick="closeModal('frmModalGetData1')">بستن </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br /><br /><br />
+                <div class="column" style="background-color: #00008b; height: 200px; width: 200px">
+                    <img id="img1" src="~/img/nopic.jpg" accept="*.jpg" width="200" height="200" style="margin-right: 0px">
+                </div>
+
+                <form id="jquery-upload-form" enctype="multipart/form-data">
+                    <input id="file" type="file" name="file" />
+                    <input id="jquery-upload-button" type="button" value="upload" />
+
+                </form>
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="frmModalDelete" class="modalDiv">
+        <label>آیا مایل به حذف سطر انتخاب شده می باشید؟</label>
+        <br /><br />
+        <label id="lblDisplayDeleteInfo">11</label>
+        <br /><br />
+        <table>
+            <tr>
+                <td>
+                    <button class="myBtn" onclick="deleteProductDetails()">حذف</button>
+                </td>
+                <td>
+                    <button class="myBtn" onclick="closeModal('frmModalDelete')">انصراف </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
+
+<script>
+
+
+
+    function LoadImage() {
+        $("#img1").attr("src", "/img/59.jpg");
+    }
+
+    $('#file1').change(function () {
+        alert($(this).siblings('.text').text);
+        $(this).siblings('.text').text(this.value || 'Nothing selected');
+
+    });
+
+    function ome() {
+
+
+        // $('#frmModalGetData1').hide();
+        //var text = $(event.target).id();
+        //var text = document.getElementById(id);
+
+        //var l = text.offsetLeft;
+        //var t = text.offsetTop;
+
+        //$("#p1").html(tip);
+
+        //  $("#p1").css({'marginLeft': l , 'marginTop': t});
+
+
+    }
+
+
+
+
+    $(document).delegate(".myTbl > tbody > tr",
+        "click",
+        function () {
+            $('.myTbl > tbody > tr').removeClass('rowSelected');
+            $(this).addClass('rowSelected');
+        });
+
+    $('select').on('change', function () {
+        if (this.id === "selProducts") {
+            if (this.value === "-1") {
+                $("#lblProductGroupName").html("0000");
+                return;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: '/productDetails/GetGroupOfProduct',
+                //data: '{userRef:' + 1 + ', moduleRef:' + JSON.stringify('sdfsfs') + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { 'productId': this.value },
+                success: function (data) {
+                    $("#lblProductGroupName").html(data[0].productGroupNameX);
+                }
+            });
+        }
+    });
+
+
+
+
+</script>
+

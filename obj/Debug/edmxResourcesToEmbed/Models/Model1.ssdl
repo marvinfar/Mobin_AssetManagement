@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblProductGroup">
+    <Key>
+      <PropertyRef Name="productGroupId" />
+    </Key>
+    <Property Name="productGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblProducts">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productGroupId" Type="int" Nullable="false" />
+    <Property Name="productName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblProductsDetail">
+    <Key>
+      <PropertyRef Name="productDetailId" />
+    </Key>
+    <Property Name="productDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productId" Type="int" Nullable="false" />
+    <Property Name="productBrand" Type="nvarchar" MaxLength="50" />
+    <Property Name="productMaterial" Type="nvarchar" MaxLength="50" />
+    <Property Name="productColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="productSize" Type="nvarchar" MaxLength="15" />
+    <Property Name="productGender" Type="bit" />
+    <Property Name="productCountry" Type="nvarchar" MaxLength="30" />
+    <Property Name="productDescription" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'E:\LOGIN\DB\KOPSTORE.MDF.dbo.vProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vProducts">
+    <Key>
+      <PropertyRef Name="productId" />
+      <PropertyRef Name="productGroupName" />
+    </Key>
+    <Property Name="productId" Type="int" Nullable="false" />
+    <Property Name="productName" Type="nvarchar" MaxLength="50" />
+    <Property Name="productGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_productsDetailTable_ToTable">
+    <End Role="tblProducts" Type="Self.tblProducts" Multiplicity="1" />
+    <End Role="tblProductsDetail" Type="Self.tblProductsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProducts">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="tblProductsDetail">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productTable_ToTable">
+    <End Role="tblProductGroup" Type="Self.tblProductGroup" Multiplicity="1" />
+    <End Role="tblProducts" Type="Self.tblProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProductGroup">
+        <PropertyRef Name="productGroupId" />
+      </Principal>
+      <Dependent Role="tblProducts">
+        <PropertyRef Name="productGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="tblProductGroup" EntityType="Self.tblProductGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProducts" EntityType="Self.tblProducts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProductsDetail" EntityType="Self.tblProductsDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vProducts" EntityType="Self.vProducts" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vProducts].[productId] AS [productId], 
+[vProducts].[productName] AS [productName], 
+[vProducts].[productGroupName] AS [productGroupName]
+FROM [dbo].[vProducts] AS [vProducts]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_productsDetailTable_ToTable" Association="Self.FK_productsDetailTable_ToTable">
+      <End Role="tblProducts" EntitySet="tblProducts" />
+      <End Role="tblProductsDetail" EntitySet="tblProductsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productTable_ToTable" Association="Self.FK_productTable_ToTable">
+      <End Role="tblProductGroup" EntitySet="tblProductGroup" />
+      <End Role="tblProducts" EntitySet="tblProducts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
